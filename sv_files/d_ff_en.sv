@@ -5,22 +5,19 @@
  * This file contains d_ff, a d flip-flop module.
  *
  * Inputs:
- * clk - A clock signal.
- * reset - A reset signal.
- * d - An input signal.
- * 
+ * clk - Clock signal.
+ * d - Input signal.
+ * en - Enable signal.
+ *
  * Outputs:
- * q - The output signal.
+ * q - Output signal.
  */
 
-module d_ff (
-        input logic clk, reset, d,
+module d_ff_en (
+        input logic clk, d, en,
         output logic q
     );
     always @(posedge clk or posedge reset) begin
-        if (reset)
-            q <= 1'b0;
-        else
-            q <= d;
+        if (en) q <= d;
     end
 endmodule
