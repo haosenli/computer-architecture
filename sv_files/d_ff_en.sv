@@ -14,10 +14,9 @@
  */
 
 module d_ff_en (
-        input logic clk, d, en,
+        input  logic clk, d, en,
         output logic q
     );
-    always @(posedge clk or posedge reset) begin
-        if (en) q <= d;
-    end
+
+    d_ff dff(.q, .d(d), .reset(1'b0), .clk);
 endmodule

@@ -21,7 +21,6 @@ module register (
     );
     // create 64 d flip-flips
     genvar i;
-
     generate
         for (i=0; i<64; i++) begin: dffs
             d_ff_en dff (.d(wr_data[0]), .q(rd_data[0]), .en(wr_en), .clk(clk));
