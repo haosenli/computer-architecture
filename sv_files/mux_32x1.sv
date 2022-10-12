@@ -1,7 +1,7 @@
 module mux_32x1(
         input  logic [31:0] in,
         input  logic [4:0] sel,
-        output logic out,
+        output logic out
     );
     // temp outputs from 16x1 muxes
     logic [1:0] temp;

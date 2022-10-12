@@ -1,7 +1,7 @@
 module mux_8x1(
         input  logic [7:0] in,
         input  logic [2:0] sel,
-        output logic out,
+        output logic out
     );
     // temp outputs from 4x1 muxes
     logic [1:0] temp;

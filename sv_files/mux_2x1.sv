@@ -1,7 +1,7 @@
 module mux_2x1(
         input  logic [1:0] in,
         input  logic sel,
-        output logic out,
+        output logic out
     );
     logic temp0, temp1, not_sel;
     and a0(temp0, in[1], sel);
