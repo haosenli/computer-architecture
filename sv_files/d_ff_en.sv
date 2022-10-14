@@ -17,6 +17,30 @@ module d_ff_en (
         input  logic clk, d, en,
         output logic q
     );
+    logic mux_d;
+    mux_2x1 mux(.in({d, q}), .sel(en), .out(mux_d));
+    d_ff dff(.q, .d(mux_d), .reset(1'b0), .clk);
+endmodule // d_ff_en
 
-    d_ff dff(.q, .d(d), .reset(1'b0), .clk);
-endmodule
+
+// testbench
+module mux_2x1_testbench();
+    logic clk, d, en, q;
+
+    // simulated clock
+    parameter period = 100;
+    initial begin 
+        clk <= 0;
+        forever #(period/2) clk <= ~clk;
+    end
+
+    d_ff_en dut(.*);
+
+    initial begin 
+        d <= 0, en <= 0;    @(posedge clk);
+                en <= 1;    @(posedge clk);
+        d <= 0, en <= 0;    @(posedge clk);
+                en <= 1;    @(posedge clk); 
+        $stop;
+    end
+endmodule // d_ff_en_testbench
