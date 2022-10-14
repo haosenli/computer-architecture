@@ -1,0 +1,122 @@
+# Reading C:/intelFPGA_lite/17.0/modelsim_ase/tcl/vsim/pref.tcl
+do runlab.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 14:33:52 on Oct 12,2022
+# vlog -reportprogress 300 ./decoder_3x8.sv 
+# -- Compiling module decoder_3x8
+# -- Compiling module decoder_3x8_testbench
+# 
+# Top level modules:
+# 	decoder_3x8_testbench
+# End time: 14:33:52 on Oct 12,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work decoder_3x8_testbench 
+# Start time: 14:33:52 on Oct 12,2022
+# Loading sv_std.std
+# Loading work.decoder_3x8_testbench
+# Loading work.decoder_3x8
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+do runlab.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 14:38:35 on Oct 12,2022
+# vlog -reportprogress 300 ./decoder_3x8.sv 
+# -- Compiling module decoder_3x8
+# -- Compiling module decoder_3x8_testbench
+# 
+# Top level modules:
+# 	decoder_3x8_testbench
+# End time: 14:38:36 on Oct 12,2022, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# End time: 14:38:40 on Oct 12,2022, Elapsed time: 0:04:48
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work decoder_3x8_testbench 
+# Start time: 14:38:40 on Oct 12,2022
+# Loading sv_std.std
+# Loading work.decoder_3x8_testbench
+# Loading work.decoder_3x8
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+do runlab.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 14:39:39 on Oct 12,2022
+# vlog -reportprogress 300 ./decoder_3x8.sv 
+# -- Compiling module decoder_3x8
+# -- Compiling module decoder_3x8_testbench
+# 
+# Top level modules:
+# 	decoder_3x8_testbench
+# End time: 14:39:39 on Oct 12,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 14:39:42 on Oct 12,2022, Elapsed time: 0:01:02
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work decoder_3x8_testbench 
+# Start time: 14:39:42 on Oct 12,2022
+# Loading sv_std.std
+# Loading work.decoder_3x8_testbench
+# Loading work.decoder_3x8
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+do runlab.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:18:24 on Oct 12,2022
+# vlog -reportprogress 300 ./decoder_3x8.sv 
+# -- Compiling module decoder_3x8
+# -- Compiling module decoder_3x8_testbench
+# 
+# Top level modules:
+# 	decoder_3x8_testbench
+# End time: 15:18:24 on Oct 12,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 15:18:27 on Oct 12,2022, Elapsed time: 0:38:45
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work decoder_3x8_testbench 
+# Start time: 15:18:27 on Oct 12,2022
+# Loading sv_std.std
+# Loading work.decoder_3x8_testbench
+# Loading work.decoder_3x8
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+do runlab.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:22:08 on Oct 12,2022
+# vlog -reportprogress 300 ./enabled_decoder_5x32.sv 
+# -- Compiling module enabled_decoder_5x32
+# -- Compiling module enabled_decoder_5x32_testbench
+# 
+# Top level modules:
+# 	enabled_decoder_5x32_testbench
+# End time: 15:22:08 on Oct 12,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 15:22:12 on Oct 12,2022, Elapsed time: 0:03:45
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work enabled_decoder_5x32_testbench 
+# Start time: 15:22:12 on Oct 12,2022
+# Loading sv_std.std
+# Loading work.enabled_decoder_5x32_testbench
+# Loading work.enabled_decoder_5x32
+# Loading work.decoder_3x8
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+do runlab.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:23:39 on Oct 12,2022
+# vlog -reportprogress 300 ./enabled_decoder_5x32.sv 
+# -- Compiling module enabled_decoder_5x32
+# -- Compiling module enabled_decoder_5x32_testbench
+# 
+# Top level modules:
+# 	enabled_decoder_5x32_testbench
+# End time: 15:23:39 on Oct 12,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0

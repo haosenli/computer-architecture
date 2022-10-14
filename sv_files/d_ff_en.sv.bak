@@ -24,7 +24,7 @@ endmodule // d_ff_en
 
 
 // testbench
-module d_ff_en_testbench();
+module mux_2x1_testbench();
     logic clk, d, en, q;
 
     // simulated clock
@@ -37,9 +37,9 @@ module d_ff_en_testbench();
     d_ff_en dut(.*);
 
     initial begin 
-        d <= 0; en <= 0;    @(posedge clk);
+        d <= 0, en <= 0;    @(posedge clk);
                 en <= 1;    @(posedge clk);
-        d <= 1; en <= 0;    @(posedge clk);
+        d <= 0, en <= 0;    @(posedge clk);
                 en <= 1;    @(posedge clk); 
         $stop;
     end

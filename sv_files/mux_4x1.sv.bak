@@ -2,7 +2,7 @@ module mux_4x1(
         input  logic [3:0] in,
         input  logic [1:0] sel,
         output logic out
-    );
+    )
     // temp outputs from 2x1 muxes
     logic [1:0] temp;
     // combining muxes
