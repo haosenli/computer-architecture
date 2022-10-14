@@ -23,7 +23,7 @@ module register (
     genvar i;
     generate
         for (i=0; i<64; i++) begin: dffs
-            d_ff_en dff (.d(wr_data[0]), .q(rd_data[0]), .en(wr_en), .clk(clk));
+            d_ff_en dff (.d(wr_data[i]), .q(rd_data[i]), .en(wr_en), .clk(clk));
         end
     endgenerate
 endmodule
