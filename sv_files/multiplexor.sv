@@ -33,7 +33,7 @@ module multiplexor_testbench();
 	
 	multiplexor dut(.*);
 
-    initial begin 
+    initial begin
         $stop;
     end
 endmodule // multiplexor_testbench
