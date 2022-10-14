@@ -1,0 +1,15 @@
+module decoder_3x8 (decode, A, B, C);
+	input logic A, B, C;
+	output logic [7:0] decode;
+	
+	and three_eight_000 (decode[0], ~A, ~B, ~C);
+	and three_eight_001 (decode[1], ~A, ~B, C);
+	and three_eight_010 (decode[2], ~A, B, ~C);
+	and three_eight_011 (decode[3], ~A, B, C);
+	and three_eight_100 (decode[4], A, ~B, ~C);
+	and three_eight_101 (decode[5], A, ~B, C);
+	and three_eight_110 (decode[6], A, B, ~C);
+	and three_eight_111 (decode[7], A, B, C);
+	
+	
+endmodule
