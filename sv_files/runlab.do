@@ -4,20 +4,21 @@ vlib work
 # Compile Verilog
 #     All Verilog files that are part of this design should have
 #     their own "vlog" line below.
-#vlog "./decoder_3x8.sv"
-vlog "./enabled_decoder_5x32.sv"
+vlog "./mux2x1.sv"
+vlog "./mux4x1.sv"
+vlog "./mux8x1.sv"
+vlog "./mux16x1.sv"
+vlog "./mux32x1.sv"
 
 # Call vsim to invoke simulator
 #     Make sure the last item on the line is the name of the
 #     testbench module you want to execute.
-#vsim -voptargs="+acc" -t 1ps -lib work decoder_3x8_testbench
-vsim -voptargs="+acc" -t 1ps -lib work enabled_decoder_5x32_testbench
+vsim -voptargs="+acc" -t 1ps -lib work mux32x1_testbench
 
 # Source the wave do file
 #     This should be the file that sets up the signal window for
 #     the module you are testing.
-#do decoder_3x8_wave.do
-do enabled_decoder_5x32_wave.do
+do mux32x1_wave.do
 
 # Set the window types
 view wave

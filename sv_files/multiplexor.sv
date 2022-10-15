@@ -10,8 +10,8 @@ module multiplexor(
         for (i=0; i<64; i++) begin: muxes
             mux_32x1 m(
 					.in({
-						in[0][i], in[1][i], in[2][i], in[3][i], in[4][i], 
-						in[5][i], in[6][i], in[7][i], in[8][i], in[9][i], 
+						in[0][i],  in[1][i],  in[2][i],  in[3][i],  in[4][i], 
+						in[5][i],  in[6][i],  in[7][i],  in[8][i],  in[9][i], 
 						in[10][i], in[11][i], in[12][i], in[13][i], in[14][i], 
 						in[15][i], in[16][i], in[17][i], in[18][i], in[19][i], 
 						in[20][i], in[21][i], in[22][i], in[23][i], in[24][i], 
@@ -34,6 +34,7 @@ module multiplexor_testbench();
 	multiplexor dut(.*);
 
     initial begin
+        
         $stop;
     end
 endmodule // multiplexor_testbench
