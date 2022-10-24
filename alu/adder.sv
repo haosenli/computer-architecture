@@ -1,3 +1,19 @@
+/*
+ * EE469 Autumn 2022
+ * Haosen Li, Peter Tran
+ * 
+ * This file computes adding bits together.
+ *
+ * Inputs:
+ * A - Bit 1.
+ * B - Bit 2.
+ * Cin - Carry in.
+ *
+ * Outputs:
+ * sum - Sum of A, B, and Cin.
+ * Cout - Carry out.
+ */
+
 `timescale 10ps / 1ps
 module adder(
 		input  logic A, B, Cin,
