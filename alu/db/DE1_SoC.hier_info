@@ -1,0 +1,14 @@
+|adder
+A => summ.IN0
+A => c_cout1.IN0
+A => c_cout2.IN0
+B => summ.IN1
+B => c_cout1.IN1
+B => c_cout3.IN0
+Cin => summ.IN2
+Cin => c_cout2.IN1
+Cin => c_cout3.IN1
+sum <= summ.DB_MAX_OUTPUT_PORT_TYPE
+Cout <= c_out.DB_MAX_OUTPUT_PORT_TYPE
+
+

@@ -1,7 +1,7 @@
 result = ['{']
-for i in range(32):
-    if i != 31:
-        result.append('in[i][0], ')
-    else:
-        result.append('in[i][0]}')
+
+for i in range(31, -1, -1):
+    result.append(f'in[{i}][i], ')
+
+result.append('}')
 print(''.join(result))
