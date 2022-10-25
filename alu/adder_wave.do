@@ -3,6 +3,8 @@ quietly WaveActivateNextPane {} 0
 add wave -noupdate /adder_testbench/A
 add wave -noupdate /adder_testbench/B
 add wave -noupdate /adder_testbench/Cin
+add wave -noupdate /adder_testbench/Cout_sel
+add wave -noupdate /adder_testbench/sum_sel
 add wave -noupdate /adder_testbench/sum
 add wave -noupdate /adder_testbench/Cout
 TreeUpdate [SetDefaultTree]
@@ -22,4 +24,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ps
 update
-WaveRestoreZoom {0 ps} {1 ns}
+WaveRestoreZoom {0 ps} {67200 ps}
