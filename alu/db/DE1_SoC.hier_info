@@ -1,14 +1,58 @@
 |adder
 A => summ.IN0
+A => orAB.IN0
 A => c_cout1.IN0
 A => c_cout2.IN0
-B => summ.IN1
-B => c_cout1.IN1
-B => c_cout3.IN0
-Cin => summ.IN2
+B => B.IN1
+Cin => summ.IN1
 Cin => c_cout2.IN1
-Cin => c_cout3.IN1
-sum <= summ.DB_MAX_OUTPUT_PORT_TYPE
-Cout <= c_out.DB_MAX_OUTPUT_PORT_TYPE
+Cin => c_cout3.IN0
+Cout_sel => Cout_sel.IN1
+sum_sel[0] => sum_sel[0].IN1
+sum_sel[1] => sum_sel[1].IN1
+sum <= mux_4x1:mux4x1.out
+Cout <= mux_2x1:mux2x1.out
+
+
+|adder|mux_2x1:mux2x1
+in[0] => a1.IN0
+in[1] => a0.IN0
+sel => a0.IN1
+sel => a1.IN1
+out <= o0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|adder|mux_4x1:mux4x1
+in[0] => in[0].IN1
+in[1] => in[1].IN1
+in[2] => in[2].IN1
+in[3] => in[3].IN1
+sel[0] => sel[0].IN2
+sel[1] => sel[1].IN1
+out <= mux_2x1:m3.port2
+
+
+|adder|mux_4x1:mux4x1|mux_2x1:m1
+in[0] => a1.IN0
+in[1] => a0.IN0
+sel => a0.IN1
+sel => a1.IN1
+out <= o0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|adder|mux_4x1:mux4x1|mux_2x1:m2
+in[0] => a1.IN0
+in[1] => a0.IN0
+sel => a0.IN1
+sel => a1.IN1
+out <= o0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|adder|mux_4x1:mux4x1|mux_2x1:m3
+in[0] => a1.IN0
+in[1] => a0.IN0
+sel => a0.IN1
+sel => a1.IN1
+out <= o0.DB_MAX_OUTPUT_PORT_TYPE
 
 

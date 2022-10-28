@@ -38,7 +38,7 @@ module adder(
 	or #5 c_out (out, and1, and2, and3);
 	
 	// Muxes to determine the output of sum and Cout
-	mux_2x1 mux2x1 (.in({out, 1'b0}), .sel(Cout_sel), .out(Cout)); 
+	mux_2x1 mux2x1 (.in({ 1'b0, out}), .sel(Cout_sel), .out(Cout)); 
 	mux_4x1 mux4x1 (.in({add_sum, B, or_AB, and1}), .sel(sum_sel), .out(sum));
 	
 endmodule
@@ -72,7 +72,7 @@ module adder_testbench ();
 			{A, B, Cin} = i; #200;
 		end
 		
-		/* TEST 4: A AND B */
+		/* TEST 4: A*/
 		Cout_sel <= 1'b0; sum_sel <= 2'b00;
 		for (int i = 0; i < 8; i++) begin
 			{A, B, Cin} = i; #200;
