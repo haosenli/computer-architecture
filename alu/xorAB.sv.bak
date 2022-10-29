@@ -23,6 +23,6 @@ module xorAB (
 	xor #5 xor_AB (xor1, A, B);
 	
 	// Mux to decide whether to output A xor B or 0
-	mux_2x1 mux2x1 (.in({xor_AB, 1'b0}), .sel(sel), .out(out)); 
+	mux_2x1 mux2x1 (.in({and1, 1'b0}), .sel(sel), .out(out)); 
 	
 endmodule

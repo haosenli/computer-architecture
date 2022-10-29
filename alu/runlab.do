@@ -8,6 +8,7 @@ vlog "./adder.sv"
 vlog "./mux_2x1.sv"
 vlog "./mux_4x1.sv"
 vlog "./alu.sv"
+vlog "./adder_more.sv"
 
 # Call vsim to invoke simulator
 #     Make sure the last item on the line is the name of the

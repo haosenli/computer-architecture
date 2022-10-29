@@ -1,17 +1,3 @@
-/*
- * EE469 Autumn 2022
- * Haosen Li, Peter Tran
- * 
- * This file contains a 2 by 1 mux module.
- *
- * Inputs:
- * in    - 2 bits, Signals into mux.
- * sel	- 1 bit,  Selector signal.
- *
- * Outputs:
- * out   - 1 bit, Mux output.
- */
-
 `timescale 10 ps/ 1 ps
 module mux_2x1(
         input  logic [1:0] in,

@@ -1,5 +1,5 @@
 Analysis & Elaboration report for DE1_SoC
-Fri Oct 28 16:04:34 2022
+Fri Oct 28 18:37:30 2022
 Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 
 
@@ -10,8 +10,7 @@ Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
   2. Analysis & Elaboration Summary
   3. Parallel Compilation
   4. Analysis & Elaboration Settings
-  5. Port Connectivity Checks: "mux_2x1:mux2x1"
-  6. Analysis & Elaboration Messages
+  5. Analysis & Elaboration Messages
 
 
 
@@ -38,7 +37,7 @@ agreement for further details.
 +-----------------------------------------------------------------------------+
 ; Analysis & Elaboration Summary                                              ;
 +-------------------------------+---------------------------------------------+
-; Analysis & Elaboration Status ; Successful - Fri Oct 28 16:04:34 2022       ;
+; Analysis & Elaboration Status ; Successful - Fri Oct 28 18:37:30 2022       ;
 ; Quartus Prime Version         ; 17.0.0 Build 595 04/25/2017 SJ Lite Edition ;
 ; Revision Name                 ; DE1_SoC                                     ;
 ; Top-level Entity Name         ; adder                                       ;
@@ -156,25 +155,18 @@ agreement for further details.
 +---------------------------------------------------------------------------------+--------------------+--------------------+
 
 
-+--------------------------------------------+
-; Port Connectivity Checks: "mux_2x1:mux2x1" ;
-+-------+-------+----------+-----------------+
-; Port  ; Type  ; Severity ; Details         ;
-+-------+-------+----------+-----------------+
-; in[0] ; Input ; Info     ; Stuck at GND    ;
-+-------+-------+----------+-----------------+
-
-
 +---------------------------------+
 ; Analysis & Elaboration Messages ;
 +---------------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Elaboration
     Info: Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
-    Info: Processing started: Fri Oct 28 16:04:23 2022
+    Info: Processing started: Fri Oct 28 18:37:08 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE1_SoC -c DE1_SoC --analysis_and_elaboration
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file adder_more.sv
+    Info (12023): Found entity 1: adder_more File: C:/School/EE469/fpga-arm-processor/alu/adder_more.sv Line: 20
 Info (12021): Found 1 design units, including 1 entities, in source file mux_4x1.sv
     Info (12023): Found entity 1: mux_4x1 File: C:/School/EE469/fpga-arm-processor/alu/mux_4x1.sv Line: 1
 Info (12021): Found 2 design units, including 2 entities, in source file mux_2x1.sv
@@ -184,19 +176,21 @@ Info (12021): Found 1 design units, including 1 entities, in source file alustim
     Info (12023): Found entity 1: alustim File: C:/School/EE469/fpga-arm-processor/alu/alustim.sv Line: 20
 Info (12021): Found 2 design units, including 2 entities, in source file alu.sv
     Info (12023): Found entity 1: alu File: C:/School/EE469/fpga-arm-processor/alu/alu.sv Line: 20
-    Info (12023): Found entity 2: alu_testbench File: C:/School/EE469/fpga-arm-processor/alu/alu.sv Line: 100
+    Info (12023): Found entity 2: alu_testbench File: C:/School/EE469/fpga-arm-processor/alu/alu.sv Line: 107
 Info (12021): Found 2 design units, including 2 entities, in source file adder.sv
     Info (12023): Found entity 1: adder File: C:/School/EE469/fpga-arm-processor/alu/adder.sv Line: 20
-    Info (12023): Found entity 2: adder_testbench File: C:/School/EE469/fpga-arm-processor/alu/adder.sv Line: 50
-Warning (10236): Verilog HDL Implicit Net warning at alu.sv(39): created implicit net for "sum_sel1" File: C:/School/EE469/fpga-arm-processor/alu/alu.sv Line: 39
-Warning (10236): Verilog HDL Implicit Net warning at alu.sv(40): created implicit net for "sum_sel0" File: C:/School/EE469/fpga-arm-processor/alu/alu.sv Line: 40
+    Info (12023): Found entity 2: adder_testbench File: C:/School/EE469/fpga-arm-processor/alu/adder.sv Line: 39
+Info (12021): Found 1 design units, including 1 entities, in source file andab.sv
+    Info (12023): Found entity 1: andAB File: C:/School/EE469/fpga-arm-processor/alu/andAB.sv Line: 15
+Info (12021): Found 1 design units, including 1 entities, in source file orab.sv
+    Info (12023): Found entity 1: orAB File: C:/School/EE469/fpga-arm-processor/alu/orAB.sv Line: 15
+Info (12021): Found 1 design units, including 1 entities, in source file xorab.sv
+    Info (12023): Found entity 1: xorAB File: C:/School/EE469/fpga-arm-processor/alu/xorAB.sv Line: 15
 Info (12127): Elaborating entity "adder" for the top level hierarchy
-Info (12128): Elaborating entity "mux_2x1" for hierarchy "mux_2x1:mux2x1" File: C:/School/EE469/fpga-arm-processor/alu/adder.sv Line: 42
-Info (12128): Elaborating entity "mux_4x1" for hierarchy "mux_4x1:mux4x1" File: C:/School/EE469/fpga-arm-processor/alu/adder.sv Line: 43
-Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 3 warnings
+Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 1 warning
     Info: Peak virtual memory: 4765 megabytes
-    Info: Processing ended: Fri Oct 28 16:04:34 2022
-    Info: Elapsed time: 00:00:11
-    Info: Total CPU time (on all processors): 00:00:24
+    Info: Processing ended: Fri Oct 28 18:37:30 2022
+    Info: Elapsed time: 00:00:22
+    Info: Total CPU time (on all processors): 00:00:53
 
 
