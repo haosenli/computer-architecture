@@ -26,20 +26,23 @@ module adder(
 	logic and1, and2, and3, out, add_sum, or_AB;
 	
 	// Finds value of sum
-	xor #5 summ (add_sum, A, B, Cin);
+	//xor #5 summ (sum, A, B, Cin);
 	
 	// output of A or B
-	or #5 orAB (or_AB, A, B);
+	//or #5 orAB (or_AB, A, B);
 	
 	// Checks if Cout exists
 	and #5 c_cout1 (and1, A, B);
 	and #5 c_cout2 (and2, A, Cin);
 	and #5 c_cout3 (and3, B, Cin);
-	or #5 c_out (out, and1, and2, and3);
+	or #5 c_out (Cout, and1, and2, and3);
+	//or  #5 c_out (out, A, B);
 	
 	// Muxes to determine the output of sum and Cout
-	mux_2x1 mux2x1 (.in({ 1'b0, out}), .sel(Cout_sel), .out(Cout)); 
-	mux_4x1 mux4x1 (.in({add_sum, B, or_AB, and1}), .sel(sum_sel), .out(sum));
+	//mux_2x1 mux2x1 (.in({out, 1'b0}), .sel(Cout_sel), .out(Cout)); 
+	//mux_4x1 mux4x1 (.in({add_sum, B, or_AB, and1}), .sel(sum_sel), .out(sum));
+	//mux_4x1 mux4x1 (.in({add_sum, B, or_AB, 1'b0}), .sel(sum_sel), .out(sum));
+
 	
 endmodule
 

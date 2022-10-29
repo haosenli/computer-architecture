@@ -24,7 +24,7 @@ module alu(
 		output logic negative, zero, overflow, carry_out
 	);
 	 // Create intermediate signals
-    logic sum_sel_1, sum_sel_0, Cout_sel, sub, temp_zero;
+    logic sum_sel1, sum_sel0, Cout_sel, sub, temp_zero;
     logic not_cntrl_2, and_cntrl_21;
     logic [63:0] cout, B_sub, B_in;
 	 logic [15:0] temp_zero0;
@@ -32,8 +32,8 @@ module alu(
 
     // Calculate Cout_sel signal
     not #5 n0(not_cntrl_2, cntrl[2]);
-    and #5 a0(and_cntrl_21, not_cntrl_2, cntrl[1]);
-    not #5 n1(Cout_sel, and_cntrl_21);
+    and #5 a0(Cout_sel, not_cntrl_2, cntrl[1]);
+    //not #5 n1(Cout_sel, and_cntrl_21);
 
     // Calculate sum_sel signal
     or  #5 o0(sum_sel1, not_cntrl_2, cntrl[1]);
@@ -46,7 +46,7 @@ module alu(
     // Add muxes to B input for add/subtract selection
     generate
         for (i=0; i<64; i++) begin: bsubs
-            not n(B_sub[i], B[i]);
+            not #5 n(B_sub[i], B[i]);
             mux_2x1 m(.in({B_sub[i], B[i]}), .sel(sub), .out(B_in[i]));
         end
     endgenerate
@@ -109,21 +109,81 @@ module alu_testbench();
 		/* TEST 1: ADDITION*/
 		cntrl = 3'b010;	// Addition
 		/* TWO POSITIVE NUMBERS */
-		A =  64'd37912; B =  64'd84021; #1000; // Expected Output: 121933
+		A =  64'd10000; B =  64'd10000; #200; // Expected Output: 121933
 		/* TWO NEGATIVE NUMBERS */
-		A = -64'd53024; B = -64'd42502; #1000; // Expected Output: -95526
-//		/* ZERO */
-//		A = 64'd480149310; B = -64'd480149310; #1000; // Expected Output: 0
+		A = -64'd53024; B = -64'd42502; #200; // Expected Output: -95526
 		/* ZERO */
-		A = 64'd2; B = -64'd1; #1000; // Expected Output: 0
+		A = 64'd2; B = -64'd1; #2000; // Expected Output: 0
 		/* OVERFLOW WITH TWO POSITIVE NUMBERS */
 		A = 64'b111111111111111111111111111111111111111111111111111111111111111;
-		B = 64'b111111111111111111111111111111111111111111111111111111111111111; #1000;
+		B = 64'b111111111111111111111111111111111111111111111111111111111111111; #200;
 		// Expected Output: -2
 		/* OVERFLOW WITH TWO NEGATIVE NUMBERS */
 		A = -64'b111111111111111111111111111111111111111111111111111111111111111;
-		B = -64'b111111111111111111111111111111111111111111111111111111111111111; #1000;
+		B = -64'b111111111111111111111111111111111111111111111111111111111111111; #200;
 		// Expected Output: 2
+		
+		/* TEST 2: SUBTRACTION */
+		cntrl = 3'b011;	// Subtraction
+		/* TWO POSITIVE NUMBERS */
+		A =  64'd37912; B =  64'd84021; #200; // Expected Output: -46109
+		/* TWO NEGATIVE NUMBERS */
+		A = -64'd53024; B = -64'd42502; #2000; // Expected Output: -10522
+		/* ZERO */
+		A = 64'd5; B = -64'd5; #200; // Expected Output: 0
+		/* OVERFLOW WITH TWO POSITIVE NUMBERS */
+		A = 64'b111111111111111111111111111111111111111111111111111111111111111;
+		B = -64'b111111111111111111111111111111111111111111111111111111111111111; #200;
+		// Expected Output: -2
+		/* OVERFLOW WITH TWO NEGATIVE NUMBERS */
+		A = -64'b111111111111111111111111111111111111111111111111111111111111111;
+		B = 64'b111111111111111111111111111111111111111111111111111111111111111; #1000;
+		// Expected Output: 2
+		
+//		/* TEST 3: AND */
+//		cntrl = 3'b100;
+//		/* TWO POSITIVE NUMBERS */
+//		A = 64'd759231314; B = 64'd371914018; #200;
+//		/* TWO NEGATIVE NUMBERS */
+//		A = -64'd31988; B = -64'd4924013; #200;
+//		/* POSITIVE AND NEGATIVE */
+//		A = 64'd4792834; B = -64'd7391931; #200;
+//		/* ALL ONES AND ZEROS */
+//		A = 64'b111111111111111111111111111111111111111111111111111111111111111;
+//		B = 64'd0; #200;
+//		/* ALL ONES */
+//		A = 64'b111111111111111111111111111111111111111111111111111111111111111;
+//		B = 64'b111111111111111111111111111111111111111111111111111111111111111; #200;
+		
+//		/* TEST 3: OR */
+//		cntrl = 3'b101;
+//		/* TWO POSITIVE NUMBERS */
+//		A = 64'd759231314; B = 64'd371914018; #200;
+//		/* TWO NEGATIVE NUMBERS */
+//		A = -64'd31988; B = -64'd4924013; #200;
+//		/* POSITIVE AND NEGATIVE */
+//		A = 64'd4792834; B = -64'd7391931; #200;
+//		/* ALL ONES AND ZEROS */
+//		A = 64'b111111111111111111111111111111111111111111111111111111111111111;
+//		B = 64'd0; #200;
+//		/* ALL ONES */
+//		A = 64'b111111111111111111111111111111111111111111111111111111111111111;
+//		B = 64'b111111111111111111111111111111111111111111111111111111111111111; #200;
+		
+//		/* TEST 3: XOR */
+//		cntrl = 3'b110;
+//		/* TWO POSITIVE NUMBERS */
+//		A = 64'd759231314; B = 64'd371914018; #200;
+//		/* TWO NEGATIVE NUMBERS */
+//		A = -64'd31988; B = -64'd4924013; #200;
+//		/* POSITIVE AND NEGATIVE */
+//		A = 64'd4792834; B = -64'd7391931; #200;
+//		/* ALL ONES AND ZEROS */
+//		A = 64'b111111111111111111111111111111111111111111111111111111111111111;
+//		B = 64'd0; #200;
+//		/* ALL ONES */
+//		A = 64'b111111111111111111111111111111111111111111111111111111111111111;
+//		B = 64'b111111111111111111111111111111111111111111111111111111111111111; #200;
 	end
 	
 endmodule

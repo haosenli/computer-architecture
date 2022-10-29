@@ -11,7 +11,7 @@ add wave -noupdate /adder_testbench/dut/and3
 add wave -noupdate /adder_testbench/dut/and2
 add wave -noupdate /adder_testbench/dut/and1
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {4305 ps} 0}
+WaveRestoreCursors {{Cursor 1} {6930 ps} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 150
 configure wave -valuecolwidth 100
