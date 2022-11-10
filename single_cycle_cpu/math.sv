@@ -11,7 +11,7 @@ module mult (
 	
 	logic signed	[63:0]	signedA, signedB;
 	logic signed	[127:0]	signedResult;
-	logic				[127:0]	unsignedResult;
+	logic			[127:0]	unsignedResult;
 	
 	// --- Signed math ---
 	always_comb begin
