@@ -1,8 +1,9 @@
 module instruction_decoder(
-	 input logic clk,
+	input  logic clk, cond;
     input  logic [31:0] instruction,
-    output logic Reg2Loc, ALUSrc, MemtoReg, RegWrite, MemWrite, BrTaken, UnCondBr,
-	 output logic [2:0] ALUop,
+    input  logic [63:0] pc,
+    output logic Reg2Loc, ALUSrc, MemtoReg, RegWrite, MemWrite, BrTaken, UnCondBr, BLsignal, BRsignal,
+	output logic [2:0] ALUop,
     output logic [4:0] Rn, Rd, Rm, Rt,
     output logic [11:0] ALU_imm,
     output logic [18:0] COND_BR_addr,
@@ -24,6 +25,8 @@ module instruction_decoder(
 				Rd <= instruction[4:0];
 				Rn <= instruction[9:5];
 				ALU_imm <= instruction[21:10];
+                BLsignal <= 1'b0;
+                BRsignal <= 1'b0;
 			end
 			
 			// ADDS
@@ -39,6 +42,8 @@ module instruction_decoder(
 				Rn <= instruction[9:5];
 				shamt <= instruction[15:10];
 				Rm <= instruction[20:16];
+                BLsignal <= 1'b0;
+                BRsignal <= 1'b0;
 			end
 			
 			// B
@@ -48,18 +53,44 @@ module instruction_decoder(
 				BrTaken <= 1'b1;
 				UnCondBr <= 1'b1;
 				BR_addr <= instruction[25:0];
+                BLsignal <= 1'b0;
+                BRsignal <= 1'b0;
 			end
 			
 			// B.cond
-			/*11'b01010100???:*/ begin
+			if (instruction[31:24] == 8'b01010100)/*11'b01010100???:*/ begin
+                Reg2Loc <= 0;
+                ALUSrc <= 0;
+                BrTaken <= cond;
+                UnCondBr <= 0;
+				ALUop <= 3'b000;
+                RegWrite <= 0;
+                MemWrite <= 0;
+                BLsignal <= 1'b0;
+                BRsignal <= 1'b0;
 			end
 			
 			// BL
-			/*11'b100101?????:*/ begin
-			end
+			if (instruction[31:26] == 6'b100101)/*11'b100101?????:*/ begin
+                // Branching
+                BrTaken <= 1'b1;
+                UnCondBr <= 1'b1;
+				BR_addr <= instruction[25:0];
+                // X30 = 4 + PC 
+                BLsignal <= 1'b1;
+				MemtoReg <= 1'b0;
+				RegWrite <= 1'b1;
+				MemWrite <= 1'b0;
+                BRsignal <= 1'b0;
+            end
 			
 			// BR
-			/*11'b11010110000:*/ begin
+			if (instruction[31:21] == 11'b11010110000)/*11'b11010110000:*/ begin
+                Rt <= instruction[4:0];
+                MemWrite <= 1'b0;
+                RegWrite <= 1'b0;
+                BLsignal <= 1'b0;
+                BRsignal <= 1'b1;
 			end
 			
 			// CBZ
@@ -73,6 +104,8 @@ module instruction_decoder(
 				ALUop <= 3'b000;
 				Rt <= instruction[4:0];
 				COND_BR_addr <= instruction[23:5];
+                BLsignal <= 1'b0;
+                BRsignal <= 1'b0;
 			end
 			
 			// LDUR
@@ -86,6 +119,8 @@ module instruction_decoder(
 				Rt <= instruction[4:0];
 				Rn <= instruction[9:5];
 				DT_addr <= instruction[20:12];
+                BLsignal <= 1'b0;
+                BRsignal <= 1'b0;
 			end
 			
 			// STUR
@@ -99,6 +134,8 @@ module instruction_decoder(
 				Rt <= instruction[4:0];
 				Rn <= instruction[9:5];
 				DT_addr <= instruction[20:12];
+                BLsignal <= 1'b0;
+                BRsignal <= 1'b0;
 			end
 			
 			// SUBS
@@ -114,6 +151,8 @@ module instruction_decoder(
 				Rn <= instruction[9:5];
 				shamt <= instruction[15:10];
 				Rm <= instruction[20:16];
+                BLsignal <= 1'b0;
+                BRsignal <= 1'b0;
 			end
 		/*endcase*/
 	 
