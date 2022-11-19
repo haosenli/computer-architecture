@@ -3,16 +3,16 @@ module instruction_decoder(
     input  logic [31:0] instruction,
     input  logic [63:0] pc,
     output logic Reg2Loc, ALUSrc, MemtoReg, RegWrite, MemWrite, BrTaken, UnCondBr, BLsignal, BRsignal,
-	output logic [2:0] ALUop,
-    output logic [4:0] Rn, Rd, Rm, Rt,
+	output logic [2:0]  ALUop,
+    output logic [4:0]  Rn, Rd, Rm, Rt,
     output logic [11:0] ALU_imm,
     output logic [18:0] COND_BR_addr,
-    output logic [8:0] DT_addr,
+    output logic [8:0]  DT_addr,
     output logic [25:0] BR_addr,
-    output logic [5:0] shamt
+    output logic [5:0]  shamt
     );
 	 
-	 always_ff @(posedge clk) begin
+	always_ff @(posedge clk) begin
 		/*casez(instruction[31:21])*/
 			// ADDI
 			if (instruction[31:22] == 10'b1001000100)/*11'b1001000100?:*/ begin

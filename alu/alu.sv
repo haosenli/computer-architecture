@@ -27,8 +27,8 @@ module alu(
     logic sum_sel1, sum_sel0, Cout_sel, sub, temp_zero;
     logic not_cntrl_2, and_cntrl_21;
     logic [63:0] cout, B_sub, B_in, a_result, am_result, cout_out;
-	 logic [15:0] temp_zero0;
-	 logic [3:0] temp_zero1;
+    logic [15:0] temp_zero0;
+    logic [3:0] temp_zero1;
 
     // Calculate Cout_sel signal
     not #5 n0(not_cntrl_2, cntrl[2]);
@@ -41,7 +41,7 @@ module alu(
     // Calculate sub signal
     and #5 a1(sub, Cout_sel, cntrl[0]);
 
-	 genvar i;
+    genvar i;
     // Add muxes to B input for add/subtract selection
     generate
         for (i=0; i<64; i++) begin: bsubs
@@ -52,7 +52,7 @@ module alu(
 	 
     // Connect adders and adder_mores together
     adder a2(.A(A[0]), .B(B_in[0]), .Cin(sub), .sum(a_result[0]), .Cout(cout[0]));
-	 adder_more am0(.A(A[0]), .B(B_in[0]), .sum_sel({sum_sel1, sum_sel0}), .sum(am_result[0]));
+    adder_more am0(.A(A[0]), .B(B_in[0]), .sum_sel({sum_sel1, sum_sel0}), .sum(am_result[0]));
     generate
         for (i=1; i<64; i++) begin: adders
             adder a(.A(A[i]), .B(B_in[i]), .Cin(cout[i-1]), .sum(a_result[i]), .Cout(cout[i]));
@@ -60,21 +60,21 @@ module alu(
         end
     endgenerate
 	 
-	 // build muxes for result
-	 generate
+    // build muxes for result
+    generate
 			for (i=0; i<64; i++) begin: muxes
 					mux_2x1 m0(.in({a_result[i], am_result[i]}), .sel(Cout_sel), .out(result[i]));
 					mux_2x1 m1(.in({cout[i], 1'b0}), .sel(Cout_sel), .out(cout_out[i]));
 			end
-	 endgenerate
+    endgenerate
 
-	 // Connect neg, c_out, flow output signals
-	 and #5 neg (negative, result[63], 1'b1);
-	 and #5 c_out (carry_out, cout_out[63], 1'b1);
-	 xor #5 flow (overflow, cout_out[63], cout_out[62]);
+	// Connect neg, c_out, flow output signals
+	and #5 neg (negative, result[63], 1'b1);
+	and #5 c_out (carry_out, cout_out[63], 1'b1);
+	xor #5 flow (overflow, cout_out[63], cout_out[62]);
 	 
-	 // Calculate zero signal
-	 or #5 z0(temp_zero0[0], result[0], result[1], result[2], result[3]);
+	// Calculate zero signal
+	or #5 z0(temp_zero0[0], result[0], result[1], result[2], result[3]);
     or #5 z1(temp_zero0[1], result[4], result[5], result[6], result[7]);
     or #5 z2(temp_zero0[2], result[8], result[9], result[10], result[11]);
     or #5 z3(temp_zero0[3], result[12], result[13], result[14], result[15]);
