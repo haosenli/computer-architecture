@@ -35,10 +35,10 @@ module data_if (
     output logic Reg2Loc, ALUSrc, MemtoReg, RegWrite, MemWrite, 
     output logic BrTaken, BLsignal, 
     output logic [2:0] ALUop,
-    output logic [4:0]  Rn, Rd, Rm, Rt,
+    output logic [4:0] Rn, Rd, Rm, Rt,
     output logic [11:0] ALU_imm,
-    output logic [8:0]  DT_addr,
-    output logic [5:0]  shamt
+    output logic [8:0] DT_addr,
+    output logic [5:0] shamt
     );
     // General signals
     logic [63:0] pc, new_pc, temp_pc, adder_addr;
