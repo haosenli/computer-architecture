@@ -1,0 +1,194 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/haose/OneDrive/Desktop/Projects/fpga-arm-processor/single_cycle_cpu
+vadder
+Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z2 !s110 1668902633
+!i10b 1
+!s100 l2A5iW8Fe6:n6ClU5e59m3
+IkLd5Z?WkZI=M4f0ZRU5T83
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+Z4 !s105 adder_sv_unit
+S1
+R0
+Z5 w1668295404
+Z6 8./adder.sv
+Z7 F./adder.sv
+L0 18
+Z8 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z9 !s108 1668902633.000000
+Z10 !s107 ./adder.sv|
+Z11 !s90 -reportprogress|300|./adder.sv|
+!i113 1
+Z12 tCvgOpt 0
+vadder64
+R1
+Z13 !s110 1668902634
+!i10b 1
+!s100 Pza86:VC2ehT^GX5CJ>kH0
+I>kYij[g@QlVKbIh3@UjmP0
+R3
+Z14 !s105 adder64_sv_unit
+S1
+R0
+Z15 w1668902411
+Z16 8./adder64.sv
+Z17 F./adder64.sv
+L0 15
+R8
+r1
+!s85 0
+31
+Z18 !s108 1668902634.000000
+Z19 !s107 ./adder64.sv|
+Z20 !s90 -reportprogress|300|./adder64.sv|
+!i113 1
+R12
+vadder64_testbench
+R1
+R13
+!i10b 1
+!s100 9lSDcT<kZE`HU5U=BVlFb0
+I8G0JE34dlWGZzWYz4QYNG3
+R3
+R14
+S1
+R0
+R15
+R16
+R17
+L0 31
+R8
+r1
+!s85 0
+31
+R18
+R19
+R20
+!i113 1
+R12
+vadder_testbench
+R1
+R2
+!i10b 1
+!s100 PAjzUn5?=lOhgRKOM<eQb2
+I=IGdO0lYV=:T_W_mmMH`T1
+R3
+R4
+S1
+R0
+R5
+R6
+R7
+L0 37
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!i113 1
+R12
+vmux64_2x1
+R1
+R2
+!i10b 1
+!s100 EkRN?nXL]RXNiB6cL_36?3
+IfDgd;0@:RGzBo_X`z@P:Y1
+R3
+Z21 !s105 mux64_2x1_sv_unit
+S1
+R0
+Z22 w1668828920
+Z23 8./mux64_2x1.sv
+Z24 F./mux64_2x1.sv
+L0 14
+R8
+r1
+!s85 0
+31
+R9
+Z25 !s107 ./mux64_2x1.sv|
+Z26 !s90 -reportprogress|300|./mux64_2x1.sv|
+!i113 1
+R12
+vmux64_2x1_testbench
+R1
+R2
+!i10b 1
+!s100 ?_:OCP^S8Wacoc=d`Q73X0
+I@lILYWoC<_Xg]e9dN>CmP0
+R3
+R21
+S1
+R0
+R22
+R23
+R24
+L0 28
+R8
+r1
+!s85 0
+31
+R9
+R25
+R26
+!i113 1
+R12
+vmux_2x1
+R1
+R2
+!i10b 1
+!s100 _0S1Ac>3@e90A2Won`7f50
+IDBi88PT_z3e7KGoSomjYk0
+R3
+Z27 !s105 mux_2x1_sv_unit
+S1
+R0
+Z28 w1666931829
+Z29 8./mux_2x1.sv
+Z30 F./mux_2x1.sv
+L0 2
+R8
+r1
+!s85 0
+31
+R9
+Z31 !s107 ./mux_2x1.sv|
+Z32 !s90 -reportprogress|300|./mux_2x1.sv|
+!i113 1
+R12
+vmux_2x1_testbench
+R1
+R2
+!i10b 1
+!s100 0Z@0MdcUln0iP<3L11j4J2
+I9Yl^0X?<9R2UoT=D`DD@C2
+R3
+R27
+S1
+R0
+R28
+R29
+R30
+L0 17
+R8
+r1
+!s85 0
+31
+R9
+R31
+R32
+!i113 1
+R12

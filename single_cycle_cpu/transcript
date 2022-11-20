@@ -1,0 +1,332 @@
+# Reading C:/intelFPGA_lite/17.0/modelsim_ase/tcl/vsim/pref.tcl
+do runlab.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:59:48 on Nov 19,2022
+# vlog -reportprogress 300 ./mux_2x1.sv 
+# -- Compiling module mux_2x1
+# -- Compiling module mux_2x1_testbench
+# 
+# Top level modules:
+# 	mux_2x1_testbench
+# End time: 15:59:48 on Nov 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:59:48 on Nov 19,2022
+# vlog -reportprogress 300 ./mux64_2x1.sv 
+# -- Compiling module mux64_2x1
+# -- Compiling module mux64_2x1_testbench
+# 
+# Top level modules:
+# 	mux64_2x1_testbench
+# End time: 15:59:48 on Nov 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:59:48 on Nov 19,2022
+# vlog -reportprogress 300 ./adder.sv 
+# -- Compiling module adder
+# -- Compiling module adder_testbench
+# 
+# Top level modules:
+# 	adder_testbench
+# End time: 15:59:48 on Nov 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:59:48 on Nov 19,2022
+# vlog -reportprogress 300 ./adder64.sv 
+# -- Compiling module adder64
+# ** Error: (vlog-13038) ./adder64.sv(18): near ")": Missing port in ansi port list.
+# End time: 15:59:48 on Nov 19,2022, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: C:/intelFPGA_lite/17.0/modelsim_ase/win32aloem/vlog failed.
+# Error in macro ./runlab.do line 10
+# C:/intelFPGA_lite/17.0/modelsim_ase/win32aloem/vlog failed.
+#     while executing
+# "vlog "./adder64.sv""
+do runlab.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:00:13 on Nov 19,2022
+# vlog -reportprogress 300 ./mux_2x1.sv 
+# -- Compiling module mux_2x1
+# -- Compiling module mux_2x1_testbench
+# 
+# Top level modules:
+# 	mux_2x1_testbench
+# End time: 16:00:13 on Nov 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:00:13 on Nov 19,2022
+# vlog -reportprogress 300 ./mux64_2x1.sv 
+# -- Compiling module mux64_2x1
+# -- Compiling module mux64_2x1_testbench
+# 
+# Top level modules:
+# 	mux64_2x1_testbench
+# End time: 16:00:13 on Nov 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:00:13 on Nov 19,2022
+# vlog -reportprogress 300 ./adder.sv 
+# -- Compiling module adder
+# -- Compiling module adder_testbench
+# 
+# Top level modules:
+# 	adder_testbench
+# End time: 16:00:13 on Nov 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:00:13 on Nov 19,2022
+# vlog -reportprogress 300 ./adder64.sv 
+# -- Compiling module adder64
+# -- Compiling module adder64_testbench
+# 
+# Top level modules:
+# 	adder64_testbench
+# End time: 16:00:13 on Nov 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work adder64_testbench 
+# Start time: 16:00:14 on Nov 19,2022
+# Loading sv_std.std
+# Loading work.adder64_testbench
+# Loading work.adder64
+# Loading work.adder
+# ** Error: Cannot open macro file: adder64_testbench_wave.do
+# Error in macro ./runlab.do line 20
+# Cannot open macro file: adder64_testbench_wave.do
+#     while executing
+# "do adder64_testbench_wave.do"
+add wave -position end  sim:/adder64_testbench/A
+add wave -position end  sim:/adder64_testbench/B
+add wave -position end  sim:/adder64_testbench/result
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf C:/Users/haose/OneDrive/Desktop/Projects/fpga-arm-processor/single_cycle_cpu/adder64_wave.do
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf C:/Users/haose/OneDrive/Desktop/Projects/fpga-arm-processor/single_cycle_cpu/adder64_wave.do
+do runlab.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:00:38 on Nov 19,2022
+# vlog -reportprogress 300 ./mux_2x1.sv 
+# -- Compiling module mux_2x1
+# -- Compiling module mux_2x1_testbench
+# 
+# Top level modules:
+# 	mux_2x1_testbench
+# End time: 16:00:38 on Nov 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:00:39 on Nov 19,2022
+# vlog -reportprogress 300 ./mux64_2x1.sv 
+# -- Compiling module mux64_2x1
+# -- Compiling module mux64_2x1_testbench
+# 
+# Top level modules:
+# 	mux64_2x1_testbench
+# End time: 16:00:39 on Nov 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:00:39 on Nov 19,2022
+# vlog -reportprogress 300 ./adder.sv 
+# -- Compiling module adder
+# -- Compiling module adder_testbench
+# 
+# Top level modules:
+# 	adder_testbench
+# End time: 16:00:39 on Nov 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:00:39 on Nov 19,2022
+# vlog -reportprogress 300 ./adder64.sv 
+# -- Compiling module adder64
+# -- Compiling module adder64_testbench
+# 
+# Top level modules:
+# 	adder64_testbench
+# End time: 16:00:39 on Nov 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 16:00:40 on Nov 19,2022, Elapsed time: 0:00:26
+# Errors: 3, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work adder64_testbench 
+# Start time: 16:00:40 on Nov 19,2022
+# Loading sv_std.std
+# Loading work.adder64_testbench
+# Loading work.adder64
+# Loading work.adder
+# ** Error: Cannot open macro file: adder64_testbench_wave.do
+# Error in macro ./runlab.do line 20
+# Cannot open macro file: adder64_testbench_wave.do
+#     while executing
+# "do adder64_testbench_wave.do"
+add wave -position end  sim:/adder64_testbench/A
+add wave -position end  sim:/adder64_testbench/B
+add wave -position end  sim:/adder64_testbench/result
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf C:/Users/haose/OneDrive/Desktop/Projects/fpga-arm-processor/single_cycle_cpu/adder64_wave.do
+do runlab.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:01:05 on Nov 19,2022
+# vlog -reportprogress 300 ./mux_2x1.sv 
+# -- Compiling module mux_2x1
+# -- Compiling module mux_2x1_testbench
+# 
+# Top level modules:
+# 	mux_2x1_testbench
+# End time: 16:01:05 on Nov 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:01:05 on Nov 19,2022
+# vlog -reportprogress 300 ./mux64_2x1.sv 
+# -- Compiling module mux64_2x1
+# -- Compiling module mux64_2x1_testbench
+# 
+# Top level modules:
+# 	mux64_2x1_testbench
+# End time: 16:01:05 on Nov 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:01:05 on Nov 19,2022
+# vlog -reportprogress 300 ./adder.sv 
+# -- Compiling module adder
+# -- Compiling module adder_testbench
+# 
+# Top level modules:
+# 	adder_testbench
+# End time: 16:01:05 on Nov 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:01:05 on Nov 19,2022
+# vlog -reportprogress 300 ./adder64.sv 
+# -- Compiling module adder64
+# -- Compiling module adder64_testbench
+# 
+# Top level modules:
+# 	adder64_testbench
+# End time: 16:01:05 on Nov 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 16:01:06 on Nov 19,2022, Elapsed time: 0:00:26
+# Errors: 3, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work adder64_testbench 
+# Start time: 16:01:06 on Nov 19,2022
+# Loading sv_std.std
+# Loading work.adder64_testbench
+# Loading work.adder64
+# Loading work.adder
+# ** Error: Cannot open macro file: adder64_testbench_wave.do
+# Error in macro ./runlab.do line 20
+# Cannot open macro file: adder64_testbench_wave.do
+#     while executing
+# "do adder64_testbench_wave.do"
+do runlab.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:01:36 on Nov 19,2022
+# vlog -reportprogress 300 ./mux_2x1.sv 
+# -- Compiling module mux_2x1
+# -- Compiling module mux_2x1_testbench
+# 
+# Top level modules:
+# 	mux_2x1_testbench
+# End time: 16:01:36 on Nov 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:01:36 on Nov 19,2022
+# vlog -reportprogress 300 ./mux64_2x1.sv 
+# -- Compiling module mux64_2x1
+# -- Compiling module mux64_2x1_testbench
+# 
+# Top level modules:
+# 	mux64_2x1_testbench
+# End time: 16:01:36 on Nov 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:01:36 on Nov 19,2022
+# vlog -reportprogress 300 ./adder.sv 
+# -- Compiling module adder
+# -- Compiling module adder_testbench
+# 
+# Top level modules:
+# 	adder_testbench
+# End time: 16:01:36 on Nov 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:01:36 on Nov 19,2022
+# vlog -reportprogress 300 ./adder64.sv 
+# -- Compiling module adder64
+# -- Compiling module adder64_testbench
+# 
+# Top level modules:
+# 	adder64_testbench
+# End time: 16:01:37 on Nov 19,2022, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# End time: 16:01:38 on Nov 19,2022, Elapsed time: 0:00:32
+# Errors: 3, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work adder64_testbench 
+# Start time: 16:01:38 on Nov 19,2022
+# Loading sv_std.std
+# Loading work.adder64_testbench
+# Loading work.adder64
+# Loading work.adder
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+# ** Note: $stop    : ./adder64.sv(39)
+#    Time: 40 ns  Iteration: 0  Instance: /adder64_testbench
+# Break in Module adder64_testbench at ./adder64.sv line 39
+add wave -position end  sim:/adder64_testbench/dut/cout
+add wave -position end  sim:/adder64_testbench/dut/sub
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf C:/Users/haose/OneDrive/Desktop/Projects/fpga-arm-processor/single_cycle_cpu/adder64_testbench_wave.do
+do runlab.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:03:53 on Nov 19,2022
+# vlog -reportprogress 300 ./mux_2x1.sv 
+# -- Compiling module mux_2x1
+# -- Compiling module mux_2x1_testbench
+# 
+# Top level modules:
+# 	mux_2x1_testbench
+# End time: 16:03:53 on Nov 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:03:53 on Nov 19,2022
+# vlog -reportprogress 300 ./mux64_2x1.sv 
+# -- Compiling module mux64_2x1
+# -- Compiling module mux64_2x1_testbench
+# 
+# Top level modules:
+# 	mux64_2x1_testbench
+# End time: 16:03:53 on Nov 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:03:53 on Nov 19,2022
+# vlog -reportprogress 300 ./adder.sv 
+# -- Compiling module adder
+# -- Compiling module adder_testbench
+# 
+# Top level modules:
+# 	adder_testbench
+# End time: 16:03:53 on Nov 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:03:54 on Nov 19,2022
+# vlog -reportprogress 300 ./adder64.sv 
+# -- Compiling module adder64
+# -- Compiling module adder64_testbench
+# 
+# Top level modules:
+# 	adder64_testbench
+# End time: 16:03:54 on Nov 19,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 16:03:55 on Nov 19,2022, Elapsed time: 0:02:17
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work adder64_testbench 
+# Start time: 16:03:55 on Nov 19,2022
+# Loading sv_std.std
+# Loading work.adder64_testbench
+# Loading work.adder64
+# Loading work.adder
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+# ** Note: $stop    : ./adder64.sv(39)
+#    Time: 40 ns  Iteration: 0  Instance: /adder64_testbench
+# Break in Module adder64_testbench at ./adder64.sv line 39

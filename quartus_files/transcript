@@ -1,0 +1,262 @@
+# Reading C:/intelFPGA_lite/17.0/modelsim_ase/tcl/vsim/pref.tcl
+do runlab.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 18:03:50 on Oct 14,2022
+# vlog -reportprogress 300 ../sv_files/mux_2x1.sv 
+# -- Compiling module mux_2x1
+# -- Compiling module mux_2x1_testbench
+# 
+# Top level modules:
+# 	mux_2x1_testbench
+# End time: 18:03:50 on Oct 14,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 18:03:50 on Oct 14,2022
+# vlog -reportprogress 300 ../sv_files/mux_4x1.sv 
+# -- Compiling module mux_4x1
+# 
+# Top level modules:
+# 	mux_4x1
+# End time: 18:03:50 on Oct 14,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 18:03:50 on Oct 14,2022
+# vlog -reportprogress 300 ../sv_files/mux_8x1.sv 
+# -- Compiling module mux_8x1
+# 
+# Top level modules:
+# 	mux_8x1
+# End time: 18:03:50 on Oct 14,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 18:03:50 on Oct 14,2022
+# vlog -reportprogress 300 ../sv_files/mux_16x1.sv 
+# -- Compiling module mux_16x1
+# 
+# Top level modules:
+# 	mux_16x1
+# End time: 18:03:50 on Oct 14,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 18:03:50 on Oct 14,2022
+# vlog -reportprogress 300 ../sv_files/mux_32x1.sv 
+# -- Compiling module mux_32x1
+# -- Compiling module mux_32x1_testbench
+# 
+# Top level modules:
+# 	mux_32x1_testbench
+# End time: 18:03:50 on Oct 14,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work mux32x1_testbench 
+# Start time: 18:03:50 on Oct 14,2022
+# ** Error: (vsim-3170) Could not find 'mux32x1_testbench'.
+#         Searched libraries:
+#             C:/Users/haose/OneDrive/Desktop/Projects/fpga-arm-processor/quartus_files/work
+# Error loading design
+# Error: Error loading design
+#        Pausing macro execution
+# MACRO ./runlab.do PAUSED at line 16
+do runlab.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 18:04:10 on Oct 14,2022
+# vlog -reportprogress 300 ../sv_files/mux_2x1.sv 
+# -- Compiling module mux_2x1
+# -- Compiling module mux_2x1_testbench
+# 
+# Top level modules:
+# 	mux_2x1_testbench
+# End time: 18:04:10 on Oct 14,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 18:04:10 on Oct 14,2022
+# vlog -reportprogress 300 ../sv_files/mux_4x1.sv 
+# -- Compiling module mux_4x1
+# 
+# Top level modules:
+# 	mux_4x1
+# End time: 18:04:10 on Oct 14,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 18:04:10 on Oct 14,2022
+# vlog -reportprogress 300 ../sv_files/mux_8x1.sv 
+# -- Compiling module mux_8x1
+# 
+# Top level modules:
+# 	mux_8x1
+# End time: 18:04:10 on Oct 14,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 18:04:10 on Oct 14,2022
+# vlog -reportprogress 300 ../sv_files/mux_16x1.sv 
+# -- Compiling module mux_16x1
+# 
+# Top level modules:
+# 	mux_16x1
+# End time: 18:04:10 on Oct 14,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 18:04:10 on Oct 14,2022
+# vlog -reportprogress 300 ../sv_files/mux_32x1.sv 
+# -- Compiling module mux_32x1
+# -- Compiling module mux_32x1_testbench
+# 
+# Top level modules:
+# 	mux_32x1_testbench
+# End time: 18:04:10 on Oct 14,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work mux_32x1_testbench 
+# Start time: 18:03:50 on Oct 14,2022
+# Loading sv_std.std
+# Loading work.mux_32x1_testbench
+# Loading work.mux_32x1
+# Loading work.mux_16x1
+# Loading work.mux_8x1
+# Loading work.mux_4x1
+# Loading work.mux_2x1
+# ** Error: Cannot open macro file: mux_32x1_wave.do
+# Error in macro ./runlab.do line 21
+# Cannot open macro file: mux_32x1_wave.do
+#     while executing
+# "do mux_32x1_wave.do"
+add wave -position end  sim:/mux_32x1_testbench/in
+add wave -position end  sim:/mux_32x1_testbench/sel
+add wave -position end  sim:/mux_32x1_testbench/out
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf C:/Users/haose/OneDrive/Desktop/Projects/fpga-arm-processor/quartus_files/mux_32x1_wave.do
+do runlab.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 18:05:03 on Oct 14,2022
+# vlog -reportprogress 300 ../sv_files/mux_2x1.sv 
+# -- Compiling module mux_2x1
+# -- Compiling module mux_2x1_testbench
+# 
+# Top level modules:
+# 	mux_2x1_testbench
+# End time: 18:05:03 on Oct 14,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 18:05:03 on Oct 14,2022
+# vlog -reportprogress 300 ../sv_files/mux_4x1.sv 
+# -- Compiling module mux_4x1
+# 
+# Top level modules:
+# 	mux_4x1
+# End time: 18:05:03 on Oct 14,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 18:05:03 on Oct 14,2022
+# vlog -reportprogress 300 ../sv_files/mux_8x1.sv 
+# -- Compiling module mux_8x1
+# 
+# Top level modules:
+# 	mux_8x1
+# End time: 18:05:03 on Oct 14,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 18:05:03 on Oct 14,2022
+# vlog -reportprogress 300 ../sv_files/mux_16x1.sv 
+# -- Compiling module mux_16x1
+# 
+# Top level modules:
+# 	mux_16x1
+# End time: 18:05:03 on Oct 14,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 18:05:03 on Oct 14,2022
+# vlog -reportprogress 300 ../sv_files/mux_32x1.sv 
+# -- Compiling module mux_32x1
+# -- Compiling module mux_32x1_testbench
+# 
+# Top level modules:
+# 	mux_32x1_testbench
+# End time: 18:05:03 on Oct 14,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 18:05:04 on Oct 14,2022, Elapsed time: 0:01:14
+# Errors: 4, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work mux_32x1_testbench 
+# Start time: 18:05:04 on Oct 14,2022
+# Loading sv_std.std
+# Loading work.mux_32x1_testbench
+# Loading work.mux_32x1
+# Loading work.mux_16x1
+# Loading work.mux_8x1
+# Loading work.mux_4x1
+# Loading work.mux_2x1
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+# ** Note: $stop    : ../sv_files/mux_32x1.sv(59)
+#    Time: 3300 ps  Iteration: 0  Instance: /mux_32x1_testbench
+# Break in Module mux_32x1_testbench at ../sv_files/mux_32x1.sv line 59
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf C:/Users/haose/OneDrive/Desktop/Projects/fpga-arm-processor/quartus_files/mux_32x1_wave.do
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf C:/Users/haose/OneDrive/Desktop/Projects/fpga-arm-processor/quartus_files/mux_32x1_wave.d
+do runlab.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 18:06:42 on Oct 14,2022
+# vlog -reportprogress 300 ../sv_files/mux_2x1.sv 
+# -- Compiling module mux_2x1
+# -- Compiling module mux_2x1_testbench
+# 
+# Top level modules:
+# 	mux_2x1_testbench
+# End time: 18:06:42 on Oct 14,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 18:06:42 on Oct 14,2022
+# vlog -reportprogress 300 ../sv_files/mux_4x1.sv 
+# -- Compiling module mux_4x1
+# 
+# Top level modules:
+# 	mux_4x1
+# End time: 18:06:42 on Oct 14,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 18:06:42 on Oct 14,2022
+# vlog -reportprogress 300 ../sv_files/mux_8x1.sv 
+# -- Compiling module mux_8x1
+# 
+# Top level modules:
+# 	mux_8x1
+# End time: 18:06:42 on Oct 14,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 18:06:42 on Oct 14,2022
+# vlog -reportprogress 300 ../sv_files/mux_16x1.sv 
+# -- Compiling module mux_16x1
+# 
+# Top level modules:
+# 	mux_16x1
+# End time: 18:06:43 on Oct 14,2022, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 18:06:43 on Oct 14,2022
+# vlog -reportprogress 300 ../sv_files/mux_32x1.sv 
+# -- Compiling module mux_32x1
+# -- Compiling module mux_32x1_testbench
+# 
+# Top level modules:
+# 	mux_32x1_testbench
+# End time: 18:06:43 on Oct 14,2022, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 18:06:44 on Oct 14,2022, Elapsed time: 0:01:40
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work mux_32x1_testbench 
+# Start time: 18:06:44 on Oct 14,2022
+# Loading sv_std.std
+# Loading work.mux_32x1_testbench
+# Loading work.mux_32x1
+# Loading work.mux_16x1
+# Loading work.mux_8x1
+# Loading work.mux_4x1
+# Loading work.mux_2x1
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+# ** Note: $stop    : ../sv_files/mux_32x1.sv(60)
+#    Time: 3300 ps  Iteration: 0  Instance: /mux_32x1_testbench
+# Break in Module mux_32x1_testbench at ../sv_files/mux_32x1.sv line 60
+# End time: 20:39:13 on Oct 14,2022, Elapsed time: 2:32:29
+# Errors: 0, Warnings: 0

@@ -1,0 +1,171 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/haose/OneDrive/Desktop/Projects/fpga-arm-processor/quartus_files
+vmux_16x1
+Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z2 !s110 1665796003
+!i10b 1
+!s100 <T6B2hEZ5j;DG`]ZW7YRe3
+Ie1iSN[eG?>TCE]>gjI6eZ2
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+!s105 mux_16x1_sv_unit
+S1
+R0
+Z4 w1665786788
+8../sv_files/mux_16x1.sv
+F../sv_files/mux_16x1.sv
+L0 1
+Z5 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z6 !s108 1665796002.000000
+!s107 ../sv_files/mux_16x1.sv|
+!s90 -reportprogress|300|../sv_files/mux_16x1.sv|
+!i113 1
+Z7 tCvgOpt 0
+vmux_2x1
+R1
+Z8 !s110 1665796002
+!i10b 1
+!s100 W0ZFoDQFc3;ne4Kf@e;_O2
+I<cc2<eHdf4RQ94`9l_bFz2
+R3
+Z9 !s105 mux_2x1_sv_unit
+S1
+R0
+R4
+Z10 8../sv_files/mux_2x1.sv
+Z11 F../sv_files/mux_2x1.sv
+L0 1
+R5
+r1
+!s85 0
+31
+R6
+Z12 !s107 ../sv_files/mux_2x1.sv|
+Z13 !s90 -reportprogress|300|../sv_files/mux_2x1.sv|
+!i113 1
+R7
+vmux_2x1_testbench
+R1
+R8
+!i10b 1
+!s100 :K3HzW6^Ad7UFg0nV81KS0
+IhL[JC2Gh=d7nRgSz05`O22
+R3
+R9
+S1
+R0
+R4
+R10
+R11
+L0 16
+R5
+r1
+!s85 0
+31
+R6
+R12
+R13
+!i113 1
+R7
+vmux_32x1
+R1
+R2
+!i10b 1
+!s100 cX_h]1>RH@>RoaQfDWE^z1
+I>Hi`>>Ai[3PF]8R]@TQ=D1
+R3
+Z14 !s105 mux_32x1_sv_unit
+S1
+R0
+Z15 w1665795990
+Z16 8../sv_files/mux_32x1.sv
+Z17 F../sv_files/mux_32x1.sv
+L0 1
+R5
+r1
+!s85 0
+31
+Z18 !s108 1665796003.000000
+Z19 !s107 ../sv_files/mux_32x1.sv|
+Z20 !s90 -reportprogress|300|../sv_files/mux_32x1.sv|
+!i113 1
+R7
+vmux_32x1_testbench
+R1
+R2
+!i10b 1
+!s100 D2dcB041n7g`HEMWOI:4E2
+IG;CE>4mJ8Q_[EOWJJX;QY1
+R3
+R14
+S1
+R0
+R15
+R16
+R17
+L0 17
+R5
+r1
+!s85 0
+31
+R18
+R19
+R20
+!i113 1
+R7
+vmux_4x1
+R1
+R8
+!i10b 1
+!s100 KcBadL3SBQ06e6faZTI]42
+IY]76BB`QU0_<[Cg>kgcGG3
+R3
+!s105 mux_4x1_sv_unit
+S1
+R0
+w1665791617
+8../sv_files/mux_4x1.sv
+F../sv_files/mux_4x1.sv
+L0 1
+R5
+r1
+!s85 0
+31
+R6
+!s107 ../sv_files/mux_4x1.sv|
+!s90 -reportprogress|300|../sv_files/mux_4x1.sv|
+!i113 1
+R7
+vmux_8x1
+R1
+R8
+!i10b 1
+!s100 MF8>lfP38Cbjz=kV[o_9O1
+IC4a_>NM]@0T=ee5f5e9j:3
+R3
+!s105 mux_8x1_sv_unit
+S1
+R0
+R4
+8../sv_files/mux_8x1.sv
+F../sv_files/mux_8x1.sv
+L0 1
+R5
+r1
+!s85 0
+31
+R6
+!s107 ../sv_files/mux_8x1.sv|
+!s90 -reportprogress|300|../sv_files/mux_8x1.sv|
+!i113 1
+R7

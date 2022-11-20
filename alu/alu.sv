@@ -56,16 +56,16 @@ module alu(
     generate
         for (i=1; i<64; i++) begin: adders
             adder a(.A(A[i]), .B(B_in[i]), .Cin(cout[i-1]), .sum(a_result[i]), .Cout(cout[i]));
-				adder_more am(.A(A[i]), .B(B_in[i]), .sum_sel({sum_sel1, sum_sel0}), .sum(am_result[i]));
+            adder_more am(.A(A[i]), .B(B_in[i]), .sum_sel({sum_sel1, sum_sel0}), .sum(am_result[i]));
         end
     endgenerate
 	 
     // build muxes for result
     generate
-			for (i=0; i<64; i++) begin: muxes
-					mux_2x1 m0(.in({a_result[i], am_result[i]}), .sel(Cout_sel), .out(result[i]));
-					mux_2x1 m1(.in({cout[i], 1'b0}), .sel(Cout_sel), .out(cout_out[i]));
-			end
+        for (i=0; i<64; i++) begin: muxes
+            mux_2x1 m0(.in({a_result[i], am_result[i]}), .sel(Cout_sel), .out(result[i]));
+            mux_2x1 m1(.in({cout[i], 1'b0}), .sel(Cout_sel), .out(cout_out[i]));
+        end
     endgenerate
 
 	// Connect neg, c_out, flow output signals
@@ -91,13 +91,13 @@ module alu(
     or #5 z14(temp_zero0[14], result[56], result[57], result[58], result[59]);
     or #5 z15(temp_zero0[15], result[60], result[61], result[62], result[63]);
 	 
-	 or #5 z16(temp_zero1[0], temp_zero0[0], temp_zero0[1], temp_zero0[2], temp_zero0[3]);
+    or #5 z16(temp_zero1[0], temp_zero0[0], temp_zero0[1], temp_zero0[2], temp_zero0[3]);
     or #5 z17(temp_zero1[1], temp_zero0[4], temp_zero0[5], temp_zero0[6], temp_zero0[7]);
     or #5 z18(temp_zero1[2], temp_zero0[8], temp_zero0[9], temp_zero0[10], temp_zero0[11]);
     or #5 z19(temp_zero1[3], temp_zero0[12], temp_zero0[13], temp_zero0[14], temp_zero0[15]);
 	 
-	 or #5 z20 (temp_zero, temp_zero1[0], temp_zero1[1], temp_zero1[2], temp_zero1[3]);
-	 not #5 z21 (zero, temp_zero);
+    or #5 z20 (temp_zero, temp_zero1[0], temp_zero1[1], temp_zero1[2], temp_zero1[3]);
+    not #5 z21 (zero, temp_zero);
 	
 endmodule
 
