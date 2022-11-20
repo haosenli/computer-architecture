@@ -64,6 +64,7 @@ module B_cond_decode(
 	
 endmodule
 
+`timescale 10ps / 1ps
 module B_cond_decode_testbench();
 	logic negative, zero, cond;
 	logic [4:0] Rd;

@@ -7,6 +7,7 @@
  * Inputs:
  * zero         - 1 bit, Zero flag from ALU.
  * branch       - 1 bit, Branch control signal.
+ * cbz			 - 1 bit, CBZ control signal.
  * clk          - 1 bit, Clock signal.
  * MemWrite     - 1 bit, MemWrite control signal.
  * MemtoReg_in  - 1 bit, MemtoReg control signal.
@@ -25,18 +26,22 @@
 
 `timescale 1ns/10ps
 module data_mem(
-	input  logic zero, branch, clk, MemWrite, MemtoReg_in,
+	input  logic zero, branch, cbz, clk, MemWrite, MemtoReg_in,
 	input  logic [63:0] alu_result, add_result, write_data,
     output logic BrTaken, MemtoReg_out,
 	output logic [63:0] dm_address, dm_read_data, new_pc2
 	);
+	
+	logic temp_BrTaken;
+	
 	// Pass-through signals
     assign new_pc2 = add_result;
     assign MemtoReg_out = MemtoReg_in;
     assign dm_address = alu_result;
-
+	 
     // BrTaken signal
-    and #5 a0(BrTaken, zero, branch);
+    and #5 a0(temp_BrTaken, zero, cbz);
+	 or #5 or0(BrTaken, temp_BrTaken, branch);
 
     // Data memory module
 	datamem datamem_module(
