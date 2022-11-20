@@ -11,11 +11,11 @@
 	
 module datamem (
 	input logic		[63:0]	address,
-	input logic					write_enable,
-	input logic					read_enable,
+	input logic				write_enable,
+	input logic				read_enable,
 	input logic		[63:0]	write_data,
-	input logic					clk,
-	input logic		[3:0]		xfer_size,
+	input logic				clk,
+	input logic		[3:0]	xfer_size,
 	output logic	[63:0]	read_data
 	);
 

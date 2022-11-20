@@ -1,16 +1,45 @@
+/*
+ * EE469 Autumn 2022
+ * Haosen Li, Peter Tran
+ * 
+ * This file contains the datapath for instruction fetch in a CPU.
+ *
+ * Inputs:
+ * zero         - 1 bit, Zero flag from ALU.
+ * branch       - 1 bit, Branch control signal.
+ * clk          - 1 bit, Clock signal.
+ * MemWrite     - 1 bit, MemWrite control signal.
+ * MemtoReg_in  - 1 bit, MemtoReg control signal.
+ * alu_result   - 64 bits, ALU result signal.
+ * add_result   - 64 bits, Add result signal.
+ * write_data   - 64 bits, Data memory write data.
+ *
+ * Outputs:
+ * BrTaken      - 1 bit, BrTaken control signal.
+ * MemtoReg_out - 1 bit, MemtoReg control signal.
+ * dm_read_data - 64 bits, Data memory read data.
+ * address      - 64 bits, Data memory address. 
+ * new_pc2      - 64 bits, New program counter signal.
+ *
+ */
+
+`timescale 1ns/10ps
 module data_mem(
-	input  logic branch, clk,
-	input  logic [63:0] ALuout_input, addr_result,
-	output logic [63:0] ALUout_output,
-	output logic [63:0] rd_data
+	input  logic zero, branch, clk, MemWrite, MemtoReg_in,
+	input  logic [63:0] alu_result, add_result, write_data,
+    output logic BrTaken, MemtoReg_out,
+	output logic [63:0] dm_address, dm_read_data, new_pc2
 	);
-	
-	logic [63:0] addr, wr_data, rd_data;
-	logic [3:0] xfer_size;
-	logic wr_en, rd_en, clk;
-	
-	datamem mem(.address(addr), .write_enable(wr_en), .read_enable(rd_en), .write_data(wr_data), .clk(clk),
-					.xfer_size(xfer_size), .read_data(rd_data));
-	
-	
+	// Pass-through signals
+    assign new_pc2 = add_result;
+    assign MemtoReg_out = MemtoReg_in;
+    assign dm_address = alu_result;
+
+    // BrTaken signal
+    and #5 a0(BrTaken, zero, branch);
+
+    // Data memory module
+	datamem datamem_module(
+        .address(alu_result), .write_enable(MemWrite), .read_enable(1'b1), .clk(clk), 
+        .write_data(write_data), .xfer_size(3'd8), .read_data(dm_read_data));
 endmodule
