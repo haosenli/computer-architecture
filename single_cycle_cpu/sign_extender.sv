@@ -1,3 +1,16 @@
+/*
+ * EE469 Autumn 2022
+ * Haosen Li, Peter Tran
+ * 
+ * This module changes the current bit length of the input data to be 64 bits by extending the left-most bit.
+ *
+ * Inputs:
+ * input_data		- The current data to be sign extended
+ *
+ * Outputs:
+ * output_data		-The 64 bit data after it is sign extended
+ *
+ */
 `timescale 10ps / 1ps
 module sign_extender #(parameter N=8) (
     input  logic [N-1:0] input_data,
