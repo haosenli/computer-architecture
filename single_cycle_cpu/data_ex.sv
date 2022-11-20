@@ -5,21 +5,21 @@
  * This file contains the datapath for execute in a CPU.
  *
  * Inputs:
- * ReadData1   	- 64 bits, ReadData1 result from register signal.
- * ReadData2   	- 64 bits, ReadData2 result from register signal.
+ * ReadData1   	    - 64 bits, ReadData1 result from register signal.
+ * ReadData2   	    - 64 bits, ReadData2 result from register signal.
  * PC			   	- 64 bits, Data memory write data.
- * ALU_imm_extend - 64 bits, ALU_imm but 64 bit signal.
+ * ALU_imm_extend   - 64 bits, ALU_imm but 64 bit signal.
  * BR_to_shift		- 64 bits, BR_addr but 64 bit signal.
- * ALUop				- 3 bits, Operation for ALU.
+ * ALUop			- 3 bits, Operation for ALU.
  * ALUsrc			- 1 bit, ALUsrc control signal.
  * UnCondBr			- 1 bit, UnCondBr control signal.
  * update			- 1 bit, Update output signals
  *
  * Outputs:
- * ALU_result 		- 64 bits, ALU result.
- * ReadData2_out  - 64 bits, ReadData2 signal. 
+ * alu_result 		- 64 bits, ALU result.
+ * ReadData2_out    - 64 bits, ReadData2 signal. 
  * new_PC2      	- 64 bits, new PC value.
- *negative     	- 1 bit, True if output is negative, false otherwise.
+ * negative     	- 1 bit, True if output is negative, false otherwise.
  * zero         	- 1 bit, True if output is zero, false otherwise.
  * overflow     	- 1 bit, True if output overflowed, false otherwise.
  * carry_out    	- 1 bit, Carry out signal.
@@ -29,7 +29,7 @@ module data_ex(
 	input  logic [63:0] ReadData1, ReadData2, PC, ALU_imm_extend, BR_to_shift,
 	input  logic [2:0] ALUop,
 	input  logic ALUsrc, UnCondBr, update,
-	output logic [63:0] ALU_result, ReadData2_out, new_PC2,
+	output logic [63:0] alu_result, ReadData2_out, new_PC2,
 	output logic negative, zero, overflow, carry_out
 	);
 	
@@ -41,7 +41,7 @@ module data_ex(
 	mux64_2x1 add_2 (.sel(ALUsrc), .A(ALU_imm_extend), .B(ReadData2), .out(add2));
 	
 	// ALU to compute value
-	alu compute (.A(ReadData1), .B(add2), .cntrl(ALUop), .result(ALU_result), .negative(temp_neg), 
+	alu compute (.A(ReadData1), .B(add2), .cntrl(ALUop), .result(alu_result), .negative(temp_neg), 
 				.zero(temp_zero), .overflow(temp_overflow), .carry_out(temp_carry_out));
 	
 	// shifts BR_addr by 2

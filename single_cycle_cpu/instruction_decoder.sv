@@ -35,11 +35,12 @@
  * shamt    - 6 bits, Shift amount.
  */
 module instruction_decoder(
-	input  logic clk, cond, update, cbz, branch
+	input  logic clk, cond, cbz, branch,
     input  logic [31:0] instruction,
     input  logic [63:0] pc,
-    output logic Reg2Loc, ALUSrc, MemtoReg, RegWrite, MemWrite, BrTaken, UnCondBr, BLsignal, BRsignal,
-	 output logic [2:0] ALUop, 
+    output logic Reg2Loc, ALUSrc, MemtoReg, RegWrite, MemWrite, BrTaken, 
+    output logic UnCondBr, BLsignal, BRsignal, update,
+	output logic [2:0] ALUop, 
     output logic [4:0] Rn, Rd, Rm, Rt,
     output logic [11:0] ALU_imm,
     output logic [18:0] COND_BR_addr,
@@ -48,172 +49,169 @@ module instruction_decoder(
     output logic [5:0] shamt
     );
 	 
-	 logic Bcond_branch;
-	 B_cond_decode Bcond(.negative, .zero, .cond, .Rd, .branch(Bcond_branch));
+    logic Bcond_branch;
+    B_cond_decode Bcond(.negative, .zero, .cond, .Rd, .branch(Bcond_branch));
 	 
 	 always_ff @(posedge clk) begin
-			// ADDI
-			if (instruction[31:22] == 10'b1001000100)/*11'b1001000100?:*/ begin
-				ALUSrc <= 1'b1;
-				MemtoReg <= 1'b0;
-				RegWrite <= 1'b1;
-				MemWrite <= 1'b0;
-				ALUop <= 3'b010;
-				Rd <= instruction[4:0];
-				Rn <= instruction[9:5];
-				ALU_imm <= instruction[21:10];
+        // ADDI
+        if (instruction[31:22] == 10'b1001000100)/*11'b1001000100?:*/ begin
+            ALUSrc <= 1'b1;
+            MemtoReg <= 1'b0;
+            RegWrite <= 1'b1;
+            MemWrite <= 1'b0;
+            ALUop <= 3'b010;
+            Rd <= instruction[4:0];
+            Rn <= instruction[9:5];
+            ALU_imm <= instruction[21:10];
             BLsignal <= 1'b0;
             BRsignal <= 1'b0;
-				update <= 1'b0;
-			end
-			
-			// ADDS
-			if (instruction[31:21] == 11'b10101011000)/*11'b10101011000:*/ begin
-				Reg2Loc <= 1'b1;
-				ALUSrc <= 1'b0;
-				MemtoReg <= 1'b0;
-				RegWrite <= 1'b1;
-				MemWrite <= 1'b0;
-				ALUop <= 3'b010;
-				Rd <= instruction[4:0];
-				Rn <= instruction[9:5];
-				shamt <= instruction[15:10];
-				Rm <= instruction[20:16];
+            update <= 1'b0;
+        end
+        
+        // ADDS
+        if (instruction[31:21] == 11'b10101011000)/*11'b10101011000:*/ begin
+            Reg2Loc <= 1'b1;
+            ALUSrc <= 1'b0;
+            MemtoReg <= 1'b0;
+            RegWrite <= 1'b1;
+            MemWrite <= 1'b0;
+            ALUop <= 3'b010;
+            Rd <= instruction[4:0];
+            Rn <= instruction[9:5];
+            shamt <= instruction[15:10];
+            Rm <= instruction[20:16];
             BLsignal <= 1'b0;
             BRsignal <= 1'b0;
-				update <= 1'b1;
-			end
-			
-			// B
-			if (instruction[31:26] == 6'b000101)/*11'b000101?????:*/ begin
-				RegWrite <= 1'b0;
-				MemWrite <= 1'b0;
-				UnCondBr <= 1'b1;
-				BR_addr <= instruction[25:0];
-            BLsignal <= 1'b0;
-            BRsignal <= 1'b0;
-				update <= 1'b0;
-			end
-			
-			// B.cond
-			if (instruction[31:24] == 8'b01010100)/*11'b01010100???:*/ begin
-				cond <= 1'b1;
-				Reg2Loc <= 1'b0;
-				ALUSrc <= 1'b0;
-				UnCondBr <= 1'b0;
-				ALUop <= 3'b000;
+            update <= 1'b1;
+        end
+        
+        // B
+        if (instruction[31:26] == 6'b000101)/*11'b000101?????:*/ begin
+            RegWrite <= 1'b0;
+            MemWrite <= 1'b0;
+            UnCondBr <= 1'b1;
+            BR_addr <= instruction[25:0];
+        BLsignal <= 1'b0;
+        BRsignal <= 1'b0;
+            update <= 1'b0;
+        end
+        
+        // B.cond
+        if (instruction[31:24] == 8'b01010100)/*11'b01010100???:*/ begin
+            cond <= 1'b1;
+            Reg2Loc <= 1'b0;
+            ALUSrc <= 1'b0;
+            UnCondBr <= 1'b0;
+            ALUop <= 3'b000;
             RegWrite <= 1'b0;
             MemWrite <= 1'b0;
             BLsignal <= 1'b0;
             BRsignal <= 1'b0;
-				COND_BR_addr <= instruction[23:5];
-				Rt <= instruction[4:0];
-				update <= 1'b0;
-			end
-			else
-				cond <= 1'b0;
-			
-			// BL
-			if (instruction[31:26] == 6'b100101)/*11'b100101?????:*/ begin
-				// Branching
-				UnCondBr <= 1'b1;
-				BR_addr <= instruction[25:0];
+            COND_BR_addr <= instruction[23:5];
+            Rt <= instruction[4:0];
+            update <= 1'b0;
+        end
+        else
+            cond <= 1'b0;
+        
+        // BL
+        if (instruction[31:26] == 6'b100101)/*11'b100101?????:*/ begin
+            // Branching
+            UnCondBr <= 1'b1;
+            BR_addr <= instruction[25:0];
             // X30 = 4 + PC 
             BLsignal <= 1'b1;
-				MemtoReg <= 1'b0;
-				RegWrite <= 1'b1;
-				MemWrite <= 1'b0;
+            MemtoReg <= 1'b0;
+            RegWrite <= 1'b1;
+            MemWrite <= 1'b0;
             BRsignal <= 1'b0;
-				update <= 1'b0;
-         end
-			
-			// BR
-			if (instruction[31:21] == 11'b11010110000)/*11'b11010110000:*/ begin
-				Rt <= instruction[4:0];
+            update <= 1'b0;
+        end
+        
+        // BR
+        if (instruction[31:21] == 11'b11010110000)/*11'b11010110000:*/ begin
+            Rt <= instruction[4:0];
             MemWrite <= 1'b0;
             RegWrite <= 1'b0;
             BLsignal <= 1'b0;
             BRsignal <= 1'b1;
-				Rt <= instruction[4:0];
-				update <= 1'b0;
-			end
-			
-			// CBZ
-			if (instruction[31:24] == 8'b10110100)/*11'b10110100???:*/ begin
-				Reg2Loc <= 1'b0;
-				ALUSrc <= 1'b0;
-				RegWrite <= 1'b0;
-				MemWrite <= 1'b0;
-				UnCondBr <= 1'b0;
-				ALUop <= 3'b000;
-				Rd <= instruction[4:0];
-				COND_BR_addr <= instruction[23:5];
+            Rt <= instruction[4:0];
+            update <= 1'b0;
+        end
+        
+        // CBZ
+        if (instruction[31:24] == 8'b10110100)/*11'b10110100???:*/ begin
+            Reg2Loc <= 1'b0;
+            ALUSrc <= 1'b0;
+            RegWrite <= 1'b0;
+            MemWrite <= 1'b0;
+            UnCondBr <= 1'b0;
+            ALUop <= 3'b000;
+            Rd <= instruction[4:0];
+            COND_BR_addr <= instruction[23:5];
             BLsignal <= 1'b0;
             BRsignal <= 1'b0;
-				update <= 1'b1;
-				cbz <= 1'b1;
-			end
-			else
-				cbz <= 1'b0;
-			
-			// LDUR
-			if (instruction[31:21] == 11'b11111000010)/*11'b11111000010:*/ begin
-				ALUSrc <= 1'b1;
-				MemtoReg <= 1'b1;
-				RegWrite <= 1'b1;
-				MemWrite <= 1'b0;
-				ALUop <= 3'b010;
-				Rd <= instruction[4:0];
-				Rn <= instruction[9:5];
-				DT_addr <= instruction[20:12];
+            update <= 1'b1;
+            cbz <= 1'b1;
+        end
+        else
+            cbz <= 1'b0;
+        
+        // LDUR
+        if (instruction[31:21] == 11'b11111000010)/*11'b11111000010:*/ begin
+            ALUSrc <= 1'b1;
+            MemtoReg <= 1'b1;
+            RegWrite <= 1'b1;
+            MemWrite <= 1'b0;
+            ALUop <= 3'b010;
+            Rd <= instruction[4:0];
+            Rn <= instruction[9:5];
+            DT_addr <= instruction[20:12];
             BLsignal <= 1'b0;
             BRsignal <= 1'b0;
-				update <= 1'b0;
-			end
-			
-			// STUR
-			if (instruction[31:21] == 11'b11111000000)/*11'b11111000000:*/ begin
-				Reg2Loc <= 1'b0;
-				ALUSrc <= 1'b1;
-				RegWrite <= 1'b0;
-				MemWrite <= 1'b1;
-				BrTaken <= 1'b0;
-				ALUop <= 3'b010;
-				Rt <= instruction[4:0];
-				Rn <= instruction[9:5];
-				DT_addr <= instruction[20:12];
+            update <= 1'b0;
+        end
+        
+        // STUR
+        if (instruction[31:21] == 11'b11111000000)/*11'b11111000000:*/ begin
+            Reg2Loc <= 1'b0;
+            ALUSrc <= 1'b1;
+            RegWrite <= 1'b0;
+            MemWrite <= 1'b1;
+            BrTaken <= 1'b0;
+            ALUop <= 3'b010;
+            Rt <= instruction[4:0];
+            Rn <= instruction[9:5];
+            DT_addr <= instruction[20:12];
             BLsignal <= 1'b0;
             BRsignal <= 1'b0;
-				update <= 1'b0;
-			end
-			
-			// SUBS
-			if (instruction[31:21] == 11'b11101011000)/*11'b11101011000:*/ begin
-				Reg2Loc <= 1'b1;
-				ALUSrc <= 1'b0;
-				MemtoReg <= 1'b0;
-				RegWrite <= 1'b1;
-				MemWrite <= 1'b0;
-				ALUop <= 3'b011;
-				Rd <= instruction[4:0];
-				Rn <= instruction[9:5];
-				shamt <= instruction[15:10];
-				Rm <= instruction[20:16];
+            update <= 1'b0;
+        end
+        
+        // SUBS
+        if (instruction[31:21] == 11'b11101011000)/*11'b11101011000:*/ begin
+            Reg2Loc <= 1'b1;
+            ALUSrc <= 1'b0;
+            MemtoReg <= 1'b0;
+            RegWrite <= 1'b1;
+            MemWrite <= 1'b0;
+            ALUop <= 3'b011;
+            Rd <= instruction[4:0];
+            Rn <= instruction[9:5];
+            shamt <= instruction[15:10];
+            Rm <= instruction[20:16];
             BLsignal <= 1'b0;
             BRsignal <= 1'b0;
-				update <= 1'b1;
-			end
-			
-			if (instruction[31:26] == 6'b000101 || instruction[31:26] == 6'b100101 ||
-				 instruction[31:21] == 11'b11010110000 || Bcond_branch)
-				branch <= 1'b1;
-			else
-				branch <= 1'b0;
-				 
-			end
-	 
+            update <= 1'b1;
+        end
+
+        // Check if branch is needed
+        if (instruction[31:26] == 6'b000101 || instruction[31:26] == 6'b100101 ||
+                instruction[31:21] == 11'b11010110000 || Bcond_branch)
+            branch <= 1'b1;
+        else
+            branch <= 1'b0;
 	 end
-	 
 endmodule
 
 

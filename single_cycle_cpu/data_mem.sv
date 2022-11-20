@@ -27,7 +27,7 @@
 `timescale 1ns/10ps
 module data_mem(
 	input  logic zero, branch, cbz, clk, MemWrite, MemtoReg_in,
-	input  logic [63:0] alu_result, add_result, write_data,
+	input  logic [63:0] alu_result, write_data, new_pc2_ex,
     output logic BrTaken, MemtoReg_out,
 	output logic [63:0] dm_address, dm_read_data, new_pc2
 	);
@@ -35,13 +35,13 @@ module data_mem(
 	logic temp_BrTaken;
 	
 	// Pass-through signals
-    assign new_pc2 = add_result;
+    assign new_pc2_mem = add_result;
     assign MemtoReg_out = MemtoReg_in;
     assign dm_address = alu_result;
 	 
     // BrTaken signal
     and #5 a0(temp_BrTaken, zero, cbz);
-	 or #5 or0(BrTaken, temp_BrTaken, branch);
+	or #5 or0(BrTaken, temp_BrTaken, branch);
 
     // Data memory module
 	datamem datamem_module(

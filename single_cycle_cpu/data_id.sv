@@ -6,11 +6,7 @@
  *
  * Inputs:
  * clk      - 1 bit, Clock signal.
- * WBsignal - 64 bits, Write Back signal from the WB stage.
- * pc_in    - 64 bits, Program counter signal.
- * BLT      - 64 bits, Branch link transfer signal.
- * COND_BR_addr - 19 bits, Conditional branch address.
- * BR_addr  - 26 bits, Branch address.
+ * update   - 1 bit, Update flags signal.
  * Reg2Loc  - 1 bit, Reg2Loc control signal.
  * ALUSrc   - 1 bit, ALUsrc control signal.
  * MemtoReg - 1 bit, MemtoReg control signal.
@@ -18,6 +14,11 @@
  * MemWrite - 1 bit, MemWrite control signal.
  * BrTaken  - 1 bit, BrTaken control signal.
  * BLsignal - 1 bit, BLsignal control signal.
+ * WBsignal - 64 bits, Write Back signal from the WB stage.
+ * pc_if    - 64 bits, Program counter signal.
+ * BLT      - 64 bits, Branch link transfer signal.
+ * COND_BR_addr - 19 bits, Conditional branch address.
+ * BR_addr  - 26 bits, Branch address.
  * ALUop    - 3 bits, ALUop control signal.
  * Rn       - 4 bits, Rn register address.
  * Rd       - 4 bits, Rd register address.
@@ -32,24 +33,23 @@
  * Da       - 64 bits, Da signal from RegFile.
  * Db       - 64 bits, Db signal from RegFile.
  * BR_to_shift - 64 bits, The sign-extended branch address.
- * pc_out   - 64 bits, Program counter signal.
- *
+ * pc_id   - 64 bits, Program counter signal.
+ * update_flags - 1 bit, Update flags signal.
  */
 
 module data_id (
-    input  logic clk,
-    input  logic [63:0] WBsignal, BLT, pc_in,
+    input  logic clk, update, Reg2Loc, ALUSrc, MemtoReg, 
+    input  logic RegWrite, MemWrite, BrTaken, BLsignal, 
+    input  logic [63:0] WBsignal, BLT, pc_if,
     input  logic [18:0] COND_BR_addr,
     input  logic [25:0] BR_addr,
-    input  logic Reg2Loc, ALUSrc, MemtoReg, RegWrite, MemWrite, 
-    input  logic BrTaken, BLsignal, 
     input  logic [2:0] ALUop,
     input  logic [4:0] Rn, Rd, Rm, Rt,
     input  logic [11:0] ALU_imm,
     input  logic [8:0] DT_addr,
     input  logic [5:0] shamt,
-	output logic BRsignal,
-    output logic [63:0] Da, Db, BR_to_shift, pc_out,
+    output logic [63:0] Da, Db, BR_to_shift, pc_id,
+	output logic BRsignal, update_flags
 	);
 
     // RegFile signals
@@ -58,8 +58,9 @@ module data_id (
     // Sign-extended addresses
     logic [63:0] COND_BR_addr64, BR_addr64;
 
-    // PC pass through
-    assign pc_out = pc_in;
+    // Pass through signals
+    assign pc_id = pc_if;
+    assign update_flags = update;
 
     // Sign Extenders
     sign_extender #(19) se_0(.input_data(COND_BR_addr), .output_data(COND_BR_addr64));

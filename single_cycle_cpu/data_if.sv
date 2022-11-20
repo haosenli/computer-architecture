@@ -37,8 +37,7 @@ module data_if (
     output logic [63:0] BLT, pc,
     output logic [18:0] COND_BR_addr,
     output logic [25:0] BR_addr,
-    output logic Reg2Loc, ALUSrc, MemtoReg, RegWrite, MemWrite, 
-    output logic BrTaken, BLsignal, 
+    output logic Reg2Loc, ALUSrc, MemtoReg, RegWrite, MemWrite, BrTaken, BLsignal, update,
     output logic [2:0] ALUop,
     output logic [4:0] Rn, Rd, Rm, Rt,
     output logic [11:0] ALU_imm,
@@ -46,20 +45,20 @@ module data_if (
     output logic [5:0] shamt
     );
     // General signals
-    logic [63:0] pc, new_pc, temp_pc, adder_addr;
+    logic [63:0] new_pc1, new_pc2, adder_addr;
     logic [31:0] instruction;
     // Internal control signals
     logic UnCondBr;
 
     // 2x1 64-bit Muxes for selecting PC
-    mux64_2x1 mux64_1(.sel(BrTaken), .A(adder_addr), .B(new_pc), .out(temp_pc));
-    mux64_2x1 mux64_2(.sel(BRsignal), .A(Db), .B(temp_pc), .out(pc));
+    mux64_2x1 mux64_1(.sel(BrTaken), .A(adder_addr), .B(new_pc1), .out(new_pc2));
+    mux64_2x1 mux64_2(.sel(BRsignal), .A(Db), .B(new_pc2), .out(pc));
 
     // Logical Left Shift 2 into Adder
     adder64 adder64_0(.A({selected_addr64[61:0], 2'b00}), .B(pc), .result(adder_addr_0));
 
     // New Program Counter
-    adder64 adder64_1(.A(pc), .b(64'd4), .result(new_pc));    
+    adder64 adder64_1(.A(pc), .b(64'd4), .result(new_pc1));    
 
     // Instruction Memory
     instructmem im_module(.address(pc), .instruction(instruction), .clk(clk));

@@ -7,7 +7,7 @@
  * Inputs:
  * MemtoReg     - 1 bit, MemtoReg control signal.
  * dm_read_data - 64 bits, Data memory read data.
- * address      - 64 bits, Data memory address. 
+ * dm_address   - 64 bits, Data memory address. 
  *
  * Outputs:
  * WBsignal     - 64 bits, WBsignal control signal
