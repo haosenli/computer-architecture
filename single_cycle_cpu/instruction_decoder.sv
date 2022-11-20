@@ -1,9 +1,45 @@
+/*
+ * EE469 Autumn 2022
+ * Haosen Li, Peter Tran
+ * 
+ * This file contains the datapath for instruction fetch in a CPU.
+ *
+ * Inputs:
+ * clk      		- 1 bit, Clock signal.
+ * cond 				- 1 bit, B.cond signal.
+ * update			- 1 bit, signal to update flags in ALU.
+ * CBZ				- 1 bit, CBZ signal.
+ * branch			- 1 bit, branch signal
+ * instruction    - 32 bits, Instruction to decode.
+ * pc					- 64 bits, Program Counter signal.
+ *
+ * Outputs:
+ * Reg2Loc  - 1 bit, Reg2Loc control signal.
+ * ALUSrc   - 1 bit, ALUsrc control signal.
+ * MemtoReg - 1 bit, MemtoReg control signal.
+ * RegWrite - 1 bit, RegWrite control signal.
+ * MemWrite - 1 bit, MemWrite control signal.
+ * BrTaken  - 1 bit, BrTaken control signal.
+ * UnCondBr	- 1 bit, UnCondBr control signal.
+ * BLsignal - 1 bit, BLsignal control signal.
+ * BRsignal - 1 bit, BRsignal control signal.
+ * ALUop    - 3 bits, ALUop control signal.
+ * Rn       - 5 bits, Rn register address.
+ * Rd       - 5 bits, Rd register address.
+ * Rm       - 5 bits, Rm register address.
+ * Rt       - 5 bits, Rt register address.
+ * ALU_imm  - 12 bits, ALU_imm control signal.
+ * COND_BR_addr - 19 bits, Conditional branch address.
+ * DT_addr  - 9 bits, DT_addr control signal.
+ * BR_addr  - 26 bits, Branch address.
+ * shamt    - 6 bits, Shift amount.
+ */
 module instruction_decoder(
 	input  logic clk, cond, update, cbz, branch
     input  logic [31:0] instruction,
     input  logic [63:0] pc,
     output logic Reg2Loc, ALUSrc, MemtoReg, RegWrite, MemWrite, BrTaken, UnCondBr, BLsignal, BRsignal,
-	output logic [2:0] ALUop, 
+	 output logic [2:0] ALUop, 
     output logic [4:0] Rn, Rd, Rm, Rt,
     output logic [11:0] ALU_imm,
     output logic [18:0] COND_BR_addr,
@@ -74,6 +110,8 @@ module instruction_decoder(
 				Rt <= instruction[4:0];
 				update <= 1'b0;
 			end
+			else
+				cond <= 1'b0;
 			
 			// BL
 			if (instruction[31:26] == 6'b100101)/*11'b100101?????:*/ begin
