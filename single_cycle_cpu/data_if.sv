@@ -11,6 +11,9 @@
  *
  * Outputs:
  * BLT      - 64 bits, Branch link transfer signal.
+ * pc       - 64 bits, Program counter signal.
+ * COND_BR_addr - 19 bits, Conditional branch address.
+ * BR_addr  - 26 bits, Branch address.
  * Reg2Loc  - 1 bit, Reg2Loc control signal.
  * ALUSrc   - 1 bit, ALUsrc control signal.
  * MemtoReg - 1 bit, MemtoReg control signal.
@@ -31,7 +34,9 @@
 module data_if (
     input  logic clk, BRsignal,
     input  logic [63:0] Db,
-    output logic [63:0] BLT,
+    output logic [63:0] BLT, pc,
+    output logic [18:0] COND_BR_addr,
+    output logic [25:0] BR_addr,
     output logic Reg2Loc, ALUSrc, MemtoReg, RegWrite, MemWrite, 
     output logic BrTaken, BLsignal, 
     output logic [2:0] ALUop,
@@ -45,18 +50,6 @@ module data_if (
     logic [31:0] instruction;
     // Internal control signals
     logic UnCondBr;
-    // Addresses
-    logic [18:0] COND_BR_addr,
-    logic [25:0] BR_addr,
-    // Sign-extended addresses
-    logic [63:0] COND_BR_addr64, BR_addr64, selected_addr64;
-
-    // Sign Extenders
-    sign_extender #(19) se_0(.input_data(COND_BR_addr), .output_data(COND_BR_addr64));
-    sign_extender #(26) se_0(.input_data(BR_addr), .output_data(BR_addr64));
-
-    // 2x1 64-bits Mux for CondAddr19 and BrAddr26
-    mux64_2x1 mux64_0(.sel(UnCondBr), .A(COND_BR_addr64), .B(BR_addr64), .out(selected_addr64));
 
     // 2x1 64-bit Muxes for selecting PC
     mux64_2x1 mux64_1(.sel(BrTaken), .A(adder_addr), .B(new_pc), .out(temp_pc));
