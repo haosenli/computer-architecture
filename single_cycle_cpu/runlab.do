@@ -40,12 +40,12 @@ vlog "./single_cycle_cpu.sv"
 # Call vsim to invoke simulator
 #     Make sure the last item on the line is the name of the
 #     testbench module you want to execute.
-vsim -voptargs="+acc" -t 1ps -lib work single_cycle_cpu_testbench
+vsim -voptargs="+acc" -t 1ps -lib work data_if_testbench
 
 # Source the wave do file
 #     This should be the file that sets up the signal window for
 #     the module you are testing.
-do single_cycle_cpu_wave.do
+do data_if_wave.do
 
 # Set the window types
 view wave

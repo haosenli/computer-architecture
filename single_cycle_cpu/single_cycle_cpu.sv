@@ -55,7 +55,7 @@ module single_cycle_cpu_testbench();
     end
 
     initial begin
-		  reset <= 1; #500;
+		  reset <= 1; #100;
 		  reset <= 0;
 		  #30000;
 		  $stop;
