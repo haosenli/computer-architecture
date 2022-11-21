@@ -10,8 +10,13 @@ cModel Technology
 Z0 dC:/Users/haose/OneDrive/Desktop/Projects/fpga-arm-processor/single_cycle_cpu
 vadder
 <<<<<<< HEAD
+<<<<<<< HEAD
 Z0 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
 Z1 !s110 1669006393
+=======
+Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z2 !s110 1669003085
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
 Z2 !s110 1669003085
@@ -23,8 +28,13 @@ Z3 VDg1SIo80bB@j0V0VzS_@n1
 Z4 !s105 adder_sv_unit
 S1
 <<<<<<< HEAD
+<<<<<<< HEAD
 Z4 dC:/School/EE469/fpga-arm-processor/single_cycle_cpu
 Z5 w1668997245
+=======
+R0
+Z5 w1668295404
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 R0
 Z5 w1668295404
@@ -37,7 +47,11 @@ r1
 !s85 0
 31
 <<<<<<< HEAD
+<<<<<<< HEAD
 Z10 !s108 1669006393.000000
+=======
+Z10 !s108 1669003085.000000
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 Z10 !s108 1669003085.000000
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
@@ -47,8 +61,13 @@ Z12 !s90 -reportprogress|300|./adder.sv|
 Z13 tCvgOpt 0
 vadder64
 <<<<<<< HEAD
+<<<<<<< HEAD
 R0
 Z14 !s110 1669006394
+=======
+R1
+Z14 !s110 1669003086
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 R1
 Z14 !s110 1669003086
@@ -69,7 +88,11 @@ r1
 !s85 0
 31
 <<<<<<< HEAD
+<<<<<<< HEAD
 Z20 !s108 1669006394.000000
+=======
+Z20 !s108 1669003086.000000
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 Z20 !s108 1669003086.000000
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
@@ -153,6 +176,7 @@ R2
 !s100 ZkjI5PNQc61oEeEN^8o9e1
 IFlLDYUX03iYlT958M9WMS2
 <<<<<<< HEAD
+<<<<<<< HEAD
 R2
 Z25 !s105 alu_sv_unit
 S1
@@ -164,10 +188,18 @@ Z28 F./alu.sv
 R3
 Z24 !s105 alu_sv_unit
 S1
+=======
+R3
+Z24 !s105 alu_sv_unit
+S1
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R0
 R16
 Z25 8./alu.sv
 Z26 F./alu.sv
+<<<<<<< HEAD
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
+=======
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 L0 20
 R9
@@ -176,8 +208,13 @@ r1
 31
 R10
 <<<<<<< HEAD
+<<<<<<< HEAD
 Z29 !s107 ./alu.sv|
 Z30 !s90 -reportprogress|300|./alu.sv|
+=======
+Z27 !s107 ./alu.sv|
+Z28 !s90 -reportprogress|300|./alu.sv|
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 Z27 !s107 ./alu.sv|
 Z28 !s90 -reportprogress|300|./alu.sv|
@@ -191,6 +228,7 @@ R2
 !s100 A@>zYaAX05n=nWhIo@7BA2
 IeVCh7DBgL0ljg2mX6BdW53
 <<<<<<< HEAD
+<<<<<<< HEAD
 R2
 R25
 S1
@@ -199,6 +237,8 @@ R26
 R27
 R28
 =======
+=======
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R3
 R24
 S1
@@ -206,6 +246,9 @@ R0
 R16
 R25
 R26
+<<<<<<< HEAD
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
+=======
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 L0 107
 R9
@@ -214,8 +257,13 @@ r1
 31
 R10
 <<<<<<< HEAD
+<<<<<<< HEAD
 R29
 R30
+=======
+R27
+R28
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 R27
 R28
@@ -229,6 +277,7 @@ R2
 !s100 @ZU_`d8U8`lmOO7]7>Y;F3
 I[M^V:Xhf:O_niQOamT`fB0
 <<<<<<< HEAD
+<<<<<<< HEAD
 R2
 Z31 !s105 B_cond_decode_sv_unit
 S1
@@ -240,10 +289,18 @@ Z34 F./B_cond_decode.sv
 R3
 Z29 !s105 B_cond_decode_sv_unit
 S1
+=======
+R3
+Z29 !s105 B_cond_decode_sv_unit
+S1
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R0
 Z30 w1668932521
 Z31 8./B_cond_decode.sv
 Z32 F./B_cond_decode.sv
+<<<<<<< HEAD
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
+=======
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R8
 R9
@@ -252,8 +309,13 @@ r1
 31
 R10
 <<<<<<< HEAD
+<<<<<<< HEAD
 Z35 !s107 ./B_cond_decode.sv|
 Z36 !s90 -reportprogress|300|./B_cond_decode.sv|
+=======
+Z33 !s107 ./B_cond_decode.sv|
+Z34 !s90 -reportprogress|300|./B_cond_decode.sv|
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 Z33 !s107 ./B_cond_decode.sv|
 Z34 !s90 -reportprogress|300|./B_cond_decode.sv|
@@ -268,6 +330,7 @@ R2
 !s100 kGG2mHbFjgKbmaIZZVVFN3
 IZ55BZZAz`7kDHQCdb10EP0
 <<<<<<< HEAD
+<<<<<<< HEAD
 R2
 R31
 S1
@@ -276,6 +339,8 @@ R32
 R33
 R34
 =======
+=======
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R3
 R29
 S1
@@ -283,6 +348,9 @@ R0
 R30
 R31
 R32
+<<<<<<< HEAD
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
+=======
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 L0 68
 R9
@@ -291,8 +359,13 @@ r1
 31
 R10
 <<<<<<< HEAD
+<<<<<<< HEAD
 R35
 R36
+=======
+R33
+R34
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 R33
 R34
@@ -310,8 +383,13 @@ R3
 !s105 d_ff_sv_unit
 S1
 <<<<<<< HEAD
+<<<<<<< HEAD
 R4
 Z37 w1668918745
+=======
+R0
+Z36 w1666931829
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 R0
 Z36 w1666931829
@@ -324,7 +402,11 @@ r1
 !s85 0
 31
 <<<<<<< HEAD
+<<<<<<< HEAD
 R20
+=======
+Z37 !s108 1669003162.000000
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 Z37 !s108 1669003162.000000
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
@@ -339,11 +421,19 @@ R14
 !s100 hHccgA6^I_9fc4VkGR`k:1
 InQnfob>e>gmoTgl<a5P>:0
 <<<<<<< HEAD
+<<<<<<< HEAD
 R2
 Z38 !s105 d_ff_en_sv_unit
 S1
 R4
 R37
+=======
+R3
+Z38 !s105 d_ff_en_sv_unit
+S1
+R0
+R36
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 R3
 Z38 !s105 d_ff_en_sv_unit
@@ -370,17 +460,23 @@ R14
 !s100 fHSJQ=B1PSB?m;AXn:lc23
 ITKJYiAF=XI9I>H474>2dY3
 <<<<<<< HEAD
+<<<<<<< HEAD
 R2
 R38
 S1
 R4
 R37
 =======
+=======
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R3
 R38
 S1
 R0
 R36
+<<<<<<< HEAD
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
+=======
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R39
 R40
@@ -401,6 +497,7 @@ R2
 !s100 HU:iFb^81Rg>4d9`K6nn@2
 Ik^BJV[hhEcg<Nb[M_BG4i1
 <<<<<<< HEAD
+<<<<<<< HEAD
 R2
 Z44 !s105 data_ex_sv_unit
 S1
@@ -412,10 +509,18 @@ Z47 F./data_ex.sv
 R3
 Z44 !s105 data_ex_sv_unit
 S1
+=======
+R3
+Z44 !s105 data_ex_sv_unit
+S1
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R0
 R16
 Z45 8./data_ex.sv
 Z46 F./data_ex.sv
+<<<<<<< HEAD
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
+=======
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R43
 R9
@@ -424,8 +529,13 @@ r1
 31
 R10
 <<<<<<< HEAD
+<<<<<<< HEAD
 Z48 !s107 ./data_ex.sv|
 Z49 !s90 -reportprogress|300|./data_ex.sv|
+=======
+Z47 !s107 ./data_ex.sv|
+Z48 !s90 -reportprogress|300|./data_ex.sv|
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 Z47 !s107 ./data_ex.sv|
 Z48 !s90 -reportprogress|300|./data_ex.sv|
@@ -438,6 +548,7 @@ R2
 !i10b 1
 !s100 iRmVCadEQSG7OCZZYI[cb2
 IEA8:15o:mh;]N6HClInBh3
+<<<<<<< HEAD
 <<<<<<< HEAD
 R2
 R44
@@ -455,12 +566,22 @@ R16
 R45
 R46
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
+=======
+R3
+R44
+S1
+R0
+R16
+R45
+R46
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 L0 64
 R9
 r1
 !s85 0
 31
 R10
+<<<<<<< HEAD
 <<<<<<< HEAD
 R48
 R49
@@ -469,6 +590,15 @@ R13
 vdata_id
 R0
 Z50 !s110 1669006395
+=======
+R47
+R48
+!i113 1
+R13
+vdata_id
+R1
+Z49 !s110 1669003087
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 R47
 R48
@@ -494,7 +624,11 @@ r1
 !s85 0
 31
 <<<<<<< HEAD
+<<<<<<< HEAD
 Z51 !s108 1669006395.000000
+=======
+Z50 !s108 1669003087.000000
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 Z50 !s108 1669003087.000000
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
@@ -503,6 +637,7 @@ Z50 !s108 1669003087.000000
 !i113 1
 R13
 vdata_if
+<<<<<<< HEAD
 <<<<<<< HEAD
 R0
 R50
@@ -517,6 +652,8 @@ Z53 w1668998217
 Z54 8./data_if.sv
 Z55 F./data_if.sv
 =======
+=======
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R1
 Z51 !s110 1668994409
 !i10b 1
@@ -529,12 +666,16 @@ Z53 dC:/School/EE469/fpga-arm-processor/single_cycle_cpu
 Z54 w1668994388
 Z55 8./data_if.sv
 Z56 F./data_if.sv
+<<<<<<< HEAD
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
+=======
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 L0 34
 R9
 r1
 !s85 0
 31
+<<<<<<< HEAD
 <<<<<<< HEAD
 R51
 Z56 !s107 ./data_if.sv|
@@ -562,6 +703,14 @@ Z59 !s90 -reportprogress|300|./data_if.sv|
 !i113 1
 R13
 vdata_if_testbench
+=======
+Z57 !s108 1668994409.000000
+Z58 !s107 ./data_if.sv|
+Z59 !s90 -reportprogress|300|./data_if.sv|
+!i113 1
+R13
+vdata_if_testbench
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R1
 R51
 !i10b 1
@@ -575,11 +724,15 @@ R54
 R55
 R56
 Z60 L0 71
+<<<<<<< HEAD
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
+=======
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R9
 r1
 !s85 0
 31
+<<<<<<< HEAD
 <<<<<<< HEAD
 R51
 R56
@@ -589,6 +742,16 @@ R13
 vdata_mem
 R0
 R50
+=======
+R57
+R58
+R59
+!i113 1
+R13
+vdata_mem
+R1
+R51
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 R57
 R58
@@ -610,7 +773,11 @@ w1668988562
 8./data_mem.sv
 F./data_mem.sv
 <<<<<<< HEAD
+<<<<<<< HEAD
 Z59 L0 28
+=======
+Z61 L0 28
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 Z61 L0 28
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
@@ -619,7 +786,11 @@ r1
 !s85 0
 31
 <<<<<<< HEAD
+<<<<<<< HEAD
 R51
+=======
+R57
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 R57
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
@@ -629,8 +800,13 @@ R57
 R13
 vdata_wb
 <<<<<<< HEAD
+<<<<<<< HEAD
 R0
 R50
+=======
+R1
+R51
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 R1
 R51
@@ -651,7 +827,11 @@ r1
 !s85 0
 31
 <<<<<<< HEAD
+<<<<<<< HEAD
 R51
+=======
+R57
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 R57
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
@@ -660,6 +840,7 @@ R57
 !i113 1
 R13
 vdatamem
+<<<<<<< HEAD
 <<<<<<< HEAD
 R0
 R50
@@ -682,16 +863,30 @@ IlTK;lc_f[``>QK7VCEjbG1
 R3
 Z62 !s105 datamem_sv_unit
 S1
+=======
+R1
+R51
+!i10b 1
+!s100 GMBNeiNgJV6dVUhTA==id0
+IlTK;lc_f[``>QK7VCEjbG1
+R3
+Z62 !s105 datamem_sv_unit
+S1
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R53
 Z63 w1668923914
 Z64 8./datamem.sv
 Z65 F./datamem.sv
+<<<<<<< HEAD
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
+=======
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 L0 12
 R9
 r1
 !s85 0
 31
+<<<<<<< HEAD
 <<<<<<< HEAD
 R51
 Z64 !s107 ./datamem.sv|
@@ -726,10 +921,29 @@ I9ZDD;CJWZ8?oEQ9?`R8Sn1
 R3
 R62
 S1
+=======
+R57
+Z66 !s107 ./datamem.sv|
+Z67 !s90 -reportprogress|300|./datamem.sv|
+!i113 1
+R13
+vdatamem_testbench
+R1
+R51
+!i10b 1
+!s100 5a><cTTjz0FZk:5BaZQcE0
+I9ZDD;CJWZ8?oEQ9?`R8Sn1
+R3
+R62
+S1
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R53
 R63
 R64
 R65
+<<<<<<< HEAD
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
+=======
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 L0 70
 R9
@@ -737,9 +951,15 @@ r1
 !s85 0
 31
 <<<<<<< HEAD
+<<<<<<< HEAD
 R51
 R64
 R65
+=======
+R57
+R66
+R67
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 R57
 R66
@@ -754,6 +974,7 @@ R14
 !s100 zdf<i1Rzh@hNS@Jd0f;123
 Id>Y:2ljUPVjHL<c5HAA?z1
 <<<<<<< HEAD
+<<<<<<< HEAD
 R2
 Z66 !s105 decoder_3x8_sv_unit
 S1
@@ -765,10 +986,18 @@ Z68 F./decoder_3x8.sv
 R3
 Z68 !s105 decoder_3x8_sv_unit
 S1
+=======
+R3
+Z68 !s105 decoder_3x8_sv_unit
+S1
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R0
 R36
 Z69 8./decoder_3x8.sv
 Z70 F./decoder_3x8.sv
+<<<<<<< HEAD
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
+=======
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 L0 2
 R9
@@ -777,8 +1006,13 @@ r1
 31
 R20
 <<<<<<< HEAD
+<<<<<<< HEAD
 Z69 !s107 ./decoder_3x8.sv|
 Z70 !s90 -reportprogress|300|./decoder_3x8.sv|
+=======
+Z71 !s107 ./decoder_3x8.sv|
+Z72 !s90 -reportprogress|300|./decoder_3x8.sv|
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 Z71 !s107 ./decoder_3x8.sv|
 Z72 !s90 -reportprogress|300|./decoder_3x8.sv|
@@ -792,6 +1026,7 @@ R14
 !s100 [cW6cH3Yn1WMXKTLj4mB;1
 IL@clS5dV7IJ]`jM1Qo]lk1
 <<<<<<< HEAD
+<<<<<<< HEAD
 R2
 R66
 S1
@@ -803,10 +1038,18 @@ R68
 R3
 R68
 S1
+=======
+R3
+R68
+S1
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R0
 R36
 R69
 R70
+<<<<<<< HEAD
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
+=======
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 L0 25
 R9
@@ -815,8 +1058,13 @@ r1
 31
 R20
 <<<<<<< HEAD
+<<<<<<< HEAD
 R69
 R70
+=======
+R71
+R72
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 R71
 R72
@@ -830,6 +1078,7 @@ R14
 !s100 n;Nddm_hCofZJj?HKVi`I1
 IGk<lRJQIZ8z1lKMZLe8kz3
 <<<<<<< HEAD
+<<<<<<< HEAD
 R2
 Z71 !s105 enabled_decoder_5x32_sv_unit
 S1
@@ -841,10 +1090,18 @@ Z74 F./enabled_decoder_5x32.sv
 R3
 Z73 !s105 enabled_decoder_5x32_sv_unit
 S1
+=======
+R3
+Z73 !s105 enabled_decoder_5x32_sv_unit
+S1
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R0
 R16
 Z74 8./enabled_decoder_5x32.sv
 Z75 F./enabled_decoder_5x32.sv
+<<<<<<< HEAD
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
+=======
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 L0 2
 R9
@@ -853,8 +1110,13 @@ r1
 31
 R20
 <<<<<<< HEAD
+<<<<<<< HEAD
 Z75 !s107 ./enabled_decoder_5x32.sv|
 Z76 !s90 -reportprogress|300|./enabled_decoder_5x32.sv|
+=======
+Z76 !s107 ./enabled_decoder_5x32.sv|
+Z77 !s90 -reportprogress|300|./enabled_decoder_5x32.sv|
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 Z76 !s107 ./enabled_decoder_5x32.sv|
 Z77 !s90 -reportprogress|300|./enabled_decoder_5x32.sv|
@@ -868,6 +1130,7 @@ R14
 !s100 VR98=m5FzDA^;WhG2;iNX2
 I3l0>A=RNORzfPAi]Y6o3L2
 <<<<<<< HEAD
+<<<<<<< HEAD
 R2
 R71
 S1
@@ -880,17 +1143,26 @@ Z77 L0 26
 R3
 R73
 S1
+=======
+R3
+R73
+S1
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R0
 R16
 R74
 R75
 Z78 L0 26
+<<<<<<< HEAD
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
+=======
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R9
 r1
 !s85 0
 31
 R20
+<<<<<<< HEAD
 <<<<<<< HEAD
 R75
 R76
@@ -916,6 +1188,13 @@ R77
 !i113 1
 R13
 vinstruction_decoder
+=======
+R76
+R77
+!i113 1
+R13
+vinstruction_decoder
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R1
 Z79 !s110 1668992105
 !i10b 1
@@ -929,11 +1208,15 @@ Z81 w1668991948
 Z82 8./instruction_decoder.sv
 Z83 F./instruction_decoder.sv
 Z84 L0 36
+<<<<<<< HEAD
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
+=======
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R9
 r1
 !s85 0
 31
+<<<<<<< HEAD
 <<<<<<< HEAD
 R51
 Z82 !s107 ./instruction_decoder.sv|
@@ -961,6 +1244,14 @@ Z87 !s90 -reportprogress|300|./instruction_decoder.sv|
 !i113 1
 R13
 vinstruction_decoder_testbench
+=======
+Z85 !s108 1668992105.000000
+Z86 !s107 ./instruction_decoder.sv|
+Z87 !s90 -reportprogress|300|./instruction_decoder.sv|
+!i113 1
+R13
+vinstruction_decoder_testbench
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R1
 R79
 !i10b 1
@@ -979,6 +1270,7 @@ R9
 r1
 !s85 0
 31
+<<<<<<< HEAD
 <<<<<<< HEAD
 R51
 R82
@@ -1005,6 +1297,14 @@ R87
 !i113 1
 R13
 vinstructmem
+=======
+R85
+R86
+R87
+!i113 1
+R13
+vinstructmem
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R1
 R51
 !i10b 1
@@ -1017,12 +1317,16 @@ R53
 Z89 w1668033535
 Z90 8./instructmem.sv
 Z91 F./instructmem.sv
+<<<<<<< HEAD
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
+=======
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R23
 R9
 r1
 !s85 0
 31
+<<<<<<< HEAD
 <<<<<<< HEAD
 R51
 Z88 !s107 ./instructmem.sv|
@@ -1049,6 +1353,14 @@ Z93 !s90 -reportprogress|300|./instructmem.sv|
 !i113 1
 R13
 vinstructmem_testbench
+=======
+R57
+Z92 !s107 ./instructmem.sv|
+Z93 !s90 -reportprogress|300|./instructmem.sv|
+!i113 1
+R13
+vinstructmem_testbench
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R1
 R51
 !i10b 1
@@ -1061,6 +1373,9 @@ R53
 R89
 R90
 R91
+<<<<<<< HEAD
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
+=======
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 L0 57
 R9
@@ -1068,9 +1383,15 @@ r1
 !s85 0
 31
 <<<<<<< HEAD
+<<<<<<< HEAD
 R51
 R88
 R89
+=======
+R57
+R92
+R93
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 R57
 R92
@@ -1085,6 +1406,7 @@ R2
 !s100 GXKH7=Dd6>8PPhOJoBXnk2
 Iaha4H^aoA`A`DoQj5R_;W2
 <<<<<<< HEAD
+<<<<<<< HEAD
 R2
 Z90 !s105 math_sv_unit
 S1
@@ -1096,10 +1418,18 @@ Z93 F./math.sv
 R3
 Z94 !s105 math_sv_unit
 S1
+=======
+R3
+Z94 !s105 math_sv_unit
+S1
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R0
 R5
 Z95 8./math.sv
 Z96 F./math.sv
+<<<<<<< HEAD
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
+=======
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 L0 6
 R9
@@ -1108,8 +1438,13 @@ r1
 31
 R10
 <<<<<<< HEAD
+<<<<<<< HEAD
 Z94 !s107 ./math.sv|
 Z95 !s90 -reportprogress|300|./math.sv|
+=======
+Z97 !s107 ./math.sv|
+Z98 !s90 -reportprogress|300|./math.sv|
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 Z97 !s107 ./math.sv|
 Z98 !s90 -reportprogress|300|./math.sv|
@@ -1123,6 +1458,7 @@ R2
 !s100 [`TDzVleKUY`28_9YAZmo2
 I@[KbV>@1aLgDXF0]Ic36>1
 <<<<<<< HEAD
+<<<<<<< HEAD
 R2
 R90
 S1
@@ -1132,6 +1468,8 @@ R92
 R93
 R58
 =======
+=======
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R3
 R94
 S1
@@ -1140,6 +1478,9 @@ R5
 R95
 R96
 R60
+<<<<<<< HEAD
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
+=======
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R9
 r1
@@ -1147,8 +1488,13 @@ r1
 31
 R10
 <<<<<<< HEAD
+<<<<<<< HEAD
 R94
 R95
+=======
+R97
+R98
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 R97
 R98
@@ -1162,6 +1508,7 @@ R49
 !s100 Q6FP8;fS?WikAHH;7Ab=k1
 IJbI2HDbC]KMCTbC?NLX7b1
 <<<<<<< HEAD
+<<<<<<< HEAD
 R2
 Z96 !s105 multiplexor_sv_unit
 S1
@@ -1173,10 +1520,18 @@ Z98 F./multiplexor.sv
 R3
 Z99 !s105 multiplexor_sv_unit
 S1
+=======
+R3
+Z99 !s105 multiplexor_sv_unit
+S1
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R0
 R36
 Z100 8./multiplexor.sv
 Z101 F./multiplexor.sv
+<<<<<<< HEAD
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
+=======
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 L0 1
 R9
@@ -1184,9 +1539,15 @@ r1
 !s85 0
 31
 <<<<<<< HEAD
+<<<<<<< HEAD
 R20
 Z99 !s107 ./multiplexor.sv|
 Z100 !s90 -reportprogress|300|./multiplexor.sv|
+=======
+R50
+Z102 !s107 ./multiplexor.sv|
+Z103 !s90 -reportprogress|300|./multiplexor.sv|
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 R50
 Z102 !s107 ./multiplexor.sv|
@@ -1201,6 +1562,7 @@ R49
 !s100 52kl3Y=cdZTH`2FHehDiS0
 Ih<Ijmi53EGUIR^54BHFb?2
 <<<<<<< HEAD
+<<<<<<< HEAD
 R2
 R96
 S1
@@ -1209,6 +1571,8 @@ R37
 R97
 R98
 =======
+=======
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R3
 R99
 S1
@@ -1216,12 +1580,16 @@ R0
 R36
 R100
 R101
+<<<<<<< HEAD
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
+=======
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 L0 32
 R9
 r1
 !s85 0
 31
+<<<<<<< HEAD
 <<<<<<< HEAD
 R20
 R99
@@ -1231,6 +1599,16 @@ R13
 vmux5_2x1
 R0
 R50
+=======
+R50
+R102
+R103
+!i113 1
+R13
+vmux5_2x1
+R1
+R51
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 R50
 R102
@@ -1252,7 +1630,11 @@ w1668987949
 8./mux5_2x1.sv
 F./mux5_2x1.sv
 <<<<<<< HEAD
+<<<<<<< HEAD
 Z101 L0 14
+=======
+Z104 L0 14
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 Z104 L0 14
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
@@ -1261,7 +1643,11 @@ r1
 !s85 0
 31
 <<<<<<< HEAD
+<<<<<<< HEAD
 R51
+=======
+R57
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 R57
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
@@ -1276,6 +1662,7 @@ R2
 !s100 jJP_36UoY9`2e:GhY8eO@2
 IkUEoZCXMB]jF1Gf8U_jI03
 <<<<<<< HEAD
+<<<<<<< HEAD
 R2
 Z102 !s105 mux64_2x1_sv_unit
 S1
@@ -1288,11 +1675,19 @@ R101
 R3
 Z105 !s105 mux64_2x1_sv_unit
 S1
+=======
+R3
+Z105 !s105 mux64_2x1_sv_unit
+S1
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R0
 Z106 w1668919977
 Z107 8./mux64_2x1.sv
 Z108 F./mux64_2x1.sv
 R104
+<<<<<<< HEAD
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
+=======
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R9
 r1
@@ -1300,8 +1695,13 @@ r1
 31
 R10
 <<<<<<< HEAD
+<<<<<<< HEAD
 Z106 !s107 ./mux64_2x1.sv|
 Z107 !s90 -reportprogress|300|./mux64_2x1.sv|
+=======
+Z109 !s107 ./mux64_2x1.sv|
+Z110 !s90 -reportprogress|300|./mux64_2x1.sv|
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 Z109 !s107 ./mux64_2x1.sv|
 Z110 !s90 -reportprogress|300|./mux64_2x1.sv|
@@ -1315,6 +1715,7 @@ R2
 !s100 ?_:OCP^S8Wacoc=d`Q73X0
 I@lILYWoC<_Xg]e9dN>CmP0
 <<<<<<< HEAD
+<<<<<<< HEAD
 R2
 R102
 S1
@@ -1326,12 +1727,19 @@ R59
 =======
 R3
 R105
+=======
+R3
+R105
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 S1
 R0
 R106
 R107
 R108
 R61
+<<<<<<< HEAD
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
+=======
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R9
 r1
@@ -1339,8 +1747,13 @@ r1
 31
 R10
 <<<<<<< HEAD
+<<<<<<< HEAD
 R106
 R107
+=======
+R109
+R110
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 R109
 R110
@@ -1357,8 +1770,13 @@ R3
 !s105 mux_16x1_sv_unit
 S1
 <<<<<<< HEAD
+<<<<<<< HEAD
 R4
 R37
+=======
+R0
+R36
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 R0
 R36
@@ -1382,6 +1800,7 @@ R2
 !s100 _0S1Ac>3@e90A2Won`7f50
 IDBi88PT_z3e7KGoSomjYk0
 <<<<<<< HEAD
+<<<<<<< HEAD
 R2
 Z108 !s105 mux_2x1_sv_unit
 S1
@@ -1393,10 +1812,18 @@ Z110 F./mux_2x1.sv
 R3
 Z111 !s105 mux_2x1_sv_unit
 S1
+=======
+R3
+Z111 !s105 mux_2x1_sv_unit
+S1
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R0
 R36
 Z112 8./mux_2x1.sv
 Z113 F./mux_2x1.sv
+<<<<<<< HEAD
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
+=======
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 L0 2
 R9
@@ -1405,8 +1832,13 @@ r1
 31
 R10
 <<<<<<< HEAD
+<<<<<<< HEAD
 Z111 !s107 ./mux_2x1.sv|
 Z112 !s90 -reportprogress|300|./mux_2x1.sv|
+=======
+Z114 !s107 ./mux_2x1.sv|
+Z115 !s90 -reportprogress|300|./mux_2x1.sv|
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 Z114 !s107 ./mux_2x1.sv|
 Z115 !s90 -reportprogress|300|./mux_2x1.sv|
@@ -1420,6 +1852,7 @@ R2
 !s100 0Z@0MdcUln0iP<3L11j4J2
 I9Yl^0X?<9R2UoT=D`DD@C2
 <<<<<<< HEAD
+<<<<<<< HEAD
 R2
 R108
 S1
@@ -1428,6 +1861,8 @@ R26
 R109
 R110
 =======
+=======
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R3
 R111
 S1
@@ -1435,6 +1870,9 @@ R0
 R36
 R112
 R113
+<<<<<<< HEAD
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
+=======
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R23
 R9
@@ -1443,8 +1881,13 @@ r1
 31
 R10
 <<<<<<< HEAD
+<<<<<<< HEAD
 R111
 R112
+=======
+R114
+R115
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 R114
 R115
@@ -1458,6 +1901,7 @@ R14
 !s100 cX_h]1>RH@>RoaQfDWE^z1
 IbPD4z[hPEOg]V5:]:S_121
 <<<<<<< HEAD
+<<<<<<< HEAD
 R2
 Z113 !s105 mux_32x1_sv_unit
 S1
@@ -1469,10 +1913,18 @@ Z115 F./mux_32x1.sv
 R3
 Z116 !s105 mux_32x1_sv_unit
 S1
+=======
+R3
+Z116 !s105 mux_32x1_sv_unit
+S1
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R0
 R36
 Z117 8./mux_32x1.sv
 Z118 F./mux_32x1.sv
+<<<<<<< HEAD
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
+=======
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 L0 1
 R9
@@ -1481,8 +1933,13 @@ r1
 31
 R20
 <<<<<<< HEAD
+<<<<<<< HEAD
 Z116 !s107 ./mux_32x1.sv|
 Z117 !s90 -reportprogress|300|./mux_32x1.sv|
+=======
+Z119 !s107 ./mux_32x1.sv|
+Z120 !s90 -reportprogress|300|./mux_32x1.sv|
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 Z119 !s107 ./mux_32x1.sv|
 Z120 !s90 -reportprogress|300|./mux_32x1.sv|
@@ -1496,6 +1953,7 @@ R14
 !s100 Ei1XMebkHniM0gA3[Ja3n2
 Ic]^QS01R5B>3ZG?Lo2=C@2
 <<<<<<< HEAD
+<<<<<<< HEAD
 R2
 R113
 S1
@@ -1504,6 +1962,8 @@ R37
 R114
 R115
 =======
+=======
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R3
 R116
 S1
@@ -1511,6 +1971,9 @@ R0
 R36
 R117
 R118
+<<<<<<< HEAD
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
+=======
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R23
 R9
@@ -1519,8 +1982,13 @@ r1
 31
 R20
 <<<<<<< HEAD
+<<<<<<< HEAD
 R116
 R117
+=======
+R119
+R120
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 R119
 R120
@@ -1537,8 +2005,13 @@ R3
 !s105 mux_4x1_sv_unit
 S1
 <<<<<<< HEAD
+<<<<<<< HEAD
 R4
 R37
+=======
+R0
+R36
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 R0
 R36
@@ -1565,8 +2038,13 @@ R3
 !s105 mux_8x1_sv_unit
 S1
 <<<<<<< HEAD
+<<<<<<< HEAD
 R4
 R37
+=======
+R0
+R36
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 R0
 R36
@@ -1636,6 +2114,7 @@ R49
 !s100 2nh=^^@GBjGe^<Q52RaWV3
 I]n7^J3Di[7ZMZZ0LgEa]L2
 <<<<<<< HEAD
+<<<<<<< HEAD
 R2
 Z118 !s105 regfile_sv_unit
 S1
@@ -1647,10 +2126,18 @@ Z120 F./regfile.sv
 R3
 Z127 !s105 regfile_sv_unit
 S1
+=======
+R3
+Z127 !s105 regfile_sv_unit
+S1
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R0
 Z128 w1668914027
 Z129 8./regfile.sv
 Z130 F./regfile.sv
+<<<<<<< HEAD
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
+=======
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 L0 2
 R9
@@ -1658,9 +2145,15 @@ r1
 !s85 0
 31
 <<<<<<< HEAD
+<<<<<<< HEAD
 R20
 Z121 !s107 ./regfile.sv|
 Z122 !s90 -reportprogress|300|./regfile.sv|
+=======
+R50
+Z131 !s107 ./regfile.sv|
+Z132 !s90 -reportprogress|300|./regfile.sv|
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 R50
 Z131 !s107 ./regfile.sv|
@@ -1678,8 +2171,13 @@ R3
 !s105 register_sv_unit
 S1
 <<<<<<< HEAD
+<<<<<<< HEAD
 R4
 R37
+=======
+R0
+R36
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 R0
 R36
@@ -1692,7 +2190,11 @@ r1
 !s85 0
 31
 <<<<<<< HEAD
+<<<<<<< HEAD
 R20
+=======
+R50
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 R50
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
@@ -1707,6 +2209,7 @@ R49
 !s100 3JfbHN`[a<Ho1J6<CzlDV1
 ISD5PBRMDm^cSHomPZ=^Bz1
 <<<<<<< HEAD
+<<<<<<< HEAD
 R2
 R118
 S1
@@ -1719,20 +2222,34 @@ R77
 R3
 R127
 S1
+=======
+R3
+R127
+S1
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R0
 R128
 R129
 R130
 R78
+<<<<<<< HEAD
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
+=======
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R9
 r1
 !s85 0
 31
 <<<<<<< HEAD
+<<<<<<< HEAD
 R20
 R121
 R122
+=======
+R50
+R131
+R132
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 R50
 R131
@@ -1747,6 +2264,7 @@ R2
 !s100 fF6[o=WNId^cLKiX>j88L1
 IgCHQVT3JEPMXoFcROa]ff1
 <<<<<<< HEAD
+<<<<<<< HEAD
 R2
 R90
 S1
@@ -1756,6 +2274,8 @@ R92
 R93
 L0 36
 =======
+=======
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R3
 R94
 S1
@@ -1764,6 +2284,9 @@ R5
 R95
 R96
 R84
+<<<<<<< HEAD
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
+=======
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R9
 r1
@@ -1771,8 +2294,13 @@ r1
 31
 R10
 <<<<<<< HEAD
+<<<<<<< HEAD
 R94
 R95
+=======
+R97
+R98
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 R97
 R98
@@ -1786,6 +2314,7 @@ R2
 !s100 Ug=jWUW][Q=Y1iBVN3h1o3
 I1I?Sa51HmT:lMFASBB;eA2
 <<<<<<< HEAD
+<<<<<<< HEAD
 R2
 R90
 S1
@@ -1794,6 +2323,8 @@ R91
 R92
 R93
 =======
+=======
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R3
 R94
 S1
@@ -1801,6 +2332,9 @@ R0
 R5
 R95
 R96
+<<<<<<< HEAD
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
+=======
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 L0 51
 R9
@@ -1809,8 +2343,13 @@ r1
 31
 R10
 <<<<<<< HEAD
+<<<<<<< HEAD
 R94
 R95
+=======
+R97
+R98
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 R97
 R98
@@ -1824,6 +2363,7 @@ R2
 !s100 aD<WNJ7Bo8XU=2H;iSL3F3
 I^OU6J1SPPE9?ZQa]FPTnb0
 <<<<<<< HEAD
+<<<<<<< HEAD
 R2
 Z123 !s105 sign_extender_sv_unit
 S1
@@ -1835,10 +2375,18 @@ Z125 F./sign_extender.sv
 R3
 Z133 !s105 sign_extender_sv_unit
 S1
+=======
+R3
+Z133 !s105 sign_extender_sv_unit
+S1
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R0
 Z134 w1668905202
 Z135 8./sign_extender.sv
 Z136 F./sign_extender.sv
+<<<<<<< HEAD
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
+=======
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R19
 R9
@@ -1847,8 +2395,13 @@ r1
 31
 R10
 <<<<<<< HEAD
+<<<<<<< HEAD
 Z126 !s107 ./sign_extender.sv|
 Z127 !s90 -reportprogress|300|./sign_extender.sv|
+=======
+Z137 !s107 ./sign_extender.sv|
+Z138 !s90 -reportprogress|300|./sign_extender.sv|
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 Z137 !s107 ./sign_extender.sv|
 Z138 !s90 -reportprogress|300|./sign_extender.sv|
@@ -1862,6 +2415,7 @@ R2
 !s100 5FZE6?<UiUMnB@nlPI^0T0
 IM>m3bVfjSR>5DnLfS6REC1
 <<<<<<< HEAD
+<<<<<<< HEAD
 R2
 R123
 S1
@@ -1873,10 +2427,18 @@ R125
 R3
 R133
 S1
+=======
+R3
+R133
+S1
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R0
 R134
 R135
 R136
+<<<<<<< HEAD
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
+=======
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 L0 35
 R9
@@ -1884,6 +2446,7 @@ r1
 !s85 0
 31
 R10
+<<<<<<< HEAD
 <<<<<<< HEAD
 R126
 R127
@@ -1917,16 +2480,35 @@ IEn;jZAgGn2BM3MIPioj^K3
 R3
 Z139 !s105 single_cycle_cpu_sv_unit
 S1
+=======
+R137
+R138
+!i113 1
+R13
+vsingle_cycle_cpu
+R1
+R51
+!i10b 1
+!s100 1eKJzBPQ@4THiWQSnca`?3
+IEn;jZAgGn2BM3MIPioj^K3
+R3
+Z139 !s105 single_cycle_cpu_sv_unit
+S1
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R53
 Z140 w1668992099
 Z141 8./single_cycle_cpu.sv
 Z142 F./single_cycle_cpu.sv
 R104
+<<<<<<< HEAD
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
+=======
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R9
 r1
 !s85 0
 31
+<<<<<<< HEAD
 <<<<<<< HEAD
 R51
 Z132 !s107 ./single_cycle_cpu.sv|
@@ -1961,10 +2543,29 @@ IE3n>PSJ_Hjj@6QS]d<1n43
 R3
 R139
 S1
+=======
+R57
+Z143 !s107 ./single_cycle_cpu.sv|
+Z144 !s90 -reportprogress|300|./single_cycle_cpu.sv|
+!i113 1
+R13
+vsingle_cycle_cpu_testbench
+R1
+R51
+!i10b 1
+!s100 EgB@Ugj^iUTe@:M67FdLc3
+IE3n>PSJ_Hjj@6QS]d<1n43
+R3
+R139
+S1
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 R53
 R140
 R141
 R142
+<<<<<<< HEAD
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
+=======
 >>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 L0 46
 R9
@@ -1972,9 +2573,15 @@ r1
 !s85 0
 31
 <<<<<<< HEAD
+<<<<<<< HEAD
 R51
 R132
 R133
+=======
+R57
+R143
+R144
+>>>>>>> f6c22fd0dab8ec21e7b3132a73e6bcf5b321de83
 =======
 R57
 R143
