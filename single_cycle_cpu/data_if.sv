@@ -58,7 +58,7 @@ module data_if (
     // 2x1 64-bit Muxes for selecting PC
     mux64_2x1 mux64_1(.sel(BrTaken), .A(new_pc2), .B(new_pc1), .out(new_pc));
     mux64_2x1 mux64_2(.sel(BRsignal), .A(Db), .B(new_pc), .out(new_pc3));
-    
+
     // New Program Counter
     adder64 adder64_1(.A(pc), .B(64'd4), .result(new_pc1));
 
@@ -72,35 +72,36 @@ endmodule
 
 `timescale 10ps/1ps
 module data_if_testbench();
-	 logic clk, negative, zero, BrTaken, reset;
-    logic [63:0] Db;
+    logic clk, negative, zero, BrTaken, reset;
+    logic [63:0] Db, new_pc2;
     logic [63:0] BLT, pc;
     logic [18:0] COND_BR_addr;
     logic [25:0] BR_addr;
     logic Reg2Loc, ALUsrc, MemtoReg, RegWrite, MemWrite, BLsignal, update;
-	 logic cbz, branch, cond;
+    logic cbz, branch, cond;
     logic [2:0] ALUop;
-	 logic [3:0] xfer_size;
+    logic [3:0] xfer_size;
     logic [4:0] Rn, Rd, Rm, Rt;
     logic [11:0] ALU_imm;
     logic [8:0] DT_addr;
     logic [5:0] shamt;
-	 logic [31:0] instruction;
+    logic [31:0] instruction;
 	 
-	 data_if dut (.*);
+    data_if dut (.*);
 	 
-	 parameter ClockDelay = 125;
-	 initial begin // Set up the clock
-		clk <= 0;
-		forever #(ClockDelay/2) clk <= ~clk;
-	 end
-	 
-	 initial begin
-		reset <= 1; @(posedge clk);
-        reset <= 0; @(posedge clk);
-		//Test 1: Adding
-		negative <= 1'b0; zero <= 1'b0; BrTaken <= 1'b0; reset <= 0;
-		Db <= 64'd1;
-		instruction <= 32'b10010001000000011111100101101111; repeat(100) @(posedge clk);
-	 end
+    parameter ClockDelay = 125;
+    initial begin // Set up the clock
+        clk <= 0;
+        forever #(ClockDelay/2) clk <= ~clk;
+    end
+    
+    initial begin
+        reset <= 1; @(posedge clk);
+        reset <= 0; 
+        //Test 1: Adding
+        negative <= 1'b0; zero <= 1'b0; Db <= 64'd1; new_pc2 <= 64'd64;
+        BrTaken <= 1'b0; @(posedge clk);
+        instruction <= 32'b10010001000000011111100101101111; repeat(100) @(posedge clk);
+        $stop;
+    end
 endmodule
