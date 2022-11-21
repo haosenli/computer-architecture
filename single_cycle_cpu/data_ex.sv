@@ -8,8 +8,8 @@
  * ReadData1   	- 64 bits, ReadData1 result from register signal.
  * ReadData2   	- 64 bits, ReadData2 result from register signal.
  * PC			   	- 64 bits, Data memory write data.
- * ALU_imm_extend - 64 bits, ALU_imm but 64 bit signal.
- * BR_to_shift		- 64 bits, BR_addr but 64 bit signal.
+ * ALU_or_DT 		- 64 bits, ALU_or_DT bit 64 bit signal.
+ * BR_to_shift		- 64 bits, BR_addr bit 64 bit signal.
  * ALUop				- 3 bits, Operation for ALU.
  * ALUsrc			- 1 bit, ALUsrc control signal.
  * update			- 1 bit, Update output signals
@@ -26,7 +26,7 @@
  */
 module data_ex(
 	input  logic clk, reset,
-	input  logic [63:0] ReadData1, ReadData2, PC, ALU_imm_extend, BR_to_shift,
+	input  logic [63:0] ReadData1, ReadData2, PC, ALU_or_DT, BR_to_shift,
 	input  logic [2:0] ALUop,
 	input  logic ALUsrc, update,
 	output logic [63:0] alu_result, ReadData2_out, new_PC2,
@@ -38,7 +38,7 @@ module data_ex(
 	logic temp_zero, temp_neg, temp_overflow, temp_carry_out;
 	 
 	// mux to find what gets used for ALU
-	mux64_2x1 add_2 (.sel(ALUsrc), .A(ALU_imm_extend), .B(ReadData2), .out(add2));
+	mux64_2x1 add_2 (.sel(ALUsrc), .A(ALU_or_DT), .B(ReadData2), .out(add2));
 	
 	// ALU to compute value
 	alu compute (.A(ReadData1), .B(add2), .cntrl(ALUop), .result(alu_result), .negative(temp_neg), 
@@ -71,7 +71,7 @@ endmodule
 `timescale 10ps/1ps
 module data_ex_testbench();
 	logic clk, reset;
-	logic [63:0] ReadData1, ReadData2, PC, ALU_imm_extend, BR_to_shift;
+	logic [63:0] ReadData1, ReadData2, PC, ALU_or_DT, BR_to_shift;
 	logic [2:0] ALUop;
 	logic ALUsrc, update;
 	logic [63:0] alu_result, ReadData2_out, new_PC2;
@@ -84,7 +84,7 @@ module data_ex_testbench();
 	ReadData1 <= 64'b0000000000000000000000000000000000000000000000000000001010101010;
 	ReadData2 <= 64'b0000000000000000000000000000000000000000000000000000000101010101;
 	PC <= 64'b0000000000000000000000000000000000000000000000000000000000000000;
-	ALU_imm_extend <= 64'b0000000000000000000000000000000000000000000000000000000000000001;
+	ALU_or_DT <= 64'b0000000000000000000000000000000000000000000000000000000000000001;
 	BR_to_shift <= 64'b0000000000000000000000000000000000000000000000000000000000000010;
 	ALUop <= 3'b010;
 	ALUsrc <= 1'b0;
@@ -94,7 +94,7 @@ module data_ex_testbench();
 	ReadData1 <= 64'b0000000000000000000000000000000000000000000000000000001010101010;
 	ReadData2 <= 64'b0000000000000000000000000000000000000000000000000000000101010101;
 	PC <= 64'b0000000000000000000000000000000000000000000000000000000000000000;
-	ALU_imm_extend <= 64'b0000000000000000000000000000000000000000000000000000000000000001;
+	ALU_or_DT <= 64'b0000000000000000000000000000000000000000000000000000000000000001;
 	BR_to_shift <= 64'b0000000000000000000000000000000000000000000000000000000010000000;
 	ALUop <= 3'b010;
 	ALUsrc <= 1'b1;
@@ -104,7 +104,7 @@ module data_ex_testbench();
 	ReadData1 <= 64'b1111111111111111111111111111111111111111111111111111101010101010;
 	ReadData2 <= 64'b0000000000000000000000000000000000000000000000000000000000010101;
 	PC <= 64'b0000000000000000000000000000000000000000000000000000000000000000;
-	ALU_imm_extend <= 64'b0000000000000000000000000000000000000000000000000000000000000001;
+	ALU_or_DT <= 64'b0000000000000000000000000000000000000000000000000000000000000001;
 	BR_to_shift <= 64'b0000000000000000000000000000000000000000000000000000000010000000;
 	ALUop <= 3'b010;
 	ALUsrc <= 1'b1;

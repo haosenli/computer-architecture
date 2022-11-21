@@ -37,7 +37,7 @@ module data_if (
     output logic [63:0] BLT, pc,
     output logic [18:0] COND_BR_addr,
     output logic [25:0] BR_addr,
-    output logic Reg2Loc, ALUsrc, MemtoReg, RegWrite, MemWrite, BLsignal, update, UnCondBr, 
+    output logic Reg2Loc, ALUsrc, MemtoReg, RegWrite, MemWrite, BLsignal, update, UnCondBr, DTsignal,
 	output logic cbz, branch, cond,
     output logic [2:0] ALUop,
 	output logic [3:0] xfer_size,
@@ -77,7 +77,7 @@ module data_if_testbench();
     logic [63:0] BLT, pc;
     logic [18:0] COND_BR_addr;
     logic [25:0] BR_addr;
-    logic Reg2Loc, ALUsrc, MemtoReg, RegWrite, MemWrite, BLsignal, update;
+    logic Reg2Loc, ALUsrc, MemtoReg, RegWrite, MemWrite, DTsignal, UnCondBr, BLsignal, update;
     logic cbz, branch, cond;
     logic [2:0] ALUop;
     logic [3:0] xfer_size;

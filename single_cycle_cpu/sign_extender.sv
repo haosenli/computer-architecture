@@ -16,7 +16,6 @@ module sign_extender #(parameter N=8) (
     input  logic [N-1:0] input_data,
 	output logic [63:0] output_data
     );
-<<<<<<< HEAD
 	assign output_data[N-1:0] = input_data[N-1:0];
 	genvar i;
 	
@@ -26,9 +25,7 @@ module sign_extender #(parameter N=8) (
 			assign output_data[i] = input_data[N-1]; 
 		end
 	endgenerate						  
-=======
-	assign output_data = {{(64-N){input_data[N-1]}}, input_data[N-1:0]};			  
->>>>>>> 3fa0305851b2f23199b9b31e0d2c1e43df91b9d2
+	//assign output_data = {{(64-N){input_data[N-1]}}, input_data[N-1:0]};			  
 endmodule
 
 module sign_extender_testbench();

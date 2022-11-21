@@ -1,4 +1,4 @@
-go`timescale 10 ps / 1 ps
+`timescale 10 ps / 1 ps
 module enabled_decoder_5x32(
     input logic wr_en,
     input logic [4:0] addr,

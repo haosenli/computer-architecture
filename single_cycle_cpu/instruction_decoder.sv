@@ -35,7 +35,7 @@
 module instruction_decoder(
 	input  logic clk, negative, zero,
     input  logic [31:0] instruction,
-    output logic Reg2Loc, ALUsrc, MemtoReg, RegWrite, MemWrite, 
+    output logic Reg2Loc, ALUsrc, MemtoReg, RegWrite, MemWrite, DTsignal,
     output logic UnCondBr, BLsignal, BRsignal, update, cond, cbz, branch, 
 	 output logic [2:0] ALUop, 
 	 output logic [3:0] xfer_size,
@@ -60,6 +60,7 @@ module instruction_decoder(
             MemtoReg = 1'b0;
             RegWrite = 1'b1;
             MemWrite = 1'b0;
+				DTsignal = 1'b0;
 				UnCondBr = 1'bz;
 				BLsignal = 1'b0;
             BRsignal = 1'b0;
@@ -84,6 +85,7 @@ module instruction_decoder(
             MemtoReg = 1'b0;
             RegWrite = 1'b1;
             MemWrite = 1'b0;
+				DTsignal = 1'bz;
 				UnCondBr = 1'bz;
 				BLsignal = 1'b0;
             BRsignal = 1'b0;
@@ -108,6 +110,7 @@ module instruction_decoder(
             MemtoReg = 1'bz;
 				RegWrite = 1'b0;
             MemWrite = 1'b0;
+				DTsignal = 1'bz;
             UnCondBr = 1'b1;
 				BLsignal = 1'b0;
 				BRsignal = 1'b0;
@@ -132,6 +135,7 @@ module instruction_decoder(
 				MemtoReg = 1'bz;
 				RegWrite = 1'b0;
             MemWrite = 1'b0;
+				DTsignal = 1'bz;
             UnCondBr = 1'b0;
             BLsignal = 1'b0;
             BRsignal = 1'b0;
@@ -156,6 +160,7 @@ module instruction_decoder(
 				MemtoReg = 1'b0;
             RegWrite = 1'b1;
             MemWrite = 1'b0;
+				DTsignal = 1'bz;
             UnCondBr = 1'b1;
 				BLsignal = 1'b1;
             BRsignal = 1'b0;
@@ -180,6 +185,7 @@ module instruction_decoder(
 				MemtoReg = 1'bz;
 				MemWrite = 1'b0;
             RegWrite = 1'b0;
+				DTsignal = 1'bz;
 				UnCondBr = 1'bz;
             BLsignal = 1'b0;
             BRsignal = 1'b1;
@@ -205,6 +211,7 @@ module instruction_decoder(
 				MemtoReg = 1'bz;
             RegWrite = 1'b0;
             MemWrite = 1'b0;
+				DTsignal = 1'bz;
             UnCondBr = 1'b0;
 				BLsignal = 1'b0;
             BRsignal = 1'b0;
@@ -229,6 +236,7 @@ module instruction_decoder(
             MemtoReg = 1'b1;
             RegWrite = 1'b1;
             MemWrite = 1'b0;
+				DTsignal = 1'b1;
 				UnCondBr = 1'bz;
 				BLsignal = 1'b0;
             BRsignal = 1'b0;
@@ -253,6 +261,7 @@ module instruction_decoder(
 				MemtoReg = 1'bz;
             RegWrite = 1'b0;
             MemWrite = 1'b1;
+				DTsignal = 1'b1;
 				UnCondBr = 1'bz;
 				BLsignal = 1'b0;
             BRsignal = 1'b0;
@@ -277,6 +286,7 @@ module instruction_decoder(
             MemtoReg = 1'b0;
             RegWrite = 1'b1;
             MemWrite = 1'b0;
+				DTsignal = 1'bz;
 				UnCondBr = 1'bz;
 				BLsignal = 1'b0;
             BRsignal = 1'b0;
@@ -301,6 +311,7 @@ module instruction_decoder(
 				MemtoReg = 1'bz;
 				RegWrite = 1'bz;
 				MemWrite = 1'bz;
+				DTsignal = 1'bz;
 				UnCondBr = 1'bz;
 				BLsignal = 1'b0;
 				BRsignal = 1'b0;
@@ -327,7 +338,7 @@ endmodule
 module instruction_decoder_testbench();
 	logic clk, cond, negative, zero, update, cbz, branch;
    logic [31:0] instruction;
-   logic Reg2Loc, ALUsrc, MemtoReg, RegWrite, MemWrite, UnCondBr, BLsignal, BRsignal;
+   logic Reg2Loc, ALUsrc, MemtoReg, RegWrite, MemWrite, DTsignal, UnCondBr, BLsignal, BRsignal;
 	logic [2:0] ALUop;
 	logic [3:0] xfer_size;
    logic [4:0] Rn, Rd, Rm;
