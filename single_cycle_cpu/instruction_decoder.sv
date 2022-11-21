@@ -6,30 +6,31 @@
  *
  * Inputs:
  * clk      		- 1 bit, Clock signal.
- * cond 				- 1 bit, B.cond signal.
- * update			- 1 bit, signal to update flags in ALU.
- * CBZ				- 1 bit, CBZ signal.
- * branch			- 1 bit, branch signal
  * instruction    - 32 bits, Instruction to decode.
  *
  * Outputs:
- * Reg2Loc  - 1 bit, Reg2Loc control signal.
- * ALUsrc   - 1 bit, ALUsrc control signal.
- * MemtoReg - 1 bit, MemtoReg control signal.
- * RegWrite - 1 bit, RegWrite control signal.
- * MemWrite - 1 bit, MemWrite control signal.
- * UnCondBr	- 1 bit, UnCondBr control signal.
- * BLsignal - 1 bit, BLsignal control signal.
- * BRsignal - 1 bit, BRsignal control signal.
- * ALUop    - 3 bits, ALUop control signal.
- * Rn       - 5 bits, Rn register address.
- * Rd       - 5 bits, Rd register address.
- * Rm       - 5 bits, Rm register address.
- * ALU_imm  - 12 bits, ALU_imm control signal.
- * COND_BR_addr - 19 bits, Conditional branch address.
- * DT_addr  - 9 bits, DT_addr control signal.
- * BR_addr  - 26 bits, Branch address.
- * shamt    - 6 bits, Shift amount.
+ * Reg2Loc  		- 1 bit, Reg2Loc control signal.
+ * ALUsrc   		- 1 bit, ALUsrc control signal.
+ * MemtoReg 		- 1 bit, MemtoReg control signal.
+ * RegWrite 		- 1 bit, RegWrite control signal.
+ * MemWrite 		- 1 bit, MemWrite control signal.
+ * UnCondBr			- 1 bit, UnCondBr control signal.
+ * BLsignal 		- 1 bit, BLsignal control signal.
+ * BRsignal 		- 1 bit, BRsignal control signal.
+ * update			- 1 bit, signal to update flags in ALU.
+ * cond 				- 1 bit, B.cond signal.
+ * CBZ				- 1 bit, CBZ signal.
+ * branch			- 1 bit, branch signal.
+ * ALUop    		- 3 bits, ALUop control signal.
+ * xfer_size 		- 4 bits, xfer size control signal.
+ * Rn       		- 5 bits, Rn register address.
+ * Rd       		- 5 bits, Rd register address.
+ * Rm       		- 5 bits, Rm register address.
+ * ALU_imm  		- 12 bits, ALU_imm control signal.
+ * COND_BR_addr 	- 19 bits, Conditional branch address.
+ * DT_addr  		- 9 bits, DT_addr control signal.
+ * BR_addr  		- 26 bits, Branch address.
+ * shamt    		- 6 bits, Shift amount.
  */
 `timescale 10ps / 1ps
 module instruction_decoder(
@@ -49,6 +50,7 @@ module instruction_decoder(
 	 
     logic Bcond_branch, temp_branch;
 	 
+	 // Decide if branching is needed.
     B_cond_decode Bcond(.negative, .zero, .cond, .Rd, .branch(Bcond_branch));
 	 or #5 branching(branch, Bcond_branch, temp_branch);
 	 

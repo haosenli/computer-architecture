@@ -5,7 +5,8 @@
  * This file contains the single cycle cpu module.
  *
  * Inputs:
- * clk  - 1 bit, clock signal.
+ * clk  	- 1 bit, clock signal.
+ * reset	- 1 bit, reset signal.
  *
  * Outputs:
  */
@@ -30,20 +31,6 @@ module single_cycle_cpu(input logic clk, reset);
     logic [25:0] BR_addr;
     // Registers
     logic [4:0] Rn, Rd, Rm, Rt;
-	 
-	 logic [1:0] counter;
-	 logic slow_clk;
-	 always_ff @(posedge clk) begin
-		if (reset) begin
-			counter <= 0;
-			slow_clk <= 1'd0;
-		end
-		else begin
-			counter <= counter + 1;
-			if (counter == 0) 
-				slow_clk <= ~slow_clk;
-		end
-	end
 	 
     // Datapath stages
     data_if if_module(.clk(clk), .*);
