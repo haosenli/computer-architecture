@@ -143,7 +143,7 @@ module instruction_decoder(
 				cond = 1'b1;
 				cbz = 1'b0;
 				temp_branch = 1'b0;
-				ALUop = 3'b000;
+				ALUop = 3'b011;
 				xfer_size = 4'b1000;
 				Rn = 5'bzzzzz;
             Rd = instruction[4:0];

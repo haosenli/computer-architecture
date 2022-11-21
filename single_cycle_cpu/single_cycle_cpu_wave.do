@@ -17,6 +17,10 @@ add wave -noupdate -expand -group {Control Signals} /single_cycle_cpu_testbench/
 add wave -noupdate -expand -group {Control Signals} /single_cycle_cpu_testbench/dut/MemWrite
 add wave -noupdate -expand -group {Control Signals} /single_cycle_cpu_testbench/dut/MemtoReg
 add wave -noupdate -expand -group {Control Signals} /single_cycle_cpu_testbench/dut/if_module/BRsignal
+add wave -noupdate -expand -group Flags /single_cycle_cpu_testbench/dut/ex_module/zero
+add wave -noupdate -expand -group Flags /single_cycle_cpu_testbench/dut/ex_module/negative
+add wave -noupdate -expand -group Flags /single_cycle_cpu_testbench/dut/ex_module/overflow
+add wave -noupdate -expand -group Flags /single_cycle_cpu_testbench/dut/ex_module/carry_out
 add wave -noupdate -expand -group Flags /single_cycle_cpu_testbench/dut/zero
 add wave -noupdate -expand -group Flags /single_cycle_cpu_testbench/dut/negative
 add wave -noupdate -expand -group Flags /single_cycle_cpu_testbench/dut/carry_out
@@ -27,23 +31,22 @@ add wave -noupdate -expand -group Flags /single_cycle_cpu_testbench/dut/update
 add wave -noupdate -expand -group EX /single_cycle_cpu_testbench/dut/ALUop
 add wave -noupdate -expand -group EX /single_cycle_cpu_testbench/dut/ex_module/alu_result
 add wave -noupdate -expand -group EX /single_cycle_cpu_testbench/dut/ex_module/ALUsrc
-add wave -noupdate -expand -group EX /single_cycle_cpu_testbench/dut/ex_module/ALU_imm_extend
-add wave -noupdate -expand -group Branch /single_cycle_cpu_testbench/dut/BrTaken
-add wave -noupdate -expand -group Branch -radix unsigned /single_cycle_cpu_testbench/dut/new_pc2
-add wave -noupdate -expand -group Branch /single_cycle_cpu_testbench/dut/id_module/BR_to_shift
-add wave -noupdate -expand -group Branch /single_cycle_cpu_testbench/dut/BR_addr
-add wave -noupdate -expand -group Branch /single_cycle_cpu_testbench/dut/id_module/BR_addr64
-add wave -noupdate -expand -group Branch /single_cycle_cpu_testbench/dut/COND_BR_addr
-add wave -noupdate -expand -group Branch /single_cycle_cpu_testbench/dut/id_module/COND_BR_addr64
+add wave -noupdate -group Branch /single_cycle_cpu_testbench/dut/BrTaken
+add wave -noupdate -group Branch -radix unsigned /single_cycle_cpu_testbench/dut/new_pc2
+add wave -noupdate -group Branch /single_cycle_cpu_testbench/dut/id_module/BR_to_shift
+add wave -noupdate -group Branch /single_cycle_cpu_testbench/dut/BR_addr
+add wave -noupdate -group Branch /single_cycle_cpu_testbench/dut/id_module/BR_addr64
+add wave -noupdate -group Branch /single_cycle_cpu_testbench/dut/COND_BR_addr
+add wave -noupdate -group Branch /single_cycle_cpu_testbench/dut/id_module/COND_BR_addr64
 add wave -noupdate /single_cycle_cpu_testbench/dut/if_module/instruction
-add wave -noupdate -expand -group Regfile -radix unsigned /single_cycle_cpu_testbench/dut/id_module/Da
-add wave -noupdate -expand -group Regfile -radix unsigned /single_cycle_cpu_testbench/dut/id_module/Db
-add wave -noupdate -expand -group Regfile -radix unsigned /single_cycle_cpu_testbench/dut/id_module/regfile_module/ReadData2
-add wave -noupdate -expand -group Regfile -radix unsigned /single_cycle_cpu_testbench/dut/id_module/regfile_module/ReadData1
-add wave -noupdate -expand -group Regfile -radix unsigned /single_cycle_cpu_testbench/dut/id_module/regfile_module/ReadRegister2
-add wave -noupdate -expand -group Regfile -radix unsigned /single_cycle_cpu_testbench/dut/id_module/regfile_module/ReadRegister1
+add wave -noupdate -group Regfile -radix unsigned /single_cycle_cpu_testbench/dut/id_module/Da
+add wave -noupdate -group Regfile -radix unsigned /single_cycle_cpu_testbench/dut/id_module/Db
+add wave -noupdate -group Regfile -radix unsigned /single_cycle_cpu_testbench/dut/id_module/regfile_module/ReadData2
+add wave -noupdate -group Regfile -radix unsigned /single_cycle_cpu_testbench/dut/id_module/regfile_module/ReadData1
+add wave -noupdate -group Regfile -radix unsigned /single_cycle_cpu_testbench/dut/id_module/regfile_module/ReadRegister2
+add wave -noupdate -group Regfile -radix unsigned /single_cycle_cpu_testbench/dut/id_module/regfile_module/ReadRegister1
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {134899 ps} 0}
+WaveRestoreCursors {{Cursor 1} {190606 ps} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 150
 configure wave -valuecolwidth 225
@@ -59,4 +62,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ps
 update
-WaveRestoreZoom {0 ps} {326268 ps}
+WaveRestoreZoom {100747 ps} {263883 ps}

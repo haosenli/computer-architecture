@@ -18,7 +18,7 @@
  * ALU_result 		- 64 bits, ALU result.
  * ReadData2_out  - 64 bits, ReadData2 signal. 
  * new_PC2      	- 64 bits, new PC value.
- *negative     	- 1 bit, True if output is negative, false otherwise.
+ * negative     	- 1 bit, True if output is negative, false otherwise.
  * zero         	- 1 bit, True if output is zero, false otherwise.
  * overflow     	- 1 bit, True if output overflowed, false otherwise.
  * carry_out    	- 1 bit, Carry out signal.
@@ -50,21 +50,28 @@ module data_ex(
 	// adds new BR_addr to PC
 	adder64 addPC (.A(BR_PC), .B(PC), .result(new_PC2));
 	
+	// DFFs
+	logic zero_dff, neg_dff, carry_out_dff, overflow_dff;
+	d_ff d_ff_0(.q(zero), .d(zero_dff), .*);
+	d_ff d_ff_1(.q(negative), .d(neg_dff), .*);
+	d_ff d_ff_2(.q(carry_out), .d(carry_out_dff), .*);
+	d_ff d_ff_3(.q(overflow), .d(overflow_dff), .*);
+	
 	// Updates value if flag is set
-	mux_2x1 z(.in({temp_zero, zero}), .sel(update), .out(zero));
-	mux_2x1 n(.in({temp_neg, negative}), .sel(update), .out(negative));
-	mux_2x1 o(.in({temp_overflow, overflow}), .sel(update), .out(overflow));
-	mux_2x1 c(.in({temp_carry_out, carry_out}), .sel(update), .out(carry_out));
+	mux_2x1 z(.in({temp_zero, zero}), .sel(update), .out(zero_dff));
+	mux_2x1 n(.in({temp_neg, negative}), .sel(update), .out(neg_dff));
+	mux_2x1 o(.in({temp_overflow, overflow}), .sel(update), .out(overflow_dff));
+	mux_2x1 c(.in({temp_carry_out, carry_out}), .sel(update), .out(carry_out_dff));
 	
 	// assign ReadData2 to output
 	assign ReadData2_out = ReadData2;
 	
-	always_ff @(posedge clk) begin
-		if (reset) begin
-			zero <= 1'b0;
-			negative <= 1'b0;
-		end
-	 end
+//	always_ff @(posedge clk) begin
+//		if (reset) begin
+//			zero <= 1'b0;
+//			negative <= 1'b0;
+//		end
+//	 end
 	
 endmodule
 
