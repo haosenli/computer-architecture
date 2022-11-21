@@ -16,6 +16,7 @@ module single_cycle_cpu(input logic clk, reset);
     logic BRsignal, Reg2Loc, ALUsrc, MemtoReg, RegWrite, MemWrite, BrTaken, BLsignal, UnCondBr;
     logic negative, zero, overflow, carry_out, branch, cbz, update, update_flags, cond, MemtoReg_out;
     logic [2:0] ALUop;
+	 logic [3:0] xfer_size;
     // Data signals
     logic [5:0] shamt;
     logic [11:0] ALU_imm;

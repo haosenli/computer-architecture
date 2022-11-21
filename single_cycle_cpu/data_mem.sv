@@ -27,6 +27,7 @@
 `timescale 1ns/10ps
 module data_mem(
 	input  logic zero, branch, cbz, clk, MemWrite, MemtoReg_in,
+	input  logic [3:0] xfer_size,
 	input  logic [63:0] alu_result, write_data, new_pc2_ex,
     output logic BrTaken, MemtoReg_out,
 	output logic [63:0] dm_address, dm_read_data, new_pc2
@@ -46,7 +47,7 @@ module data_mem(
     // Data memory module
 	datamem datamem_module(
         .address(alu_result), .write_enable(MemWrite), .read_enable(1'b1), .clk(clk), 
-        .write_data(write_data), .xfer_size(4'd8), .read_data(dm_read_data));
+        .write_data(write_data), .xfer_size(xfer_size), .read_data(dm_read_data));
 endmodule
 
 module data_mem_testbench();

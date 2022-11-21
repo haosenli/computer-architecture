@@ -32,6 +32,7 @@ vlog "./data_mem.sv"
 vlog "./data_wb.sv"
 vlog "./datamem.sv"
 vlog "./instructmem.sv"
+vlog "./instruction_decoder.sv"
 vlog "./mux5_2x1.sv"
 
 
