@@ -35,7 +35,7 @@ module data_mem(
 	logic temp_BrTaken;
 	
 	// Pass-through signals
-    assign new_pc2_mem = add_result;
+    assign new_pc2 = new_pc2_ex;
     assign MemtoReg_out = MemtoReg_in;
     assign dm_address = alu_result;
 	 
@@ -46,5 +46,5 @@ module data_mem(
     // Data memory module
 	datamem datamem_module(
         .address(alu_result), .write_enable(MemWrite), .read_enable(1'b1), .clk(clk), 
-        .write_data(write_data), .xfer_size(3'd8), .read_data(dm_read_data));
+        .write_data(write_data), .xfer_size(4'd8), .read_data(dm_read_data));
 endmodule

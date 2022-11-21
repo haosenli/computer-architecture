@@ -15,11 +15,10 @@
  *
  * Outputs:
  * Reg2Loc  - 1 bit, Reg2Loc control signal.
- * ALUSrc   - 1 bit, ALUsrc control signal.
+ * ALUsrc   - 1 bit, ALUsrc control signal.
  * MemtoReg - 1 bit, MemtoReg control signal.
  * RegWrite - 1 bit, RegWrite control signal.
  * MemWrite - 1 bit, MemWrite control signal.
- * BrTaken  - 1 bit, BrTaken control signal.
  * UnCondBr	- 1 bit, UnCondBr control signal.
  * BLsignal - 1 bit, BLsignal control signal.
  * BRsignal - 1 bit, BRsignal control signal.
@@ -35,12 +34,11 @@
  * shamt    - 6 bits, Shift amount.
  */
 module instruction_decoder(
-	input  logic clk, cond, cbz, branch,
+	input  logic clk, negative, zero, reset,
     input  logic [31:0] instruction,
-    input  logic [63:0] pc,
-    output logic Reg2Loc, ALUSrc, MemtoReg, RegWrite, MemWrite, BrTaken, 
-    output logic UnCondBr, BLsignal, BRsignal, update,
-	output logic [2:0] ALUop, 
+    output logic Reg2Loc, ALUsrc, MemtoReg, RegWrite, MemWrite, 
+    output logic UnCondBr, BLsignal, BRsignal, update, cond, cbz, branch, 
+	 output logic [2:0] ALUop, 
     output logic [4:0] Rn, Rd, Rm, Rt,
     output logic [11:0] ALU_imm,
     output logic [18:0] COND_BR_addr,
@@ -55,7 +53,7 @@ module instruction_decoder(
 	 always_ff @(posedge clk) begin
         // ADDI
         if (instruction[31:22] == 10'b1001000100)/*11'b1001000100?:*/ begin
-            ALUSrc <= 1'b1;
+            ALUsrc <= 1'b1;
             MemtoReg <= 1'b0;
             RegWrite <= 1'b1;
             MemWrite <= 1'b0;
@@ -71,7 +69,7 @@ module instruction_decoder(
         // ADDS
         if (instruction[31:21] == 11'b10101011000)/*11'b10101011000:*/ begin
             Reg2Loc <= 1'b1;
-            ALUSrc <= 1'b0;
+            ALUsrc <= 1'b0;
             MemtoReg <= 1'b0;
             RegWrite <= 1'b1;
             MemWrite <= 1'b0;
@@ -100,7 +98,7 @@ module instruction_decoder(
         if (instruction[31:24] == 8'b01010100)/*11'b01010100???:*/ begin
             cond <= 1'b1;
             Reg2Loc <= 1'b0;
-            ALUSrc <= 1'b0;
+            ALUsrc <= 1'b0;
             UnCondBr <= 1'b0;
             ALUop <= 3'b000;
             RegWrite <= 1'b0;
@@ -142,7 +140,7 @@ module instruction_decoder(
         // CBZ
         if (instruction[31:24] == 8'b10110100)/*11'b10110100???:*/ begin
             Reg2Loc <= 1'b0;
-            ALUSrc <= 1'b0;
+            ALUsrc <= 1'b0;
             RegWrite <= 1'b0;
             MemWrite <= 1'b0;
             UnCondBr <= 1'b0;
@@ -159,7 +157,7 @@ module instruction_decoder(
         
         // LDUR
         if (instruction[31:21] == 11'b11111000010)/*11'b11111000010:*/ begin
-            ALUSrc <= 1'b1;
+            ALUsrc <= 1'b1;
             MemtoReg <= 1'b1;
             RegWrite <= 1'b1;
             MemWrite <= 1'b0;
@@ -175,10 +173,9 @@ module instruction_decoder(
         // STUR
         if (instruction[31:21] == 11'b11111000000)/*11'b11111000000:*/ begin
             Reg2Loc <= 1'b0;
-            ALUSrc <= 1'b1;
+            ALUsrc <= 1'b1;
             RegWrite <= 1'b0;
             MemWrite <= 1'b1;
-            BrTaken <= 1'b0;
             ALUop <= 3'b010;
             Rt <= instruction[4:0];
             Rn <= instruction[9:5];
@@ -191,7 +188,7 @@ module instruction_decoder(
         // SUBS
         if (instruction[31:21] == 11'b11101011000)/*11'b11101011000:*/ begin
             Reg2Loc <= 1'b1;
-            ALUSrc <= 1'b0;
+            ALUsrc <= 1'b0;
             MemtoReg <= 1'b0;
             RegWrite <= 1'b1;
             MemWrite <= 1'b0;
@@ -217,10 +214,10 @@ endmodule
 
 // testbench
 module instruction_decoder_testbench();
-	logic clk, cond;
+	logic clk, cond, negative, zero, update, cbz, branch, reset;
    logic [31:0] instruction;
 	logic [63:0] pc;
-   logic Reg2Loc, ALUSrc, MemtoReg, RegWrite, MemWrite, BrTaken, UnCondBr, BLsignal, BRsignal;
+   logic Reg2Loc, ALUsrc, MemtoReg, RegWrite, MemWrite, UnCondBr, BLsignal, BRsignal;
 	logic [2:0] ALUop;
    logic [4:0] Rn, Rd, Rm, Rt;
    logic [11:0] ALU_imm;

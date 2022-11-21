@@ -28,7 +28,7 @@ module data_ex(
 	input  logic [63:0] ReadData1, ReadData2, PC, ALU_imm_extend, BR_to_shift,
 	input  logic [2:0] ALUop,
 	input  logic ALUsrc, update,
-	output logic [63:0] ALU_result, ReadData2_out, new_PC2,
+	output logic [63:0] alu_result, ReadData2_out, new_PC2,
 	output logic negative, zero, overflow, carry_out
 	);
 	
@@ -40,7 +40,7 @@ module data_ex(
 	mux64_2x1 add_2 (.sel(ALUsrc), .A(ALU_imm_extend), .B(ReadData2), .out(add2));
 	
 	// ALU to compute value
-	alu compute (.A(ReadData1), .B(add2), .cntrl(ALUop), .result(ALU_result), .negative(temp_neg), 
+	alu compute (.A(ReadData1), .B(add2), .cntrl(ALUop), .result(alu_result), .negative(temp_neg), 
 				.zero(temp_zero), .overflow(temp_overflow), .carry_out(temp_carry_out));
 	
 	// shifts BR_addr by 2
@@ -65,7 +65,7 @@ module data_ex_testbench();
 	logic [63:0] ReadData1, ReadData2, PC, ALU_imm_extend, BR_to_shift;
 	logic [2:0] ALUop;
 	logic ALUsrc, update;
-	logic [63:0] ALU_result, ReadData2_out, new_PC2;
+	logic [63:0] alu_result, ReadData2_out, new_PC2;
 	logic negative, zero, overflow, carry_out;
 	
 	data_ex dut (.*);

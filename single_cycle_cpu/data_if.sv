@@ -30,14 +30,15 @@
  * DT_addr  - 9 bits, DT_addr control signal.
  * shamt    - 6 bits, Shift amount.
  */
-
+`timescale 10ps/1ps
 module data_if (
-    input  logic clk, BRsignal,
+    input  logic clk, negative, zero, BrTaken, reset,
     input  logic [63:0] Db,
     output logic [63:0] BLT, pc,
     output logic [18:0] COND_BR_addr,
     output logic [25:0] BR_addr,
-    output logic Reg2Loc, ALUSrc, MemtoReg, RegWrite, MemWrite, BrTaken, BLsignal, update,
+    output logic Reg2Loc, ALUsrc, MemtoReg, RegWrite, MemWrite, BLsignal, update, 
+	 output logic cbz, branch, cond,
     output logic [2:0] ALUop,
     output logic [4:0] Rn, Rd, Rm, Rt,
     output logic [11:0] ALU_imm,
@@ -45,20 +46,18 @@ module data_if (
     output logic [5:0] shamt
     );
     // General signals
-    logic [63:0] new_pc1, new_pc2, adder_addr;
+    logic [63:0] new_pc1, new_pc2, new_pc3, adder_addr, adder_addr_0;
     logic [31:0] instruction;
     // Internal control signals
-    logic UnCondBr;
+    logic UnCondBr, BRsignal;
 
     // 2x1 64-bit Muxes for selecting PC
     mux64_2x1 mux64_1(.sel(BrTaken), .A(adder_addr), .B(new_pc1), .out(new_pc2));
-    mux64_2x1 mux64_2(.sel(BRsignal), .A(Db), .B(new_pc2), .out(pc));
-
-    // Logical Left Shift 2 into Adder
-    adder64 adder64_0(.A({selected_addr64[61:0], 2'b00}), .B(pc), .result(adder_addr_0));
+    mux64_2x1 mux64_2(.sel(BRsignal), .A(Db), .B(new_pc2), .out(new_pc3));
+	 mux64_2x1 mux64_3(.sel(reset), .A(64'd0), .B(new_pc3), .out(pc)); 
 
     // New Program Counter
-    adder64 adder64_1(.A(pc), .b(64'd4), .result(new_pc1));    
+    adder64 adder64_1(.A(pc), .B(64'd4), .result(new_pc1));    
 
     // Instruction Memory
     instructmem im_module(.address(pc), .instruction(instruction), .clk(clk));
@@ -66,4 +65,37 @@ module data_if (
     // Instruction Decoder
     instruction_decoder id_module(.*);
 
+endmodule
+
+`timescale 10ps/1ps
+module data_if_testbench();
+	 logic clk, negative, zero, BrTaken, reset;
+    logic [63:0] Db;
+    logic [63:0] BLT, pc;
+    logic [18:0] COND_BR_addr;
+    logic [25:0] BR_addr;
+    logic Reg2Loc, ALUsrc, MemtoReg, RegWrite, MemWrite, BLsignal, update;
+	 logic cbz, branch, cond;
+    logic [2:0] ALUop;
+    logic [4:0] Rn, Rd, Rm, Rt;
+    logic [11:0] ALU_imm;
+    logic [8:0] DT_addr;
+    logic [5:0] shamt;
+	 logic [31:0] instruction;
+	 
+	 data_if dut (.*);
+	 
+	 parameter ClockDelay = 125;
+	 initial begin // Set up the clock
+		clk <= 0;
+		forever #(ClockDelay/2) clk <= ~clk;
+	 end
+	 
+	 initial begin
+		reset <= 1; @(posedge clk);
+		//Test 1: Adding
+		negative <= 1'b0; zero <= 1'b0; BrTaken <= 1'b0; reset <= 0;
+		Db <= 64'd1;
+		instruction <= 32'b10010001000000011111100101101111; repeat(100) @(posedge clk);
+	 end
 endmodule

@@ -38,8 +38,8 @@
  */
 
 module data_id (
-    input  logic clk, update, Reg2Loc, ALUSrc, MemtoReg, 
-    input  logic RegWrite, MemWrite, BrTaken, BLsignal, 
+    input  logic clk, update, Reg2Loc, ALUsrc, MemtoReg, 
+    input  logic RegWrite, MemWrite, BrTaken, BLsignal, UnCondBr,
     input  logic [63:0] WBsignal, BLT, pc_if,
     input  logic [18:0] COND_BR_addr,
     input  logic [25:0] BR_addr,
@@ -64,14 +64,14 @@ module data_id (
 
     // Sign Extenders
     sign_extender #(19) se_0(.input_data(COND_BR_addr), .output_data(COND_BR_addr64));
-    sign_extender #(26) se_0(.input_data(BR_addr), .output_data(BR_addr64));
+    sign_extender #(26) se_1(.input_data(BR_addr), .output_data(BR_addr64));
 
     // 2x1 64-bits Mux for CondAddr19 and BrAddr26
     mux64_2x1 mux64_0(.sel(UnCondBr), .A(COND_BR_addr64), .B(BR_addr64), .out(BR_to_shift));
 
     // Muxes for RegFile
     mux5_2x1 mux5_0(.sel(Reg2Loc), .A(Rm), .B(Rd), .out(Ab));
-    mux64_2x1 mux64_0(.sel(BLsignal), .A(BLT), .B(WBsignal), .out(Dw));
+    mux64_2x1 mux64_1(.sel(BLsignal), .A(BLT), .B(WBsignal), .out(Dw));
 
     // RegFile module
     regfile regfile_module(

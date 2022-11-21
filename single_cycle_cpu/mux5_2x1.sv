@@ -18,7 +18,7 @@ module mux5_2x1(
     );
     genvar i;
     generate
-        for (i=0; i<5; i++) begin
+        for (i=0; i<5; i++) begin : mux5
             mux_2x1 mux(.in({A[i], B[i]}), .sel(sel), .out(out[i]));
         end
     endgenerate

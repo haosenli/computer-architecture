@@ -21,7 +21,7 @@ module adder64(
     // Connect adders together
     adder add0(.A(A[0]), .B(B[0]), .Cin(1'b0), .sum(result[0]), .Cout(cout[0]));
     generate
-        for (i=1; i<64; i++) begin
+        for (i=1; i<64; i++) begin : add64
             adder add(.A(A[i]), .B(B[i]), .Cin(cout[i-1]), .sum(result[i]), .Cout(cout[i]));
         end
     endgenerate
