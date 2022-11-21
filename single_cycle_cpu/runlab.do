@@ -32,6 +32,7 @@ vlog "./data_mem.sv"
 vlog "./data_wb.sv"
 vlog "./datamem.sv"
 vlog "./instructmem.sv"
+vlog "./instruction_decoder.sv"
 vlog "./mux5_2x1.sv"
 vlog "./single_cycle_cpu.sv"
 
@@ -39,12 +40,12 @@ vlog "./single_cycle_cpu.sv"
 # Call vsim to invoke simulator
 #     Make sure the last item on the line is the name of the
 #     testbench module you want to execute.
-vsim -voptargs="+acc" -t 1ps -lib work data_if_testbench
+vsim -voptargs="+acc" -t 1ps -lib work instruction_decoder_testbench
 
 # Source the wave do file
 #     This should be the file that sets up the signal window for
 #     the module you are testing.
-do data_if_wave.do
+do instruction_decoder_testbench_wave.do
 
 # Set the window types
 view wave
