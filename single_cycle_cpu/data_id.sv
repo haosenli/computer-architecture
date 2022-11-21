@@ -79,3 +79,32 @@ module data_id (
         .ReadRegister1(Rn), .ReadRegister2(Ab), .WriteRegister(Rd),
         .RegWrite(RegWrite), .clk(clk));
 endmodule
+
+`timescale 10ps/1ps
+module data_id_testbench();
+    logic clk, update, Reg2Loc, ALUsrc, MemtoReg, 
+    logic RegWrite, MemWrite, BrTaken, BLsignal, UnCondBr,
+    logic [63:0] WBsignal, BLT, pc_if,
+    logic [18:0] COND_BR_addr,
+    logic [25:0] BR_addr,
+    logic [2:0] ALUop,
+    logic [4:0] Rn, Rd, Rm, Rt,
+    logic [11:0] ALU_imm,
+    logic [8:0] DT_addr,
+    logic [5:0] shamt,
+    logic [63:0] Da, Db, BR_to_shift, pc_id,
+	logic BRsignal, update_flags
+    
+    data_id dut (.*);
+
+    parameter ClockDelay = 125;
+    initial begin // Set up the clock
+        clk <= 0;
+        forever #(ClockDelay/2) clk <= ~clk;
+    end
+
+    initial begin
+        RegWrite <= 1; Rn <= 5'd12; Rm <= 5'd8; Reg2Loc <= 1; 
+        $stop;
+    end
+endmodule
