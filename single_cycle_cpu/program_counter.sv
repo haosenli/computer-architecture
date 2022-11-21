@@ -3,8 +3,9 @@ module program_counter(
     input  logic [63:0] in,
     output logic [63:0] out
     );
+	 genvar i;
     generate
-        for (genvar i=0; i<64; i++) begin: DFFs
+        for (i=0; i<64; i++) begin: DFFs
             d_ff pc_dff(.q(out[i]), .d(in[i]), .*);
         end
     endgenerate

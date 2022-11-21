@@ -14,6 +14,7 @@
  *
  */
 
+`timescale 10ps / 1ps
 module data_wb (
     input  logic MemtoReg,
     input  logic [63:0] dm_read_data, dm_address,

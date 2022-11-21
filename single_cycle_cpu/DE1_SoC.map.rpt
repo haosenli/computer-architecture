@@ -1,5 +1,5 @@
 Analysis & Elaboration report for DE1_SoC
-Sun Nov 20 21:11:14 2022
+Sun Nov 20 22:49:43 2022
 Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 
 
@@ -37,7 +37,7 @@ agreement for further details.
 +-----------------------------------------------------------------------------+
 ; Analysis & Elaboration Summary                                              ;
 +-------------------------------+---------------------------------------------+
-; Analysis & Elaboration Status ; Successful - Sun Nov 20 21:11:14 2022       ;
+; Analysis & Elaboration Status ; Successful - Sun Nov 20 22:49:43 2022       ;
 ; Quartus Prime Version         ; 17.0.0 Build 595 04/25/2017 SJ Lite Edition ;
 ; Revision Name                 ; DE1_SoC                                     ;
 ; Top-level Entity Name         ; instruction_decoder                         ;
@@ -161,23 +161,25 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Elaboration
     Info: Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
-    Info: Processing started: Sun Nov 20 21:11:03 2022
+    Info: Processing started: Sun Nov 20 22:49:29 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE1_SoC -c DE1_SoC --analysis_and_elaboration
 Info (20034): Auto device selection is not supported for Cyclone V device family. The default device, 5CGXFC7C7F23C8, is set.
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info (12021): Found 2 design units, including 2 entities, in source file single_cycle_cpu.sv
     Info (12023): Found entity 1: single_cycle_cpu File: C:/School/EE469/fpga-arm-processor/single_cycle_cpu/single_cycle_cpu.sv Line: 14
-    Info (12023): Found entity 2: single_cycle_cpu_testbench File: C:/School/EE469/fpga-arm-processor/single_cycle_cpu/single_cycle_cpu.sv Line: 47
+    Info (12023): Found entity 2: single_cycle_cpu_testbench File: C:/School/EE469/fpga-arm-processor/single_cycle_cpu/single_cycle_cpu.sv Line: 44
 Info (12021): Found 2 design units, including 2 entities, in source file sign_extender.sv
     Info (12023): Found entity 1: sign_extender File: C:/School/EE469/fpga-arm-processor/single_cycle_cpu/sign_extender.sv Line: 15
-    Info (12023): Found entity 2: sign_extender_testbench File: C:/School/EE469/fpga-arm-processor/single_cycle_cpu/sign_extender.sv Line: 35
+    Info (12023): Found entity 2: sign_extender_testbench File: C:/School/EE469/fpga-arm-processor/single_cycle_cpu/sign_extender.sv Line: 30
 Info (12021): Found 1 design units, including 1 entities, in source file register.sv
     Info (12023): Found entity 1: register File: C:/School/EE469/fpga-arm-processor/single_cycle_cpu/register.sv Line: 17
 Info (12021): Found 2 design units, including 2 entities, in source file regfile.sv
     Info (12023): Found entity 1: regfile File: C:/School/EE469/fpga-arm-processor/single_cycle_cpu/regfile.sv Line: 2
     Info (12023): Found entity 2: regstim File: C:/School/EE469/fpga-arm-processor/single_cycle_cpu/regfile.sv Line: 26
-Info (12021): Found 0 design units, including 0 entities, in source file program_counter.sv
+Info (12021): Found 2 design units, including 2 entities, in source file program_counter.sv
+    Info (12023): Found entity 1: program_counter File: C:/School/EE469/fpga-arm-processor/single_cycle_cpu/program_counter.sv Line: 1
+    Info (12023): Found entity 2: program_counter_testbench File: C:/School/EE469/fpga-arm-processor/single_cycle_cpu/program_counter.sv Line: 15
 Info (12021): Found 2 design units, including 2 entities, in source file mux64_2x1.sv
     Info (12023): Found entity 1: mux64_2x1 File: C:/School/EE469/fpga-arm-processor/single_cycle_cpu/mux64_2x1.sv Line: 14
     Info (12023): Found entity 2: mux64_2x1_testbench File: C:/School/EE469/fpga-arm-processor/single_cycle_cpu/mux64_2x1.sv Line: 28
@@ -220,16 +222,18 @@ Info (12021): Found 2 design units, including 2 entities, in source file datamem
     Info (12023): Found entity 2: datamem_testbench File: C:/School/EE469/fpga-arm-processor/single_cycle_cpu/datamem.sv Line: 70
 Info (12021): Found 1 design units, including 1 entities, in source file data_wb.sv
     Info (12023): Found entity 1: data_wb File: C:/School/EE469/fpga-arm-processor/single_cycle_cpu/data_wb.sv Line: 17
-Info (12021): Found 1 design units, including 1 entities, in source file data_mem.sv
+Info (12021): Found 2 design units, including 2 entities, in source file data_mem.sv
     Info (12023): Found entity 1: data_mem File: C:/School/EE469/fpga-arm-processor/single_cycle_cpu/data_mem.sv Line: 28
+    Info (12023): Found entity 2: data_mem_testbench File: C:/School/EE469/fpga-arm-processor/single_cycle_cpu/data_mem.sv Line: 53
 Info (12021): Found 2 design units, including 2 entities, in source file data_if.sv
     Info (12023): Found entity 1: data_if File: C:/School/EE469/fpga-arm-processor/single_cycle_cpu/data_if.sv Line: 34
-    Info (12023): Found entity 2: data_if_testbench File: C:/School/EE469/fpga-arm-processor/single_cycle_cpu/data_if.sv Line: 72
-Info (12021): Found 1 design units, including 1 entities, in source file data_id.sv
+    Info (12023): Found entity 2: data_if_testbench File: C:/School/EE469/fpga-arm-processor/single_cycle_cpu/data_if.sv Line: 74
+Info (12021): Found 2 design units, including 2 entities, in source file data_id.sv
     Info (12023): Found entity 1: data_id File: C:/School/EE469/fpga-arm-processor/single_cycle_cpu/data_id.sv Line: 40
+    Info (12023): Found entity 2: data_id_testbench File: C:/School/EE469/fpga-arm-processor/single_cycle_cpu/data_id.sv Line: 85
 Info (12021): Found 2 design units, including 2 entities, in source file data_ex.sv
     Info (12023): Found entity 1: data_ex File: C:/School/EE469/fpga-arm-processor/single_cycle_cpu/data_ex.sv Line: 27
-    Info (12023): Found entity 2: data_ex_testbench File: C:/School/EE469/fpga-arm-processor/single_cycle_cpu/data_ex.sv Line: 64
+    Info (12023): Found entity 2: data_ex_testbench File: C:/School/EE469/fpga-arm-processor/single_cycle_cpu/data_ex.sv Line: 72
 Info (12021): Found 2 design units, including 2 entities, in source file d_ff_en.sv
     Info (12023): Found entity 1: d_ff_en File: C:/School/EE469/fpga-arm-processor/single_cycle_cpu/d_ff_en.sv Line: 16
     Info (12023): Found entity 2: d_ff_en_testbench File: C:/School/EE469/fpga-arm-processor/single_cycle_cpu/d_ff_en.sv Line: 27
@@ -252,9 +256,9 @@ Info (12021): Found 2 design units, including 2 entities, in source file adder.s
 Info (12127): Elaborating entity "instruction_decoder" for the top level hierarchy
 Info (12128): Elaborating entity "B_cond_decode" for hierarchy "B_cond_decode:Bcond" File: C:/School/EE469/fpga-arm-processor/single_cycle_cpu/instruction_decoder.sv Line: 52
 Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 4767 megabytes
-    Info: Processing ended: Sun Nov 20 21:11:14 2022
-    Info: Elapsed time: 00:00:11
-    Info: Total CPU time (on all processors): 00:00:26
+    Info: Peak virtual memory: 4768 megabytes
+    Info: Processing ended: Sun Nov 20 22:49:43 2022
+    Info: Elapsed time: 00:00:14
+    Info: Total CPU time (on all processors): 00:00:33
 
 

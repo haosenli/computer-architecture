@@ -30,34 +30,45 @@ module single_cycle_cpu(input logic clk, reset);
     logic [25:0] BR_addr;
     // Registers
     logic [4:0] Rn, Rd, Rm, Rt;
-
-    // Sign extension
-    sign_extender #(12) alu_imm_se(.input_data(ALU_imm), .output_data(ALU_imm_extend));
-
+	 
+	 logic [1:0] counter;
+	 logic slow_clk;
+	 always_ff @(posedge clk) begin
+		if (reset) begin
+			counter <= 0;
+			slow_clk <= 1'd0;
+		end
+		else begin
+			counter <= counter + 1;
+			if (counter == 0) 
+				slow_clk <= ~slow_clk;
+		end
+	end
+	 
     // Datapath stages
-    data_if if_module(.*);
-    data_id id_module(.pc_if(pc), .pc_id(pc_id), .*);
-    data_ex ex_module(.ReadData1(Da), .ReadData2(Db), .PC(pc_id), .ALU_imm_extend, .BR_to_shift, .ReadData2_out(dm_write_data), .new_PC2(new_pc2_ex), .*);
-    data_mem mem_module(.MemtoReg_in(MemtoReg), .MemtoReg_out(MemtoReg_out), .write_data(dm_write_data), .*);
+    data_if if_module(.clk(clk), .*);
+    data_id id_module(.clk(clk), .pc_if(pc), .pc_id(pc_id), .*);
+    data_ex ex_module(.clk(clk), .ReadData1(Da), .ReadData2(Db), .PC(pc_id), .ALU_imm_extend, .BR_to_shift, .ReadData2_out(dm_write_data), .new_PC2(new_pc2_ex), .*);
+    data_mem mem_module(.clk(clk), .MemtoReg_in(MemtoReg), .MemtoReg_out(MemtoReg_out), .write_data(dm_write_data), .*);
     data_wb wb_module(.*);
 endmodule
 
 
 `timescale 10ps/1ps
 module single_cycle_cpu_testbench();
-    logic clk, reset;
+    logic clk, reset, reset_slowclk;
     single_cycle_cpu dut (.*);
 
-    parameter ClockDelay = 125;
+    parameter ClockDelay = 2000;
     initial begin // Set up the clock
         clk <= 0;
         forever #(ClockDelay/2) clk <= ~clk;
     end
 
     initial begin
-		  reset <= 1; #100;
-		  reset <= 0;
-		  #30000;
+		  reset = 1; #1500;
+		  reset = 0;
+		  #60000;
 		  $stop;
     end
 endmodule

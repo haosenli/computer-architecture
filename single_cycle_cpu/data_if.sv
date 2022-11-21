@@ -37,7 +37,7 @@ module data_if (
     output logic [63:0] BLT, pc,
     output logic [18:0] COND_BR_addr,
     output logic [25:0] BR_addr,
-    output logic Reg2Loc, ALUsrc, MemtoReg, RegWrite, MemWrite, BLsignal, update, 
+    output logic Reg2Loc, ALUsrc, MemtoReg, RegWrite, MemWrite, BLsignal, update, UnCondBr, 
 	output logic cbz, branch, cond,
     output logic [2:0] ALUop,
 	output logic [3:0] xfer_size,
@@ -50,7 +50,7 @@ module data_if (
     logic [63:0] new_pc, new_pc1, new_pc3;
     logic [31:0] instruction;
     // Internal control signals
-    logic UnCondBr, BRsignal;
+    logic BRsignal;
 
     // Program Counter
     program_counter pc_module(.in(new_pc3), .out(pc), .*);

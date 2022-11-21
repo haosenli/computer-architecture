@@ -1,5 +1,5 @@
 Flow report for DE1_SoC
-Sun Nov 20 21:11:14 2022
+Sun Nov 20 22:49:43 2022
 Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 
 
@@ -41,7 +41,7 @@ agreement for further details.
 +---------------------------------------------------------------------------+
 ; Flow Summary                                                              ;
 +-----------------------------+---------------------------------------------+
-; Flow Status                 ; Successful - Sun Nov 20 21:11:14 2022       ;
+; Flow Status                 ; Successful - Sun Nov 20 22:49:43 2022       ;
 ; Quartus Prime Version       ; 17.0.0 Build 595 04/25/2017 SJ Lite Edition ;
 ; Revision Name               ; DE1_SoC                                     ;
 ; Top-level Entity Name       ; instruction_decoder                         ;
@@ -63,7 +63,7 @@ agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 11/20/2022 21:11:04 ;
+; Start date & time ; 11/20/2022 22:49:30 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; DE1_SoC             ;
 +-------------------+---------------------+
@@ -74,7 +74,7 @@ agreement for further details.
 +-------------------------------------+----------------------------------------+---------------+---------------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name         ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------+---------------------+------------+
-; COMPILER_SIGNATURE_ID               ; 22331865063803.166900746439276         ; --            ; --                  ; --         ;
+; COMPILER_SIGNATURE_ID               ; 22331865063803.166901337034152         ; --            ; --                  ; --         ;
 ; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --            ; instruction_decoder ; Top        ;
 ; PARTITION_FITTER_PRESERVATION_LEVEL ; -- (Not supported for targeted family) ; --            ; instruction_decoder ; Top        ;
 ; PARTITION_NETLIST_TYPE              ; -- (Not supported for targeted family) ; --            ; instruction_decoder ; Top        ;
@@ -87,8 +87,8 @@ agreement for further details.
 +------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name            ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Elaboration ; 00:00:11     ; 1.0                     ; 4767 MB             ; 00:00:26                           ;
-; Total                  ; 00:00:11     ; --                      ; --                  ; 00:00:26                           ;
+; Analysis & Elaboration ; 00:00:14     ; 1.0                     ; 4768 MB             ; 00:00:33                           ;
+; Total                  ; 00:00:14     ; --                      ; --                  ; 00:00:33                           ;
 +------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

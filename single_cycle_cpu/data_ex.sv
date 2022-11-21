@@ -25,6 +25,7 @@
  *
  */
 module data_ex(
+	input  logic clk, reset,
 	input  logic [63:0] ReadData1, ReadData2, PC, ALU_imm_extend, BR_to_shift,
 	input  logic [2:0] ALUop,
 	input  logic ALUsrc, update,
@@ -58,10 +59,18 @@ module data_ex(
 	// assign ReadData2 to output
 	assign ReadData2_out = ReadData2;
 	
+	always_ff @(posedge clk) begin
+		if (reset) begin
+			zero <= 1'b0;
+			negative <= 1'b0;
+		end
+	 end
+	
 endmodule
 
 `timescale 10ps/1ps
 module data_ex_testbench();
+	logic clk, reset;
 	logic [63:0] ReadData1, ReadData2, PC, ALU_imm_extend, BR_to_shift;
 	logic [2:0] ALUop;
 	logic ALUsrc, update;

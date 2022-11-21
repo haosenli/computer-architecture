@@ -24,12 +24,12 @@
  *
  */
 
-`timescale 1ns/10ps
+`timescale 10ps/1ps
 module data_mem(
 	input  logic zero, branch, cbz, clk, MemWrite, MemtoReg_in,
 	input  logic [3:0] xfer_size,
 	input  logic [63:0] alu_result, write_data, new_pc2_ex,
-    output logic BrTaken, MemtoReg_out,
+   output logic BrTaken, MemtoReg_out,
 	output logic [63:0] dm_address, dm_read_data, new_pc2
 	);
 	
@@ -53,6 +53,7 @@ endmodule
 module data_mem_testbench();
     logic zero, branch, cbz, clk, MemWrite, MemtoReg_in;
 	logic [63:0] alu_result, write_data, new_pc2_ex;
+	logic [3:0] xfer_size;
     logic BrTaken, MemtoReg_out;
 	logic [63:0] dm_address, dm_read_data, new_pc2;
 

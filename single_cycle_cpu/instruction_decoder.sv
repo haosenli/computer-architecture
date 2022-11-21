@@ -33,7 +33,7 @@
  */
 `timescale 10ps / 1ps
 module instruction_decoder(
-	input  logic clk, negative, zero, 
+	input  logic clk, negative, zero,
     input  logic [31:0] instruction,
     output logic Reg2Loc, ALUsrc, MemtoReg, RegWrite, MemWrite, 
     output logic UnCondBr, BLsignal, BRsignal, update, cond, cbz, branch, 
@@ -328,7 +328,8 @@ module instruction_decoder_testbench();
 	logic clk, cond, negative, zero, update, cbz, branch;
    logic [31:0] instruction;
    logic Reg2Loc, ALUsrc, MemtoReg, RegWrite, MemWrite, UnCondBr, BLsignal, BRsignal;
-	logic [2:0] ALUop, xfer_size;
+	logic [2:0] ALUop;
+	logic [3:0] xfer_size;
    logic [4:0] Rn, Rd, Rm;
    logic [11:0] ALU_imm;
    logic [18:0] COND_BR_addr;

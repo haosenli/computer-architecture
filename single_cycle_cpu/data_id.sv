@@ -37,6 +37,7 @@
  * update_flags - 1 bit, Update flags signal.
  */
 
+`timescale 10ps / 1ps
 module data_id (
     input  logic clk, update, Reg2Loc, ALUsrc, MemtoReg, 
     input  logic RegWrite, MemWrite, BrTaken, BLsignal, UnCondBr,
@@ -48,7 +49,7 @@ module data_id (
     input  logic [11:0] ALU_imm,
     input  logic [8:0] DT_addr,
     input  logic [5:0] shamt,
-    output logic [63:0] Da, Db, BR_to_shift, pc_id,
+    output logic [63:0] Da, Db, BR_to_shift, pc_id, ALU_imm_extend,
 	output logic BRsignal, update_flags
 	);
 
@@ -65,9 +66,10 @@ module data_id (
     // Sign Extenders
     sign_extender #(19) se_0(.input_data(COND_BR_addr), .output_data(COND_BR_addr64));
     sign_extender #(26) se_1(.input_data(BR_addr), .output_data(BR_addr64));
+	 sign_extender #(12) se_2(.input_data(ALU_imm), .output_data(ALU_imm_extend));
 
     // 2x1 64-bits Mux for CondAddr19 and BrAddr26
-    mux64_2x1 mux64_0(.sel(UnCondBr), .A(COND_BR_addr64), .B(BR_addr64), .out(BR_to_shift));
+    mux64_2x1 mux64_0(.sel(UnCondBr), .A(BR_addr64), .B(COND_BR_addr64), .out(BR_to_shift));
 
     // Muxes for RegFile
     mux5_2x1 mux5_0(.sel(Reg2Loc), .A(Rm), .B(Rd), .out(Ab));
@@ -92,7 +94,7 @@ module data_id_testbench();
     logic [11:0] ALU_imm;
     logic [8:0] DT_addr;
     logic [5:0] shamt;
-    logic [63:0] Da, Db, BR_to_shift, pc_id;
+    logic [63:0] Da, Db, BR_to_shift, pc_id, ALU_imm_extend;
 	logic BRsignal, update_flags;
     
     data_id dut (.*);
