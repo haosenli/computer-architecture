@@ -82,18 +82,18 @@ endmodule
 
 `timescale 10ps/1ps
 module data_id_testbench();
-    logic clk, update, Reg2Loc, ALUsrc, MemtoReg, 
-    logic RegWrite, MemWrite, BrTaken, BLsignal, UnCondBr,
-    logic [63:0] WBsignal, BLT, pc_if,
-    logic [18:0] COND_BR_addr,
-    logic [25:0] BR_addr,
-    logic [2:0] ALUop,
-    logic [4:0] Rn, Rd, Rm, Rt,
-    logic [11:0] ALU_imm,
-    logic [8:0] DT_addr,
-    logic [5:0] shamt,
-    logic [63:0] Da, Db, BR_to_shift, pc_id,
-	logic BRsignal, update_flags
+    logic clk, update, Reg2Loc, ALUsrc, MemtoReg;
+    logic RegWrite, MemWrite, BrTaken, BLsignal, UnCondBr;
+    logic [63:0] WBsignal, BLT, pc_if;
+    logic [18:0] COND_BR_addr;
+    logic [25:0] BR_addr;
+    logic [2:0] ALUop;
+    logic [4:0] Rn, Rd, Rm, Rt;
+    logic [11:0] ALU_imm;
+    logic [8:0] DT_addr;
+    logic [5:0] shamt;
+    logic [63:0] Da, Db, BR_to_shift, pc_id;
+	logic BRsignal, update_flags;
     
     data_id dut (.*);
 
@@ -104,7 +104,7 @@ module data_id_testbench();
     end
 
     initial begin
-        RegWrite <= 1; Rn <= 5'd12; Rm <= 5'd8; Reg2Loc <= 1; 
+        RegWrite <= 1; Rn <= 5'd8; Rm <= 5'd8; Rd <= 5'd8; BLsignal <= 1'b1; BLT <= 64'd69; Reg2Loc <= 1; repeat(5) @(posedge clk);
         $stop;
     end
 endmodule

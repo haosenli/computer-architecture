@@ -48,3 +48,26 @@ module data_mem(
         .address(alu_result), .write_enable(MemWrite), .read_enable(1'b1), .clk(clk), 
         .write_data(write_data), .xfer_size(4'd8), .read_data(dm_read_data));
 endmodule
+
+module data_mem_testbench();
+    logic zero, branch, cbz, clk, MemWrite, MemtoReg_in;
+	logic [63:0] alu_result, write_data, new_pc2_ex;
+    logic BrTaken, MemtoReg_out;
+	logic [63:0] dm_address, dm_read_data, new_pc2;
+
+    data_mem dut (.*);
+
+    parameter ClockDelay = 125;
+    initial begin // Set up the clock
+        clk <= 0;
+        forever #(ClockDelay/2) clk <= ~clk;
+    end
+
+    initial begin
+        new_pc2_ex <= 64'd64; alu_result <= 64'd128; write_data <= 64'd69;
+        MemtoReg_in <= 1'b1; MemWrite <= 1'b1; zero <= 1'b0; branch <= 1'b0; cbz <= 1'b0;
+        repeat(10) @(posedge clk);
+        $stop;
+    end
+
+endmodule
