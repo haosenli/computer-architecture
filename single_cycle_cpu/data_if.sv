@@ -47,19 +47,18 @@ module data_if (
     output logic [5:0] shamt
     );
     // General signals
-    logic [63:0] new_pc1, new_pc3, new_pc4;
+    logic [63:0] new_pc, new_pc1, new_pc3;
     logic [31:0] instruction;
     // Internal control signals
     logic UnCondBr, BRsignal;
 
     // Program Counter
-    program_counter pc_module(.in(new_pc4), .out(pc), .*);
+    program_counter pc_module(.in(new_pc3), .out(pc), .*);
 
     // 2x1 64-bit Muxes for selecting PC
     mux64_2x1 mux64_1(.sel(BrTaken), .A(new_pc2), .B(new_pc1), .out(new_pc));
     mux64_2x1 mux64_2(.sel(BRsignal), .A(Db), .B(new_pc), .out(new_pc3));
-    mux64_2x1 mux64_3(.sel(reset), .A(64'd0), .B(new_pc3), .out(new_pc4)); 
-
+    
     // New Program Counter
     adder64 adder64_1(.A(pc), .B(64'd4), .result(new_pc1));
 
