@@ -6,8 +6,12 @@
  *
  * Inputs:
  * clk      - 1 bit, Clock signal.
- * BRsignal - 1 bit, BR selector signal for PC.
+ * negative - 1 bit, ALU negative flag.
+ * zero     - 1 bit, ALU zero flag.
+ * BrTaken  - 1 bit, BrTaken control signal.
+ * reset    - 1 bit, CPU reset signal.
  * Db       - 64 bits, Db signal from RegFile.
+ * new_pc2  - 64 bits, New program counter value.
  *
  * Outputs:
  * BLT      - 64 bits, Branch link transfer signal.
@@ -19,8 +23,13 @@
  * MemtoReg - 1 bit, MemtoReg control signal.
  * RegWrite - 1 bit, RegWrite control signal.
  * MemWrite - 1 bit, MemWrite control signal.
- * BrTaken  - 1 bit, BrTaken control signal.
  * BLsignal - 1 bit, BLsignal control signal.
+ * cbz      - 1 bit, CBZ control signal.
+ * branch   - 1 bit, Branch control signal.
+ * cond     - 1 bit, Cond control signal.
+ * update   - 1 bit, Flags update control signal.
+ * UnCondBr - 1 bit, UnCondBr control signal.
+ * DTSignal - 1 bit, DTsignal control signal.
  * ALUop    - 3 bits, ALUop control signal.
  * Rn       - 4 bits, Rn register address.
  * Rd       - 4 bits, Rd register address.
@@ -37,8 +46,8 @@ module data_if (
     output logic [63:0] BLT, pc,
     output logic [18:0] COND_BR_addr,
     output logic [25:0] BR_addr,
-    output logic Reg2Loc, ALUsrc, MemtoReg, RegWrite, MemWrite, BLsignal, update, UnCondBr, DTsignal,
-	output logic cbz, branch, cond,
+    output logic Reg2Loc, ALUsrc, MemtoReg, RegWrite, MemWrite, BLsignal, 
+	output logic cbz, branch, cond, update, UnCondBr, DTsignal,
     output logic [2:0] ALUop,
 	output logic [3:0] xfer_size,
     output logic [4:0] Rn, Rd, Rm, Rt,
