@@ -34,9 +34,9 @@
  * Da       		- 64 bits, Da signal from RegFile.
  * Db       		- 64 bits, Db signal from RegFile.
  * pc_id   			- 64 bits, Program counter signal.
- * BR_to_shift 	- 64 bits, The sign-extended branch address.
- * ALU_imm_extend - 64 bits, The sign-extended ALU_imm address.
- * DT_addr_extend - 64 bits, The sign-extended DT_addr address.
+ * BR_to_shift 	    - 64 bits, The sign-extended branch address.
+ * ALU_imm_extend   - 64 bits, The sign-extended ALU_imm address.
+ * DT_addr_extend   - 64 bits, The sign-extended DT_addr address.
  * ALU_or_DT		- 64 bits, Either ALU or DT signal.
  * BRsignal 		- 1 bit, BR selector signal for PC.
  * update_flags 	- 1 bit, Update flags signal.

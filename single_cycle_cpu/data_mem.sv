@@ -7,19 +7,20 @@
  * Inputs:
  * zero         - 1 bit, Zero flag from ALU.
  * branch       - 1 bit, Branch control signal.
- * cbz			 - 1 bit, CBZ control signal.
+ * cbz			- 1 bit, CBZ control signal.
  * clk          - 1 bit, Clock signal.
  * MemWrite     - 1 bit, MemWrite control signal.
  * MemtoReg_in  - 1 bit, MemtoReg control signal.
+ * xfer_size 	- 4 bits, xfer size control signal.
  * alu_result   - 64 bits, ALU result signal.
- * add_result   - 64 bits, Add result signal.
  * write_data   - 64 bits, Data memory write data.
+ * new_pc2_ex   - 64 bits, PC signal calculated from EX stage.
  *
  * Outputs:
  * BrTaken      - 1 bit, BrTaken control signal.
  * MemtoReg_out - 1 bit, MemtoReg control signal.
  * dm_read_data - 64 bits, Data memory read data.
- * address      - 64 bits, Data memory address. 
+ * dm_address   - 64 bits, Data memory address. 
  * new_pc2      - 64 bits, New program counter signal.
  *
  */
@@ -29,7 +30,7 @@ module data_mem(
 	input  logic zero, branch, cbz, clk, MemWrite, MemtoReg_in,
 	input  logic [3:0] xfer_size,
 	input  logic [63:0] alu_result, write_data, new_pc2_ex,
-   output logic BrTaken, MemtoReg_out,
+    output logic BrTaken, MemtoReg_out,
 	output logic [63:0] dm_address, dm_read_data, new_pc2
 	);
 	
