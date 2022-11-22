@@ -4,18 +4,22 @@
  * 
  * This module changes the current bit length of the input data to be 64 bits by extending the left-most bit.
  *
+ * Parameters:
+ *	N					- Default: 8, specify the length of the input data.
+ *
  * Inputs:
- * input_data		- The current data to be sign extended
+ * input_data		- N-1 bits, The current data to be sign extended
  *
  * Outputs:
- * output_data		-The 64 bit data after it is sign extended
+ * output_data		- 64 bits, data after it is sign extended
  *
  */
 `timescale 10ps / 1ps
 module sign_extender #(parameter N=8) (
     input  logic [N-1:0] input_data,
-	output logic [63:0] output_data
+	 output logic [63:0] output_data
     );
+	 
 	assign output_data[N-1:0] = input_data[N-1:0];
 	genvar i;
 	
@@ -25,7 +29,7 @@ module sign_extender #(parameter N=8) (
 			assign output_data[i] = input_data[N-1]; 
 		end
 	endgenerate						  
-	//assign output_data = {{(64-N){input_data[N-1]}}, input_data[N-1:0]};			  
+		  
 endmodule
 
 module sign_extender_testbench();

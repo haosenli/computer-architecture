@@ -15,7 +15,7 @@
  * update			- 1 bit, Update output signals
  *
  * Outputs:
- * ALU_result 		- 64 bits, ALU result.
+ * alu_result 		- 64 bits, alu result.
  * ReadData2_out  - 64 bits, ReadData2 signal. 
  * new_PC2      	- 64 bits, new PC value.
  * negative     	- 1 bit, True if output is negative, false otherwise.
@@ -50,7 +50,7 @@ module data_ex(
 	// adds new BR_addr to PC
 	adder64 addPC (.A(BR_PC), .B(PC), .result(new_PC2));
 	
-	// DFFs
+	// DFFs to set the flags
 	logic zero_dff, neg_dff, carry_out_dff, overflow_dff;
 	d_ff d_ff_0(.q(zero), .d(zero_dff), .*);
 	d_ff d_ff_1(.q(negative), .d(neg_dff), .*);
@@ -65,13 +65,6 @@ module data_ex(
 	
 	// assign ReadData2 to output
 	assign ReadData2_out = ReadData2;
-	
-//	always_ff @(posedge clk) begin
-//		if (reset) begin
-//			zero <= 1'b0;
-//			negative <= 1'b0;
-//		end
-//	 end
 	
 endmodule
 

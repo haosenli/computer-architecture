@@ -1,3 +1,18 @@
+/*
+ * EE469 Autumn 2022
+ * Haosen Li, Peter Tran
+ * 
+ * This file contains the program counter in a CPU.
+ *
+ * Inputs:
+ * clk			- 1 bit, Clock signal.
+ * reset			- 1 bit, Sets the out to be 0 if true.
+ * in   			- 64 bits, Value to be inputted into the D_FF.
+ *
+ * Outputs:
+ * out 			- 64 bits, Output value of the D_FF.
+ *
+ */
 module program_counter(
     input  logic clk, reset,
     input  logic [63:0] in,
