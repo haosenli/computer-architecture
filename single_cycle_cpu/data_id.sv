@@ -5,36 +5,41 @@
  * This file contains the datapath for instruction fetch in a CPU.
  *
  * Inputs:
- * clk      - 1 bit, Clock signal.
- * update   - 1 bit, Update flags signal.
- * Reg2Loc  - 1 bit, Reg2Loc control signal.
- * ALUSrc   - 1 bit, ALUsrc control signal.
- * MemtoReg - 1 bit, MemtoReg control signal.
- * RegWrite - 1 bit, RegWrite control signal.
- * MemWrite - 1 bit, MemWrite control signal.
- * BrTaken  - 1 bit, BrTaken control signal.
- * BLsignal - 1 bit, BLsignal control signal.
- * WBsignal - 64 bits, Write Back signal from the WB stage.
- * pc_if    - 64 bits, Program counter signal.
- * BLT      - 64 bits, Branch link transfer signal.
- * COND_BR_addr - 19 bits, Conditional branch address.
- * BR_addr  - 26 bits, Branch address.
- * ALUop    - 3 bits, ALUop control signal.
- * Rn       - 4 bits, Rn register address.
- * Rd       - 4 bits, Rd register address.
- * Rm       - 4 bits, Rm register address.
- * Rt       - 4 bits, Rt register address.
- * ALU_imm  - 12 bits, ALU_imm control signal.
- * DT_addr  - 9 bits, DT_addr control signal.
- * shamt    - 6 bits, Shift amount.
+ * clk      		- 1 bit, Clock signal.
+ * update   		- 1 bit, Update flags signal.
+ * Reg2Loc  		- 1 bit, Reg2Loc control signal.
+ * ALUSrc   		- 1 bit, ALUsrc control signal.
+ * MemtoReg 		- 1 bit, MemtoReg control signal.
+ * RegWrite 		- 1 bit, RegWrite control signal.
+ * MemWrite 		- 1 bit, MemWrite control signal.
+ * BrTaken  		- 1 bit, BrTaken control signal.
+ * BLsignal 		- 1 bit, BLsignal control signal.
+ * UnCondBr `		- 1 bit, UnCondBr control signal.
+ * DTsignal 		- 1 bit, DTsignal control signal.
+ * WBsignal 		- 64 bits, Write Back signal from the WB stage.
+ * pc_if    		- 64 bits, Program counter signal.
+ * BLT      		- 64 bits, Branch link transfer signal.
+ * COND_BR_addr 	- 19 bits, Conditional branch address.
+ * BR_addr  		- 26 bits, Branch address.
+ * ALUop    		- 3 bits, ALUop control signal.
+ * Rn       		- 4 bits, Rn register address.
+ * Rd       		- 4 bits, Rd register address.
+ * Rm       		- 4 bits, Rm register address.
+ * Rt       		- 4 bits, Rt register address.
+ * ALU_imm  		- 12 bits, ALU_imm control signal.
+ * DT_addr  		- 9 bits, DT_addr control signal.
+ * shamt    		- 6 bits, Shift amount.
  *
  * Outputs:
- * BRsignal - 1 bit, BR selector signal for PC.
- * Da       - 64 bits, Da signal from RegFile.
- * Db       - 64 bits, Db signal from RegFile.
- * BR_to_shift - 64 bits, The sign-extended branch address.
- * pc_id   - 64 bits, Program counter signal.
- * update_flags - 1 bit, Update flags signal.
+ * Da       		- 64 bits, Da signal from RegFile.
+ * Db       		- 64 bits, Db signal from RegFile.
+ * pc_id   			- 64 bits, Program counter signal.
+ * BR_to_shift 	- 64 bits, The sign-extended branch address.
+ * ALU_imm_extend - 64 bits, The sign-extended ALU_imm address.
+ * DT_addr_extend - 64 bits, The sign-extended DT_addr address.
+ * ALU_or_DT		- 64 bits, Either ALU or DT signal.
+ * BRsignal 		- 1 bit, BR selector signal for PC.
+ * update_flags 	- 1 bit, Update flags signal.
  */
 
 `timescale 10ps / 1ps
