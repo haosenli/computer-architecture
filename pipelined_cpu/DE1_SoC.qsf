@@ -1,0 +1,80 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 2017  Intel Corporation. All rights reserved.
+# Your use of Intel Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Intel Program License 
+# Subscription Agreement, the Intel Quartus Prime License Agreement,
+# the Intel MegaCore Function License Agreement, or other 
+# applicable license agreement, including, without limitation, 
+# that your use is for the sole purpose of programming logic 
+# devices manufactured by Intel and sold by Intel or its 
+# authorized distributors.  Please refer to the applicable 
+# agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus Prime
+# Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
+# Date created = 14:40:15  November 09, 2022
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		DE1_SoC_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus Prime software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY "Cyclone V"
+set_global_assignment -name DEVICE AUTO
+set_global_assignment -name TOP_LEVEL_ENTITY instruction_decoder
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 17.0.0
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "14:40:15  NOVEMBER 09, 2022"
+set_global_assignment -name LAST_QUARTUS_VERSION "17.0.0 Lite Edition"
+set_global_assignment -name SYSTEMVERILOG_FILE single_cycle_cpu.sv
+set_global_assignment -name SYSTEMVERILOG_FILE sign_extender.sv
+set_global_assignment -name SYSTEMVERILOG_FILE register.sv
+set_global_assignment -name SYSTEMVERILOG_FILE regfile.sv
+set_global_assignment -name SYSTEMVERILOG_FILE program_counter.sv
+set_global_assignment -name SYSTEMVERILOG_FILE mux64_2x1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE mux5_2x1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE mux_32x1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE mux_16x1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE mux_8x1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE mux_4x1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE mux_2x1.sv
+set_global_assignment -name SYSTEMVERILOG_FILE multiplexor.sv
+set_global_assignment -name SYSTEMVERILOG_FILE math.sv
+set_global_assignment -name SYSTEMVERILOG_FILE instructmem.sv
+set_global_assignment -name SYSTEMVERILOG_FILE instruction_decoder.sv
+set_global_assignment -name SYSTEMVERILOG_FILE enabled_decoder_5x32.sv
+set_global_assignment -name SYSTEMVERILOG_FILE decoder_3x8.sv
+set_global_assignment -name SYSTEMVERILOG_FILE datamem.sv
+set_global_assignment -name SYSTEMVERILOG_FILE data_wb.sv
+set_global_assignment -name SYSTEMVERILOG_FILE data_mem.sv
+set_global_assignment -name SYSTEMVERILOG_FILE data_if.sv
+set_global_assignment -name SYSTEMVERILOG_FILE data_id.sv
+set_global_assignment -name SYSTEMVERILOG_FILE data_ex.sv
+set_global_assignment -name SYSTEMVERILOG_FILE d_ff_en.sv
+set_global_assignment -name SYSTEMVERILOG_FILE d_ff.sv
+set_global_assignment -name SYSTEMVERILOG_FILE B_cond_decode.sv
+set_global_assignment -name SYSTEMVERILOG_FILE alu.sv
+set_global_assignment -name SYSTEMVERILOG_FILE adder64.sv
+set_global_assignment -name SYSTEMVERILOG_FILE adder_more.sv
+set_global_assignment -name SYSTEMVERILOG_FILE adder.sv
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

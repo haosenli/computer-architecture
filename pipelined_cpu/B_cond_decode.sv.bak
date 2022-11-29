@@ -1,0 +1,42 @@
+`timescale 10ps / 1ps
+module B_cond_decode(
+	input  logic negative, zero,
+	input  logic [4:0] Rt,
+	output logic branch
+	);
+	
+	logic not_d, not_b, not_zero, not_neg, not_BD, BD,zero_logic, eq, ne, ge, lt, gt, le;
+	logic ge_logic, lt_logic, gt_logic, le_logic;
+	logic branch_temp1, branch_temp2;
+	
+	// not signals
+	not #5 nd(not_d, Rt[0]);
+	not #5 nb(not_b, Rt[2]);
+	not #5 n0(not_zero, zero);
+	not #5 nn(not_neg, negative);
+	
+	// logic for rt
+	and #5 not_B_D(not_BD, not_d, not_d);
+	and #5 B_D(BD, Rt[2], Rt[0]);
+	or #5 zero_log(zero_logic, not_BD, BD);
+	
+	// conditional logic with negative and zeros
+	or #5 not_neg_or_zero(ge_logic, not_neg, zero);
+	and #5 neg_and_not_zero(lt_logic, negative, not_zero);
+	and #5 not_neg_and_not_zero(gt_logic, not_neg, not_zero);
+	or #5 neg_or_zero(le_logic, negative, zero);
+	
+	// Conditional logic
+	and #5 equal_to(eq, zero, zero_log);
+	and #5 not_equal(ne, not_zero, zero_log);
+	and #5 greater_equal(ge, ge_logic);
+	and #5 less_than(lt, lt_logic);
+	and #5 greater_than(gt, gt_logic);
+	and #5 less_equal(le, le_logic);
+	
+	// branch logic
+	or #5 branch_log_temp1(branch_temp1, equal_to, not_equal, greater_equal);
+	or #5 branch_log_temp2(branch_temp2, less_than, greater_than, less_equal);
+	or #5 branch_logic(branch, branch_temp1, branch_temp2);
+	
+endmodule

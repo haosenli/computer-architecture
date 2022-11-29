@@ -1,0 +1,41 @@
+/*
+ * EE469 Autumn 2022
+ * Haosen Li, Peter Tran
+ * 
+ * This file contains the adder64 file. This module can only do simple addition.
+ *
+ * Inputs:
+ * A, B         - 64 bits, Signals to be operated on.
+ *
+ * Outputs:
+ * result       - 64 bits, Adder result.
+ */
+
+`timescale 10ps/1ps
+module adder64(
+    input  logic [63:0] A, B,
+    output logic [63:0] result
+    );
+    logic [63:0] cout;
+    genvar i;
+    // Connect adders together
+    adder add0(.A(A[0]), .B(B[0]), .Cin(1'b0), .sum(result[0]), .Cout(cout[0]));
+    generate
+        for (i=1; i<64; i++) begin
+            adder add(.A(A[i]), .B(B[i]), .Cin(cout[i-1]), .sum(result[i]), .Cout(cout[i]));
+        end
+    endgenerate
+endmodule
+
+`timescale 10ps/1ps
+module adder64_testbench();
+    logic [63:0] A, B, result;
+
+    adder64 dut(.*);
+
+    initial begin
+        A = 64'd10; B = 64'd20; #2000;
+        A = 64'd40; B = 64'd80; #2000;
+        $stop;
+    end
+endmodule
