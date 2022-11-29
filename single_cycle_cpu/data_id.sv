@@ -71,12 +71,12 @@ module data_id (
     // Sign Extenders
     sign_extender #(19) se_0(.input_data(COND_BR_addr), .output_data(COND_BR_addr64));
     sign_extender #(26) se_1(.input_data(BR_addr), .output_data(BR_addr64));
-	 sign_extender #(12) se_2(.input_data(ALU_imm), .output_data(ALU_imm_extend));
-	 sign_extender #(9)  se_3(.input_data(DT_addr), .output_data(DT_addr_extend));
+    sign_extender #(12) se_2(.input_data(ALU_imm), .output_data(ALU_imm_extend));
+    sign_extender #(9)  se_3(.input_data(DT_addr), .output_data(DT_addr_extend));
 
     // 2x1 64-bits Mux for CondAddr19 and BrAddr26
     mux64_2x1 mux64_0(.sel(UnCondBr), .A(BR_addr64), .B(COND_BR_addr64), .out(BR_to_shift));
-	 mux64_2x1 mux64_1(.sel(DTsignal), .A(DT_addr_extend), .B(ALU_imm_extend), .out(ALU_or_DT));
+    mux64_2x1 mux64_1(.sel(DTsignal), .A(DT_addr_extend), .B(ALU_imm_extend), .out(ALU_or_DT));
 
     // Muxes for RegFile
     mux5_2x1 mux5_0(.sel(Reg2Loc), .A(Rm), .B(Rd), .out(Ab));
