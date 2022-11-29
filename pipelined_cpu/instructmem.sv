@@ -3,12 +3,14 @@
 // two words of the address must be 0).
 //
 // To change the file that is loaded, edit the filename here:
-//`define BENCHMARK "../benchmarks/test01_AddiB.arm"
+`define BENCHMARK "../benchmarks/test01_AddiB.arm"
 //`define BENCHMARK "../benchmarks/test02_AddsSubs.arm"
 //`define BENCHMARK "../benchmarks/test03_CbzB.arm"
 //`define BENCHMARK "../benchmarks/test04_LdurStur.arm"
 //`define BENCHMARK "../benchmarks/test05_Blt.arm"
-`define BENCHMARK "../benchmarks/test06_BlBr.arm"
+//`define BENCHMARK "../benchmarks/test06_BlBr.arm"
+//`define BENCHMARK "../benchmarks/test11_Sort.arm"
+//`define BENCHMARK "../benchmarks/test12_Fibonacci.arm"
 
 `timescale 10ps/1ps
 
@@ -16,9 +18,9 @@
 `define INSTRUCT_MEM_SIZE		1024
 	
 module instructmem (
-	input	logic		[63:0]	address,
+	input		logic		[63:0]	address,
 	output	logic		[31:0]	instruction,
-	input	logic				clk	// Memory is combinational, but used for error-checking
+	input		logic					clk	// Memory is combinational, but used for error-checking
 	);
 
 	// Force %t's to print in a nice format.

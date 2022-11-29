@@ -14,10 +14,12 @@
  * sub          - 1 bit, Subtract signal.
  */
 
+`timescale 10ps/1ps
 module alu_signals(
-    input  logic [2:0] cntrl;
+    input  logic [2:0] cntrl,
     output logic Cout_sel, sum_sel1, sum_sel0, sub
     );
+	 logic not_cntrl_2;
     // Calculate Cout_sel signal
     not #5 n0(not_cntrl_2, cntrl[2]);
     and #5 a0(Cout_sel, not_cntrl_2, cntrl[1]);

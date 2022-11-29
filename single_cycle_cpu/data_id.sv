@@ -25,7 +25,6 @@
  * Rn       		- 4 bits, Rn register address.
  * Rd       		- 4 bits, Rd register address.
  * Rm       		- 4 bits, Rm register address.
- * Rt       		- 4 bits, Rt register address.
  * ALU_imm  		- 12 bits, ALU_imm control signal.
  * DT_addr  		- 9 bits, DT_addr control signal.
  * shamt    		- 6 bits, Shift amount.
@@ -44,18 +43,18 @@
 
 `timescale 10ps / 1ps
 module data_id (
-    input  logic clk, update, Reg2Loc, ALUsrc, MemtoReg, 
+    input  logic clk, update, Reg2Loc, ALUsrc, MemtoReg, cbz,
     input  logic RegWrite, MemWrite, BrTaken, BLsignal, UnCondBr, DTsignal,
     input  logic [63:0] WBsignal, BLT, pc_if,
     input  logic [18:0] COND_BR_addr,
     input  logic [25:0] BR_addr,
     input  logic [2:0] ALUop,
-    input  logic [4:0] Rn, Rd, Rm, Rt,
+    input  logic [4:0] Rn, Rd, Rm,
     input  logic [11:0] ALU_imm,
     input  logic [8:0] DT_addr,
     input  logic [5:0] shamt,
     output logic [63:0] Da, Db, BR_to_shift, pc_id, ALU_imm_extend, DT_addr_extend, ALU_or_DT,
-	output logic BRsignal, update_flags
+	output logic BRsignal, update_flags, cbz_id
 	);
 
     // RegFile signals
@@ -67,16 +66,17 @@ module data_id (
     // Pass through signals
     assign pc_id = pc_if;
     assign update_flags = update;
+	 assign cbz_id = cbz;
 
     // Sign Extenders
     sign_extender #(19) se_0(.input_data(COND_BR_addr), .output_data(COND_BR_addr64));
     sign_extender #(26) se_1(.input_data(BR_addr), .output_data(BR_addr64));
-    sign_extender #(12) se_2(.input_data(ALU_imm), .output_data(ALU_imm_extend));
-    sign_extender #(9)  se_3(.input_data(DT_addr), .output_data(DT_addr_extend));
+	 sign_extender #(12) se_2(.input_data(ALU_imm), .output_data(ALU_imm_extend));
+	 sign_extender #(9)  se_3(.input_data(DT_addr), .output_data(DT_addr_extend));
 
     // 2x1 64-bits Mux for CondAddr19 and BrAddr26
     mux64_2x1 mux64_0(.sel(UnCondBr), .A(BR_addr64), .B(COND_BR_addr64), .out(BR_to_shift));
-    mux64_2x1 mux64_1(.sel(DTsignal), .A(DT_addr_extend), .B(ALU_imm_extend), .out(ALU_or_DT));
+	 mux64_2x1 mux64_1(.sel(DTsignal), .A(DT_addr_extend), .B(ALU_imm_extend), .out(ALU_or_DT));
 
     // Muxes for RegFile
     mux5_2x1 mux5_0(.sel(Reg2Loc), .A(Rm), .B(Rd), .out(Ab));
@@ -91,7 +91,7 @@ endmodule
 
 `timescale 10ps/1ps
 module data_id_testbench();
-    logic clk, update, Reg2Loc, ALUsrc, MemtoReg;
+    logic clk, update, Reg2Loc, ALUsrc, MemtoReg, cbz_if;
     logic RegWrite, MemWrite, BrTaken, BLsignal, UnCondBr, DTsignal;
     logic [63:0] WBsignal, BLT, pc_if;
     logic [18:0] COND_BR_addr;
@@ -102,7 +102,7 @@ module data_id_testbench();
     logic [8:0] DT_addr;
     logic [5:0] shamt;
     logic [63:0] Da, Db, BR_to_shift, pc_id, ALU_imm_extend, DT_addr_extend, ALU_or_DT;
-	logic BRsignal, update_flags;
+	logic BRsignal, update_flags, cbz_id;
     
     data_id dut (.*);
 

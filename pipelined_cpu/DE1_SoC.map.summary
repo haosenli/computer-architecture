@@ -1,7 +1,7 @@
-Analysis & Elaboration Status : Successful - Mon Nov 21 14:52:27 2022
+Analysis & Elaboration Status : Failed - Mon Nov 21 17:53:41 2022
 Quartus Prime Version : 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 Revision Name : DE1_SoC
-Top-level Entity Name : instruction_decoder
+Top-level Entity Name : single_cycle_cpu
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A until Partition Merge
 Total registers : N/A until Partition Merge

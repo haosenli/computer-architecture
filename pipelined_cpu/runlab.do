@@ -36,6 +36,8 @@ vlog "./instruction_decoder.sv"
 vlog "./mux5_2x1.sv"
 vlog "./program_counter.sv"
 vlog "./single_cycle_cpu.sv"
+vlog "./alu_flags.sv"
+vlog "./alu_signals.sv"
 
 # Call vsim to invoke simulator
 #     Make sure the last item on the line is the name of the

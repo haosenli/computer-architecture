@@ -15,14 +15,14 @@
 module single_cycle_cpu(input logic clk, reset);
     // Control signals
     logic BRsignal, Reg2Loc, ALUsrc, MemtoReg, RegWrite, MemWrite, BrTaken, BLsignal, UnCondBr, DTsignal;
-    logic negative, zero, overflow, carry_out, branch, cbz, update, update_flags, cond, MemtoReg_out;
+    logic negative, zero, overflow, carry_out, branch, cbz, cbz_id, update, update_flags, cond, MemtoReg_out;
     logic [2:0] ALUop;
-	 logic [3:0] xfer_size;
+    logic [3:0] xfer_size;
     // Data signals
     logic [5:0] shamt;
     logic [11:0] ALU_imm;
     logic [63:0] Da, Db, BR_to_shift, BLT, WBsignal, ALU_imm_extend, DT_addr_extend, ALU_or_DT;
-    logic [63:0] alu_result, dm_address, dm_read_data, dm_write_data;
+    logic [63:0] alu_result, dm_address, dm_read_data, dm_write_data, new_pc1;
     // Program counter
     logic [63:0] pc, pc_id, new_pc2_ex, new_pc2;
     // Addresses
@@ -30,7 +30,7 @@ module single_cycle_cpu(input logic clk, reset);
     logic [18:0] COND_BR_addr;
     logic [25:0] BR_addr;
     // Registers
-    logic [4:0] Rn, Rd, Rm, Rt;
+    logic [4:0] Rn, Rd, Rm;
 	 
     // Datapath stages
     data_if if_module(.clk(clk), .*);
@@ -43,10 +43,10 @@ endmodule
 
 `timescale 10ps/1ps
 module single_cycle_cpu_testbench();
-    logic clk, reset, reset_slowclk;
+    logic clk, reset;
     single_cycle_cpu dut (.*);
 
-    parameter ClockDelay = 2000;
+    parameter ClockDelay = 1500;
     initial begin // Set up the clock
         clk <= 0;
         forever #(ClockDelay/2) clk <= ~clk;
@@ -55,7 +55,14 @@ module single_cycle_cpu_testbench();
     initial begin
 		  reset = 1; #1500;
 		  reset = 0;
+		  // Rest of the tests
 		  #60000;
+		  
+		  // Test11
+		  //#1500000;
+		  
+		  // Test12
+		  //#500000;
 		  $stop;
     end
 endmodule

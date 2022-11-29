@@ -12,7 +12,8 @@
  * BR_to_shift		- 64 bits, BR_addr bit 64 bit signal.
  * ALUop				- 3 bits, Operation for ALU.
  * ALUsrc			- 1 bit, ALUsrc control signal.
- * update			- 1 bit, Update output signals
+ * update			- 1 bit, Update control signal.
+ * cbz_id			- 1 bit, cbz_id control signal.
  *
  * Outputs:
  * alu_result 		- 64 bits, alu result.
@@ -28,7 +29,7 @@ module data_ex(
 	input  logic clk, reset,
 	input  logic [63:0] ReadData1, ReadData2, PC, ALU_or_DT, BR_to_shift,
 	input  logic [2:0] ALUop,
-	input  logic ALUsrc, update,
+	input  logic ALUsrc, update, cbz_id,
 	output logic [63:0] alu_result, ReadData2_out, new_PC2,
 	output logic negative, zero, overflow, carry_out
 	);
@@ -36,6 +37,8 @@ module data_ex(
 	// logic
 	logic [63:0] add2, BR_PC;
 	logic temp_zero, temp_neg, temp_overflow, temp_carry_out;
+	logic zero_dff, neg_dff, carry_out_dff, overflow_dff;
+	logic zero_q, neg_q, carry_out_q, overflow_q;
 	 
 	// mux to find what gets used for ALU
 	mux64_2x1 add_2 (.sel(ALUsrc), .A(ALU_or_DT), .B(ReadData2), .out(add2));
@@ -51,11 +54,13 @@ module data_ex(
 	adder64 addPC (.A(BR_PC), .B(PC), .result(new_PC2));
 	
 	// DFFs to set the flags
-	logic zero_dff, neg_dff, carry_out_dff, overflow_dff;
-	d_ff d_ff_0(.q(zero), .d(zero_dff), .*);
+	d_ff d_ff_0(.q(zero_q), .d(zero_dff), .*);
 	d_ff d_ff_1(.q(negative), .d(neg_dff), .*);
 	d_ff d_ff_2(.q(carry_out), .d(carry_out_dff), .*);
 	d_ff d_ff_3(.q(overflow), .d(overflow_dff), .*);
+	
+	// ignore prev DFFs if cbz
+	mux_2x1 mux_2x1_0(.in({zero_dff, zero_q}), .sel(cbz_id), .out(zero));
 	
 	// Updates value if flag is set
 	mux_2x1 z(.in({temp_zero, zero}), .sel(update), .out(zero_dff));

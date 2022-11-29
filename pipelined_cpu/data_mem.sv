@@ -47,7 +47,7 @@ module data_mem(
 
     // Data memory module
 	datamem datamem_module(
-        .address(alu_result), .write_enable(MemWrite), .read_enable(1'b1), .clk(clk), 
+        .address(alu_result), .write_enable(MemWrite), .read_enable(MemtoReg_in), .clk(clk), 
         .write_data(write_data), .xfer_size(xfer_size), .read_data(dm_read_data));
 endmodule
 

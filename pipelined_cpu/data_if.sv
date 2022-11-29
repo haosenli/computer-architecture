@@ -42,7 +42,7 @@
 `timescale 10ps/1ps
 module data_if (
     input  logic clk, negative, zero, BrTaken, reset,
-    input  logic [63:0] Db, new_pc2,
+    input  logic [63:0] Da, new_pc2,
     output logic [63:0] BLT, pc,
     output logic [18:0] COND_BR_addr,
     output logic [25:0] BR_addr,
@@ -50,7 +50,7 @@ module data_if (
 	output logic cbz, branch, cond, update, UnCondBr, DTsignal,
     output logic [2:0] ALUop,
 	output logic [3:0] xfer_size,
-    output logic [4:0] Rn, Rd, Rm, Rt,
+    output logic [4:0] Rn, Rd, Rm,
     output logic [11:0] ALU_imm,
     output logic [8:0] DT_addr,
     output logic [5:0] shamt
@@ -60,13 +60,14 @@ module data_if (
     logic [31:0] instruction;
     // Internal control signals
     logic BRsignal;
+    assign BLT = new_pc1;
 
     // Program Counter
     program_counter pc_module(.in(new_pc3), .out(pc), .*);
 
     // 2x1 64-bit Muxes for selecting PC
     mux64_2x1 mux64_1(.sel(BrTaken), .A(new_pc2), .B(new_pc1), .out(new_pc));
-    mux64_2x1 mux64_2(.sel(BRsignal), .A(Db), .B(new_pc), .out(new_pc3));
+    mux64_2x1 mux64_2(.sel(BRsignal), .A(Da), .B(new_pc), .out(new_pc3));
 
     // New Program Counter
     adder64 adder64_1(.A(pc), .B(64'd4), .result(new_pc1));
@@ -82,7 +83,7 @@ endmodule
 `timescale 10ps/1ps
 module data_if_testbench();
     logic clk, negative, zero, BrTaken, reset;
-    logic [63:0] Db, new_pc2;
+    logic [63:0] Da, new_pc2;
     logic [63:0] BLT, pc;
     logic [18:0] COND_BR_addr;
     logic [25:0] BR_addr;
@@ -108,7 +109,7 @@ module data_if_testbench();
         reset <= 1; @(posedge clk);
         reset <= 0; 
         //Test 1: Adding
-        negative <= 1'b0; zero <= 1'b0; Db <= 64'd1; new_pc2 <= 64'd64;
+        negative <= 1'b0; zero <= 1'b0; Da <= 64'd1; new_pc2 <= 64'd64;
         BrTaken <= 1'b0; @(posedge clk);
         instruction <= 32'b10010001000000011111100101101111; repeat(100) @(posedge clk);
         $stop;

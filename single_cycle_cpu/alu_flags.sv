@@ -15,17 +15,22 @@
  * overflow     - 1 bit, Overflow flag.
  */
 
+`timescale 10ps/1ps
 module alu_flags(
     input  logic [63:0] result, cout_out,
     output logic zero, negative, carry_out, overflow
     );
+	 
+	logic [63:0] temp_zero0;
+	logic [15:0] temp_zero1;
+	logic temp_zero;
 	// Connect neg, c_out, flow output signals
 	and #5 neg (negative, result[63], 1'b1);
 	and #5 c_out (carry_out, cout_out[63], 1'b1);
 	xor #5 flow (overflow, cout_out[63], cout_out[62]);
 
     // Calculate zero signal
-	or #5 z0(temp_zero0[0], result[0], result[1], result[2], result[3]);
+    or #5 z0(temp_zero0[0], result[0], result[1], result[2], result[3]);
     or #5 z1(temp_zero0[1], result[4], result[5], result[6], result[7]);
     or #5 z2(temp_zero0[2], result[8], result[9], result[10], result[11]);
     or #5 z3(temp_zero0[3], result[12], result[13], result[14], result[15]);
