@@ -23,6 +23,9 @@ vlog "./mux_16x1.sv"
 vlog "./mux_32x1.sv"
 vlog "./d_ff.sv"
 vlog "./d_ff_en.sv"
+vlog "./d_ff_neg.sv"
+vlog "./n_dff.sv"
+vlog "./nn_dff.sv"
 vlog "./multiplexor.sv"
 vlog "./register.sv"
 vlog "./regfile.sv"
@@ -35,19 +38,24 @@ vlog "./instructmem.sv"
 vlog "./instruction_decoder.sv"
 vlog "./mux5_2x1.sv"
 vlog "./program_counter.sv"
-vlog "./single_cycle_cpu.sv"
+vlog "./pipelined_cpu.sv"
 vlog "./alu_flags.sv"
 vlog "./alu_signals.sv"
+vlog "./reg_if_id.sv"
+vlog "./reg_id_ex.sv"
+vlog "./reg_ex_mem.sv"
+vlog "./reg_mem_wb.sv"
+
 
 # Call vsim to invoke simulator
 #     Make sure the last item on the line is the name of the
 #     testbench module you want to execute.
-vsim -voptargs="+acc" -t 1ps -lib work single_cycle_cpu_testbench
+vsim -voptargs="+acc" -t 1ps -lib work pipelined_cpu_testbench
 
 # Source the wave do file
 #     This should be the file that sets up the signal window for
 #     the module you are testing.
-do single_cycle_cpu_wave.do
+do pipelined_cpu_wave.do
 
 # Set the window types
 view wave

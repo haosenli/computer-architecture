@@ -1,15 +1,15 @@
 import os
 
 # CHANGE THIS
-filename = 'reg_id_ex.sv'
+filename = 'reg_mem_wb.sv'
 filepath = os.path.join(os.getcwd(), 'pipelined_cpu', filename)
 
 with open(filepath, 'r') as f:
     lines = f.readlines()
 
 # CHANGE THIS
-input_extension = 'id'
-output_extension = 'ex'
+input_extension = 'mem'
+output_extension = 'wb'
 
 input_logics = []
 output_logics = []

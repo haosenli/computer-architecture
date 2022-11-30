@@ -14,7 +14,7 @@
  * out          		- N-1 bits, data after being put through a dff.
  *
  */
-module n_dff #(parameter N=64) (
+module nn_dff #(parameter N=64) (
         input  logic clk, reset,
         input  logic [N-1:0] in,
         output logic [N-1:0] out
@@ -23,7 +23,7 @@ module n_dff #(parameter N=64) (
     genvar i;
     generate
         for(i=0; i<N;i++) begin : dff
-            d_ff dff (.q(out[i]), .d(in[i]), .reset, .clk);
+            d_ff_neg dff_neg (.q(out[i]), .d(in[i]), .reset, .clk);
         end
     endgenerate
 
