@@ -1,9 +1,0 @@
-module data_ex(
-	input  logic [63:0] rd_data1, rd_data2,
-	input  logic [11:0] ALU_imm,
-	input  logic ALUsrc,
-	);
-	
-	
-	
-endmodule

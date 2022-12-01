@@ -158,7 +158,7 @@ module pipelined_cpu(input logic clk, reset);
     data_if if_module(
         // inputs
         .clk(clk), .negative(negative_if), .zero(zero_if), .BrTaken(BrTaken_if), .reset(reset),
-        .Da(Da_if), .new_pc2(new_pc2_if),
+        .Da(Da_ex), .new_pc2(new_pc2_if),
         // outputs
         .BLT(BLT_if), .pc(pc_if),
         .COND_BR_addr(COND_BR_addr_if),
@@ -176,19 +176,19 @@ module pipelined_cpu(input logic clk, reset);
     // Stage: Instruction Decode
     data_id id_module(
         // inputs
-        .clk(clk), .update(update_id), .Reg2Loc(Reg2Loc_id), .ALUsrc(ALUsrc_id), .MemtoReg(MemtoReg_id), .cbz(cbz_id),
-        .RegWrite(RegWrite_id), .MemWrite(MemWrite_id), .BrTaken(BrTaken_id), .BLsignal(BLsignal_id), .UnCondBr(UnCondBr_id), .DTsignal(DTsignal_id),
-        .WBsignal(WBsignal_id), .BLT(BLT_id), .pc_if(pc_if_id),
+        .clk(clk), .Reg2Loc(Reg2Loc_id), .ALUsrc(ALUsrc_id), .MemtoReg(MemtoReg_id),
+        .RegWrite(RegWrite_id), .MemWrite(MemWrite_id), .BLsignal(BLsignal_id), .UnCondBr(UnCondBr_id), .DTsignal(DTsignal_id),
+        .WBsignal(WBsignal), .BLT(BLT_id),
         .COND_BR_addr(COND_BR_addr_id),
         .BR_addr(BR_addr_id),
         .ALUop(ALUop_id),
-        .Rn(Rn_id), .Rd(Rd_id), .Rm(Rm_id),
+        .Rn(Rn_id), .Rd_id(Rd_id), .Rd_wb(Rd_wb), .Rm(Rm_id),
         .ALU_imm(ALU_imm_id),
         .DT_addr(DT_addr_id),
         .shamt(shamt_id),
         // outputs
-        .Da(Da_id), .Db(Db_id), .BR_to_shift(BR_to_shift_id), .pc_id(pc_id), .ALU_imm_extend(ALU_imm_extend_id), .DT_addr_extend(DT_addr_extend_id), .ALU_or_DT(ALU_or_DT_id),
-        .BRsignal(BRsignal_id), .update_flags(update_flags_id), .cbz_id(cbz_id)
+        .Da(Da_id), .Db(Db_id), .BR_to_shift(BR_to_shift_id), .ALU_imm_extend(ALU_imm_extend_id), .DT_addr_extend(DT_addr_extend_id), .ALU_or_DT(ALU_or_DT_id),
+        .BRsignal(BRsignal_id)
     );
 
     // Stage: Execute
