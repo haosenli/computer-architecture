@@ -12,6 +12,7 @@ vlog "./mux_4x1.sv"
 vlog "./alu.sv"
 vlog "./adder_more.sv"
 vlog "./mux64_2x1.sv"
+vlog "./mux64_4x1.sv"
 vlog "./math.sv"
 vlog "./data_ex.sv"
 vlog "./adder64.sv"
@@ -50,12 +51,12 @@ vlog "./forwarding_unit.sv"
 # Call vsim to invoke simulator
 #     Make sure the last item on the line is the name of the
 #     testbench module you want to execute.
-vsim -voptargs="+acc" -t 1ps -lib work pipelined_cpu_testbench
+vsim -voptargs="+acc" -t 1ps -lib work mux64_4x1_testbench
 
 # Source the wave do file
 #     This should be the file that sets up the signal window for
 #     the module you are testing.
-do pipelined_cpu_wave.do
+do mux64_4x1_wave.do
 
 # Set the window types
 view wave

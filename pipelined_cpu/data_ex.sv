@@ -28,14 +28,16 @@
 module data_ex(
 	input  logic clk, reset,
 	input  logic [63:0] ReadData1, ReadData2, PC, ALU_or_DT, BR_to_shift,
+	input  logic [63:0] alu_result_mem, alu_result_wb,
 	input  logic [2:0] ALUop,
+	input  logic [1:0] forwardB, forwardA,
 	input  logic ALUsrc, update, cbz_id,
 	output logic [63:0] alu_result, new_PC2,
 	output logic negative, zero, overflow, carry_out
 	);
 	
 	// logic
-	logic [63:0] add2, BR_PC;
+	logic [63:0] add2, BR_PC, Da, Db;
 	logic temp_zero, temp_neg, temp_overflow, temp_carry_out;
 	logic zero_dff, neg_dff, carry_out_dff, overflow_dff;
 	logic zero_q, neg_q, carry_out_q, overflow_q;
@@ -43,8 +45,12 @@ module data_ex(
 	// mux to find what gets used for ALU
 	mux64_2x1 add_2 (.sel(ALUsrc), .A(ALU_or_DT), .B(ReadData2), .out(add2));
 	
+	// muxes for forwarding
+	mux64_4x1 forwardA_mux64 (.sel(forwardA), .A(ReadData1), .B(alu_result_wb), .C(alu_result_mem), .D(ReadData1), .out(Da));
+	mux64_4x1 forwardB_mux64 (.sel(forwardB), .A(add2), .B(alu_result_wb), .C(alu_result_mem), .D(add2), .out(Db));
+
 	// ALU to compute value
-	alu compute (.A(ReadData1), .B(add2), .cntrl(ALUop), .result(alu_result), .negative(temp_neg), 
+	alu compute (.A(Da), .B(Db), .cntrl(ALUop), .result(alu_result), .negative(temp_neg), 
 				.zero(temp_zero), .overflow(temp_overflow), .carry_out(temp_carry_out));
 	
 	// shifts BR_addr by 2
@@ -67,7 +73,7 @@ module data_ex(
 	mux_2x1 n(.in({temp_neg, negative}), .sel(update), .out(neg_dff));
 	mux_2x1 o(.in({temp_overflow, overflow}), .sel(update), .out(overflow_dff));
 	mux_2x1 c(.in({temp_carry_out, carry_out}), .sel(update), .out(carry_out_dff));
-	
+
 endmodule
 
 `timescale 10ps/1ps
