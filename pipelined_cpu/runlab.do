@@ -45,7 +45,7 @@ vlog "./reg_if_id.sv"
 vlog "./reg_id_ex.sv"
 vlog "./reg_ex_mem.sv"
 vlog "./reg_mem_wb.sv"
-
+vlog "./forwarding_unit.sv"
 
 # Call vsim to invoke simulator
 #     Make sure the last item on the line is the name of the

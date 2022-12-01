@@ -30,7 +30,7 @@ module data_ex(
 	input  logic [63:0] ReadData1, ReadData2, PC, ALU_or_DT, BR_to_shift,
 	input  logic [2:0] ALUop,
 	input  logic ALUsrc, update, cbz_id,
-	output logic [63:0] alu_result, ReadData2_out, new_PC2,
+	output logic [63:0] alu_result, new_PC2,
 	output logic negative, zero, overflow, carry_out
 	);
 	
@@ -68,9 +68,6 @@ module data_ex(
 	mux_2x1 o(.in({temp_overflow, overflow}), .sel(update), .out(overflow_dff));
 	mux_2x1 c(.in({temp_carry_out, carry_out}), .sel(update), .out(carry_out_dff));
 	
-	// assign ReadData2 to output
-	assign ReadData2_out = ReadData2;
-	
 endmodule
 
 `timescale 10ps/1ps
@@ -78,7 +75,7 @@ module data_ex_testbench();
 	logic clk, reset;
 	logic [63:0] ReadData1, ReadData2, PC, ALU_or_DT, BR_to_shift;
 	logic [2:0] ALUop;
-	logic ALUsrc, update;
+	logic ALUsrc, update, cbz_id;
 	logic [63:0] alu_result, ReadData2_out, new_PC2;
 	logic negative, zero, overflow, carry_out;
 	

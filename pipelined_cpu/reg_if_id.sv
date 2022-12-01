@@ -23,7 +23,7 @@ module reg_if_id(
     output  logic [25:0] BR_addr_id,
     output  logic [5:0] shamt_id,
     output  logic Reg2Loc_id, ALUsrc_id, MemtoReg_id, RegWrite_id, MemWrite_id,  DTsignal_id, UnCondBr_id,
-    output  logic BLsignal_id, update_id, cond_id, cbz_id, branch_id,
+    output  logic BLsignal_id, update_id, cond_id, cbz_id, branch_id
 );
 
     n_dff #(64) dff0 (.in(BLT_if), .out(BLT_id), .*);

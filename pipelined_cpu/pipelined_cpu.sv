@@ -81,7 +81,7 @@ module pipelined_cpu(input logic clk, reset);
     logic BRsignal_ex, Reg2Loc_ex, ALUsrc_ex, MemtoReg_ex, RegWrite_ex;
     logic MemWrite_ex, BrTaken_ex, BLsignal_ex, UnCondBr_ex, DTsignal_ex;
     logic negative_ex, zero_ex, overflow_ex, carry_out_ex, branch_ex, cbz_ex, cbz_id_ex;
-    logic update_ex, update_flags_ex, cond_ex, MemtoReg_out_ex;
+    logic update_ex, cond_ex, MemtoReg_out_ex;
     logic [2:0] ALUop_ex;
     logic [3:0] xfer_size_ex;
     // Data signals
@@ -122,17 +122,13 @@ module pipelined_cpu(input logic clk, reset);
     // WB REGISTERS
     logic BRsignal_wb, Reg2Loc_wb, ALUsrc_wb, MemtoReg_wb, RegWrite_wb;
     logic MemWrite_wb, BrTaken_wb, BLsignal_wb, UnCondBr_wb, DTsignal_wb;
-    logic negative_wb, zero_wb, overflow_wb, carry_out_wb, branch_wb, cbz_wb, cbz_id_wb;
-    logic update_wb, update_flags_wb, cond_wb, MemtoReg_out_wb;
     logic [2:0] ALUop_wb;
     logic [3:0] xfer_size_wb;
     // Data signals
     logic [5:0] shamt_wb;
     logic [11:0] ALU_imm_wb;
-    logic [63:0] Da_wb, Db_wb, BR_to_shift_wb, BLT_wb, WBsignal_wb, ALU_imm_extend_wb, DT_addr_extend_wb, ALU_or_DT_wb;
+    logic [63:0] Da_wb, Db_wb, BR_to_shift_wb, BLT_wb, WBsignal, ALU_imm_extend_wb, DT_addr_extend_wb, ALU_or_DT_wb;
     logic [63:0] alu_result_wb, dm_address_wb, dm_read_data_wb, dm_write_data_wb, new_pc1_wb;
-    // Program counter
-    logic [63:0] pc_wb, pc_id_wb, new_pc2_ex_wb, new_pc2_wb;
     // Addresses
     logic [8:0] DT_addr_wb;
     logic [18:0] COND_BR_addr_wb;
@@ -143,14 +139,7 @@ module pipelined_cpu(input logic clk, reset);
     // INTER-STAGE REGISTERS
     reg_if_id reg0(.*);
     reg_id_ex reg1(.*);
-    reg_ex_mem reg2(
-        .ReadData2_out_ex(dm_write_data_ex),
-        .new_PC2_ex(new_pc2_ex),
-        .carry_out_ex(carry_out_ex),
-        .ReadData2_out_mem(dm_write_data_mem),
-        .new_PC2_mem(new_pc2_mem),
-        .carry_out_mem(carry_out_mem),
-        .*);
+    reg_ex_mem reg2(.*);
     reg_mem_wb reg3(.*);
 	 
 
@@ -187,31 +176,30 @@ module pipelined_cpu(input logic clk, reset);
         .DT_addr(DT_addr_id),
         .shamt(shamt_id),
         // outputs
-        .Da(Da_id), .Db(Db_id), .BR_to_shift(BR_to_shift_id), .ALU_imm_extend(ALU_imm_extend_id), .DT_addr_extend(DT_addr_extend_id), .ALU_or_DT(ALU_or_DT_id),
-        .BRsignal(BRsignal_id)
+        .Da(Da_id), .Db(Db_id), .BR_to_shift(BR_to_shift_id), .ALU_or_DT(ALU_or_DT_id)
     );
 
     // Stage: Execute
     data_ex ex_module(
-        // inputs
-        .clk(clk), .reset(reset),
+       // inputs
+       .clk(clk), .reset(reset),
 	    .ReadData1(Da_ex), .ReadData2(Db_ex), .PC(pc_ex), .ALU_or_DT(ALU_or_DT_ex), .BR_to_shift(BR_to_shift_ex),
 	    .ALUop(ALUop_ex),
-        .ALUsrc(ALUsrc_ex), .update(update_ex), .cbz_id(cbz_id_ex),
-        // outputs
-        .alu_result(alu_result_ex), .ReadData2_out(dm_write_data_ex), .new_PC2(new_pc2_ex),
-        .negative(negative_ex), .zero(zero_ex), .overflow(overflow_ex), .carry_out(carry_out_ex)
+       .ALUsrc(ALUsrc_ex), .update(update_ex), .cbz_id(cbz_ex),
+       // outputs
+       .alu_result(alu_result_ex), .new_PC2(new_pc2_ex),
+       .negative(negative_ex), .zero(zero_ex), .overflow(overflow_ex), .carry_out(carry_out_ex)
     );
 
     // Stage: Memory
     data_mem mem_module(
         // inputs
-        .zero(zero_mem), .branch(branch_mem), .cbz(cbz_mem), .clk(clk), .MemWrite(MemWrite_mem), .MemtoReg_in(MemtoReg_in_mem),
+        .zero(zero_mem), .branch(branch_mem), .cbz(cbz_mem), .clk(clk), .MemWrite(MemWrite_mem), .MemtoReg(MemtoReg_mem),
         .xfer_size(xfer_size_mem),
-        .alu_result(alu_result_mem), .write_data(dm_write_data_mem), .new_pc2_ex(new_PC2_mem),
+        .alu_result(alu_result_mem), .write_data(dm_write_data_mem),
         // outputs
-        .BrTaken(BrTaken_mem), .MemtoReg_out(MemtoReg_out_mem),
-        .dm_address(dm_address_mem), .dm_read_data(dm_read_data_mem), .new_pc2(new_pc2_mem)
+        .BrTaken(BrTaken_mem),
+        .dm_read_data(dm_read_data_mem)
     );
 
     data_wb wb_module(
@@ -219,7 +207,7 @@ module pipelined_cpu(input logic clk, reset);
         .MemtoReg(MemtoReg_wb),
         .dm_read_data(dm_read_data_wb), .dm_address(dm_address_wb),
         // outputs
-        .WBsignal(WBsignal_wb)
+        .WBsignal(WBsignal)
     );
 
     // data_id id_module(.clk(clk), .pc_if(pc), .pc_id(pc_id), .*);

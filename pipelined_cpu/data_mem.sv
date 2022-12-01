@@ -27,19 +27,14 @@
 
 `timescale 10ps/1ps
 module data_mem(
-	input  logic zero, branch, cbz, clk, MemWrite, MemtoReg_in,
+	input  logic zero, branch, cbz, clk, MemWrite, MemtoReg,
 	input  logic [3:0] xfer_size,
-	input  logic [63:0] alu_result, write_data, new_pc2_ex,
-    output logic BrTaken, MemtoReg_out,
-	output logic [63:0] dm_address, dm_read_data, new_pc2
+	input  logic [63:0] alu_result, write_data,
+    output logic BrTaken,
+	output logic [63:0] dm_read_data
 	);
 	
 	logic temp_BrTaken;
-	
-	// Pass-through signals
-    assign new_pc2 = new_pc2_ex;
-    assign MemtoReg_out = MemtoReg_in;
-    assign dm_address = alu_result;
 	 
     // BrTaken signal
     and #5 a0(temp_BrTaken, zero, cbz);
@@ -47,16 +42,16 @@ module data_mem(
 
     // Data memory module
 	datamem datamem_module(
-        .address(alu_result), .write_enable(MemWrite), .read_enable(MemtoReg_in), .clk(clk), 
+        .address(alu_result), .write_enable(MemWrite), .read_enable(MemtoReg), .clk(clk), 
         .write_data(write_data), .xfer_size(xfer_size), .read_data(dm_read_data));
 endmodule
 
 module data_mem_testbench();
-    logic zero, branch, cbz, clk, MemWrite, MemtoReg_in;
+    logic zero, branch, cbz, clk, MemWrite, MemtoReg;
 	logic [63:0] alu_result, write_data, new_pc2_ex;
 	logic [3:0] xfer_size;
-    logic BrTaken, MemtoReg_out;
-	logic [63:0] dm_address, dm_read_data, new_pc2;
+    logic BrTaken;
+	logic [63:0] dm_read_data;
 
     data_mem dut (.*);
 
@@ -68,7 +63,7 @@ module data_mem_testbench();
 
     initial begin
         new_pc2_ex <= 64'd64; alu_result <= 64'd128; write_data <= 64'd69;
-        MemtoReg_in <= 1'b1; MemWrite <= 1'b1; zero <= 1'b0; branch <= 1'b0; cbz <= 1'b0;
+        MemtoReg <= 1'b1; MemWrite <= 1'b1; zero <= 1'b0; branch <= 1'b0; cbz <= 1'b0;
         repeat(10) @(posedge clk);
         $stop;
     end

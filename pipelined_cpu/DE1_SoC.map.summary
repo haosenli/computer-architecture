@@ -1,7 +1,7 @@
-Analysis & Elaboration Status : Failed - Mon Nov 21 17:53:41 2022
+Analysis & Elaboration Status : Failed - Thu Dec 01 01:02:34 2022
 Quartus Prime Version : 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 Revision Name : DE1_SoC
-Top-level Entity Name : single_cycle_cpu
+Top-level Entity Name : pipelined_cpu
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A until Partition Merge
 Total registers : N/A until Partition Merge

@@ -58,8 +58,8 @@ module data_if (
     // General signals
     logic [63:0] new_pc, new_pc1, new_pc3;
     logic [31:0] instruction;
+	 logic BRsignal;
     // Internal control signals
-    logic BRsignal;
     assign BLT = new_pc1;
 
     // Program Counter
@@ -82,7 +82,7 @@ endmodule
 
 `timescale 10ps/1ps
 module data_if_testbench();
-    logic clk, negative, zero, BrTaken, reset;
+    logic clk, negative, zero, BrTaken, reset, BRsignal;
     logic [63:0] Da, new_pc2;
     logic [63:0] BLT, pc;
     logic [18:0] COND_BR_addr;
