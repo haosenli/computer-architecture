@@ -60,10 +60,10 @@ module data_ex(
 	adder64 addPC (.A(BR_PC), .B(PC), .result(new_PC2));
 	
 	// DFFs to set the flags
-	d_ff d_ff_0(.q(zero_q), .d(zero_dff), .*);
-	d_ff d_ff_1(.q(negative), .d(neg_dff), .*);
-	d_ff d_ff_2(.q(carry_out), .d(carry_out_dff), .*);
-	d_ff d_ff_3(.q(overflow), .d(overflow_dff), .*);
+	nn_dff #(1) d_ff_0(.out(zero_q), .in(zero_dff), .*);
+	nn_dff #(1) d_ff_1(.out(negative), .in(neg_dff), .*);
+	nn_dff #(1) d_ff_2(.out(carry_out), .in(carry_out_dff), .*);
+	nn_dff #(1) d_ff_3(.out(overflow), .in(overflow_dff), .*);
 	
 	// ignore prev DFFs if cbz
 	mux_2x1 mux_2x1_0(.in({zero_dff, zero_q}), .sel(cbz_id), .out(zero));

@@ -37,6 +37,7 @@ module pipelined_cpu(input logic clk, reset);
     */
 	 
 	 logic [63:0] new_pc2, pc;
+	 logic [4:0] Rd_for;
 	 logic [1:0] forwardA, forwardB;
 	 
     // IF REGISTERS
@@ -132,8 +133,8 @@ module pipelined_cpu(input logic clk, reset);
     logic [5:0] shamt_wb;
     logic [11:0] ALU_imm_wb;
     logic [63:0] Da_wb, Db_wb, BR_to_shift_wb, BLT_wb, WBsignal, ALU_imm_extend_wb, DT_addr_extend_wb, ALU_or_DT_wb;
-    logic [63:0] alu_result_wb, dm_address_wb, dm_read_data_wb, dm_write_data_wb, new_pc1_wb;
-    // Addresses
+		 logic [63:0] alu_result_wb1, alu_result_wb2, dm_address_wb, dm_read_data_wb, dm_write_data_wb;
+	 // Addresses
     logic [8:0] DT_addr_wb;
     logic [18:0] COND_BR_addr_wb;
     logic [25:0] BR_addr_wb;
@@ -149,7 +150,7 @@ module pipelined_cpu(input logic clk, reset);
 	 // Forwarding Unit
 	 forwarding_unit forward(
 			.RegWrite_mem(RegWrite_mem), .RegWrite_wb(RegWrite_wb),
-			.regA(Rn_ex), .regB(Ab_ex), .Rd_mem(Rd_mem), .Rd_wb(Rd_wb),
+			.regA(Rn_ex), .regB(Ab_ex), .Rd_mem(Rd_mem), .Rd_wb(Rd_for),
 			.forwardA(forwardA), .forwardB(forwardB)
 	 );
 
@@ -193,7 +194,7 @@ module pipelined_cpu(input logic clk, reset);
     data_ex ex_module(
        // inputs
        .clk(clk), .reset(reset),
-	    .ReadData1(Da_ex), .ReadData2(Db_ex), .PC(pc_ex), .ALU_or_DT(ALU_or_DT_ex), .BR_to_shift(BR_to_shift_ex), .alu_result_mem(alu_result_mem), .alu_result_wb(alu_result_wb),
+	    .ReadData1(Da_ex), .ReadData2(Db_ex), .PC(pc_ex), .ALU_or_DT(ALU_or_DT_ex), .BR_to_shift(BR_to_shift_ex), .alu_result_mem(alu_result_mem), .alu_result_wb(alu_result_wb1),
 	    .ALUop(ALUop_ex),
        .ALUsrc(ALUsrc_ex), .update(update_ex), .cbz_id(cbz_ex),
 		 .forwardB(forwardB), .forwardA(forwardA),
@@ -216,7 +217,7 @@ module pipelined_cpu(input logic clk, reset);
     data_wb wb_module(
         // inputs
         .MemtoReg(MemtoReg_wb),
-        .dm_read_data(dm_read_data_wb), .dm_address(alu_result_wb),
+        .dm_read_data(dm_read_data_wb), .dm_address(alu_result_wb2),
         // outputs
         .WBsignal(WBsignal)
     );

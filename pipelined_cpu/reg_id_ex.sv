@@ -14,23 +14,23 @@ module reg_id_ex(
     output logic ALUsrc_ex, MemtoReg_ex, RegWrite_ex, MemWrite_ex, cbz_ex, branch_ex, BRsignal_ex, update_ex
 );
 
-    n_dff #(64) dff0 (.in(Da_id), .out(Da_ex), .*);
-    n_dff #(64) dff1 (.in(Db_id), .out(Db_ex), .*);
-    n_dff #(64) dff2 (.in(BR_to_shift_id), .out(BR_to_shift_ex), .*);
-    n_dff #(64) dff3 (.in(pc_id), .out(pc_ex), .*);
-    n_dff #(64) dff6 (.in(ALU_or_DT_id), .out(ALU_or_DT_ex), .*);
-	 n_dff #(5)  dff7 (.in(Rd_id), .out(Rd_ex), .*);
-	 n_dff #(5)  dff8 (.in(Ab_id), .out(Ab_ex), .*);
-	 n_dff #(5)  dff9 (.in(Rn_id), .out(Rn_ex), .*);
-    n_dff #(1) dff10 (.in(ALUsrc_id), .out(ALUsrc_ex), .*);
-    n_dff #(1) dff11 (.in(MemtoReg_id), .out(MemtoReg_ex), .*);
-	 n_dff #(1) dff12 (.in(RegWrite_id), .out(RegWrite_ex), .*);
-	 n_dff #(1) dff13 (.in(MemWrite_id), .out(MemWrite_ex), .*);
-	 n_dff #(1) dff14 (.in(cbz_id), .out(cbz_ex), .*);
-	 n_dff #(1) dff15 (.in(branch_id), .out(branch_ex), .*);
-	 n_dff #(1) dff16 (.in(BRsignal_id), .out(BRsignal_ex), .*);
-	 n_dff #(1) dff17 (.in(update_id), .out(update_ex), .*);
-	 n_dff #(4) dff18 (.in(xfer_size_id), .out(xfer_size_ex), .*);
-	 n_dff #(3) dff119 (.in(ALUop_id), .out(ALUop_ex), .*);
+    nn_dff #(64) dff0 (.in(Da_id), .out(Da_ex), .*);
+    nn_dff #(64) dff1 (.in(Db_id), .out(Db_ex), .*);
+    nn_dff #(64) dff2 (.in(BR_to_shift_id), .out(BR_to_shift_ex), .*);
+    nn_dff #(64) dff3 (.in(pc_id), .out(pc_ex), .*);
+    nn_dff #(64) dff6 (.in(ALU_or_DT_id), .out(ALU_or_DT_ex), .*);
+	 nn_dff #(5)  dff7 (.in(Rd_id), .out(Rd_ex), .*);
+	 nn_dff #(5)  dff8 (.in(Ab_id), .out(Ab_ex), .*);
+	 nn_dff #(5)  dff9 (.in(Rn_id), .out(Rn_ex), .*);
+    nn_dff #(1) dff10 (.in(ALUsrc_id), .out(ALUsrc_ex), .*);
+    nn_dff #(1) dff11 (.in(MemtoReg_id), .out(MemtoReg_ex), .*);
+	 nn_dff #(1) dff12 (.in(RegWrite_id), .out(RegWrite_ex), .*);
+	 nn_dff #(1) dff13 (.in(MemWrite_id), .out(MemWrite_ex), .*);
+	 nn_dff #(1) dff14 (.in(cbz_id), .out(cbz_ex), .*);
+	 nn_dff #(1) dff15 (.in(branch_id), .out(branch_ex), .*);
+	 nn_dff #(1) dff16 (.in(BRsignal_id), .out(BRsignal_ex), .*);
+	 nn_dff #(1) dff17 (.in(update_id), .out(update_ex), .*);
+	 nn_dff #(4) dff18 (.in(xfer_size_id), .out(xfer_size_ex), .*);
+	 nn_dff #(3) dff119 (.in(ALUop_id), .out(ALUop_ex), .*);
 
 endmodule
