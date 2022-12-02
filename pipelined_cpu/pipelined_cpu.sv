@@ -125,7 +125,7 @@ module pipelined_cpu(input logic clk, reset);
     logic [4:0] Rn_mem, Rd_mem, Rm_mem;
 
     // WB REGISTERS
-    logic BRsignal_wb, Reg2Loc_wb, ALUsrc_wb, MemtoReg_wb, RegWrite_wb;
+    logic BRsignal_wb, Reg2Loc_wb, ALUsrc_wb, MemtoReg_wb, RegWrite_wb1, RegWrite_wb2;
     logic MemWrite_wb, BrTaken, BLsignal_wb, UnCondBr_wb, DTsignal_wb;
     logic [2:0] ALUop_wb;
     logic [3:0] xfer_size_wb;
@@ -149,7 +149,7 @@ module pipelined_cpu(input logic clk, reset);
 	 
 	 // Forwarding Unit
 	 forwarding_unit forward(
-			.RegWrite_mem(RegWrite_mem), .RegWrite_wb(RegWrite_wb),
+			.RegWrite_mem(RegWrite_mem), .RegWrite_wb(RegWrite_wb1),
 			.regA(Rn_ex), .regB(Ab_ex), .Rd_mem(Rd_mem), .Rd_wb(Rd_for),
 			.forwardA(forwardA), .forwardB(forwardB)
 	 );
@@ -176,8 +176,8 @@ module pipelined_cpu(input logic clk, reset);
     // Stage: Instruction Decode
     data_id id_module(
         // inputs
-        .clk(clk), .Reg2Loc(Reg2Loc_id), .ALUsrc(ALUsrc_id), .MemtoReg(MemtoReg_id), .cbz(cbz_id), .branch(branch_id),
-        .RegWrite(RegWrite_wb), .MemWrite(MemWrite_id), .BLsignal(BLsignal_id), .UnCondBr(UnCondBr_id), .DTsignal(DTsignal_id),
+        .clk(clk), .Reg2Loc(Reg2Loc_id), .ALUsrc(ALUsrc_id), .MemtoReg(MemtoReg_id), .cbz(cbz_id), .branch(branch_id), .cond(cond_id), .zero_ex(zero_ex), .negative_ex(negative_ex),
+        .RegWrite(RegWrite_wb2), .MemWrite(MemWrite_id), .BLsignal(BLsignal_id), .UnCondBr(UnCondBr_id), .DTsignal(DTsignal_id),
         .WBsignal(WBsignal), .BLT(BLT_id), .PC(pc_id),
         .COND_BR_addr(COND_BR_addr_id),
         .BR_addr(BR_addr_id),

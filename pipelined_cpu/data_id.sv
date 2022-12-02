@@ -44,7 +44,7 @@
 `timescale 10ps / 1ps
 module data_id (
     input  logic clk, Reg2Loc, ALUsrc, MemtoReg,
-    input  logic RegWrite, MemWrite, BLsignal, UnCondBr, DTsignal, cbz, branch,
+    input  logic RegWrite, MemWrite, BLsignal, UnCondBr, DTsignal, cbz, branch, cond, zero_ex, negative_ex,
     input  logic [63:0] WBsignal, BLT, PC,
     input  logic [18:0] COND_BR_addr,
     input  logic [25:0] BR_addr,
@@ -65,9 +65,11 @@ module data_id (
 	 
 	 logic temp_BrTaken, zero, negative, carry_out, overflow;
 	 alu_flags flag(.result(Db), .cout_out(64'd0), .zero(zero), .negative(negative), .carry_out(carry_out), .overflow(overflow));
+	 
     // BrTaken signal
     and #5 a0(temp_BrTaken, zero, cbz);
-	 or #5 or0(BrTaken, temp_BrTaken, branch);
+	 B_cond_decode Bcond(.negative(negative_ex), .zero(zero_ex), .cond, .Rd(Rd_id), .branch(Bcond_branch));
+	 or #5 or0(BrTaken, temp_BrTaken, branch, Bcond_branch);
 
     // Sign Extenders
     sign_extender #(19) se_0(.input_data(COND_BR_addr), .output_data(COND_BR_addr64));
@@ -98,7 +100,7 @@ endmodule
 
 `timescale 10ps/1ps
 module data_id_testbench();
-    logic clk, update, Reg2Loc, ALUsrc, MemtoReg, cbz, branch;
+    logic clk, update, Reg2Loc, ALUsrc, MemtoReg, cbz, branch, cond, zero_ex, negative_ex;
     logic RegWrite, MemWrite, BrTaken, BLsignal, BRsignal, UnCondBr, DTsignal;
     logic [63:0] WBsignal, BLT, PC;
     logic [18:0] COND_BR_addr;

@@ -50,9 +50,9 @@ module instruction_decoder(
 	 
     logic Bcond_branch, temp_branch;
 	 
-	 // Decide if branching is needed.
-    B_cond_decode Bcond(.negative, .zero, .cond, .Rd, .branch(Bcond_branch));
-	 or #5 branching(branch, Bcond_branch, temp_branch);
+//	 // Decide if branching is needed.
+//    B_cond_decode Bcond(.negative, .zero, .cond, .Rd, .branch(Bcond_branch));
+//	 or #5 branching(branch, Bcond_branch, temp_branch);
 	 
 	 always_comb begin
 		casez(instruction[31:21])
@@ -69,7 +69,7 @@ module instruction_decoder(
 				update = 1'b0;
 				cond = 1'b0;
 				cbz = 1'b0;
-				temp_branch = 1'b0;
+				branch = 1'b0;
             ALUop = 3'b010;
 				xfer_size = 4'b1000;
 				Rn = instruction[9:5];
@@ -94,7 +94,7 @@ module instruction_decoder(
             update = 1'b1;
 				cond = 1'b0;
 				cbz = 1'b0;
-				temp_branch = 1'b0;
+				branch = 1'b0;
             ALUop = 3'b010;
 				xfer_size = 4'b1000;
 				Rn = instruction[9:5];
@@ -119,7 +119,7 @@ module instruction_decoder(
 				update = 1'b0;
 				cond = 1'b0;
 				cbz = 1'b0;
-				temp_branch = 1'b1;
+				branch = 1'b1;
 				ALUop = 3'bzzz;
 				xfer_size = 4'b1000;
 				Rn = 5'bzzzzz;
@@ -144,7 +144,7 @@ module instruction_decoder(
 				update = 1'b0;
 				cond = 1'b1;
 				cbz = 1'b0;
-				temp_branch = 1'b0;
+				branch = 1'b0;
 				ALUop = 3'b011;
 				xfer_size = 4'b1000;
 				Rn = 5'bzzzzz;
@@ -169,7 +169,7 @@ module instruction_decoder(
 				update = 1'b0;
 				cond = 1'b0;
 				cbz = 1'b0;
-				temp_branch = 1'b1;
+				branch = 1'b1;
             ALUop = 3'bzzz;
 				xfer_size = 4'b1000;
 				Rn = 5'bzzzzz;
@@ -192,7 +192,7 @@ module instruction_decoder(
             BLsignal = 1'b0;
             BRsignal = 1'b1;
             update = 1'b0;
-				temp_branch = 1'b1;
+				branch = 1'b1;
 				cond = 1'b0;
 				cbz = 1'b0;
 				temp_branch = 1'b1;
@@ -220,7 +220,7 @@ module instruction_decoder(
             update = 1'b1;
 				cond = 1'b0;
             cbz = 1'b1;
-				temp_branch = 1'b0;
+				branch = 1'b0;
             ALUop = 3'b000;
 				xfer_size = 4'b1000;
 				Rn = 5'bzzzzz;
@@ -245,7 +245,7 @@ module instruction_decoder(
             update = 1'b0;
 				cond = 1'b0;
 				cbz = 1'b0;
-				temp_branch = 1'b0;
+				branch = 1'b0;
             ALUop = 3'b010;
 				xfer_size = 4'b1000;
 				Rn = instruction[9:5];
@@ -270,7 +270,7 @@ module instruction_decoder(
             update = 1'b0;
 				cond = 1'b0;
 				cbz = 1'b0;
-				temp_branch = 1'b0;
+				branch = 1'b0;
             ALUop = 3'b010;
 				xfer_size = 4'b1000;
             Rn = instruction[9:5];
@@ -295,7 +295,7 @@ module instruction_decoder(
             update = 1'b1;
 				cond = 1'b0;
 				cbz = 1'b0;
-				temp_branch = 1'b0;
+				branch = 1'b0;
             ALUop = 3'b011;
 				xfer_size = 4'b1000;
             Rn = instruction[9:5];
@@ -320,7 +320,7 @@ module instruction_decoder(
 				update = 1'bz;
 				cond = 1'bz;
 				cbz = 1'b0;
-				temp_branch = 1'bz;
+				branch = 1'bz;
 				ALUop = 3'bzzz;
 				xfer_size = 4'bzzzz;
             Rn = 5'bzzzzz;
