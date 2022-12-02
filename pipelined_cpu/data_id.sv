@@ -53,12 +53,12 @@ module data_id (
     input  logic [11:0] ALU_imm,
     input  logic [8:0] DT_addr,
     input  logic [5:0] shamt,
-    output logic [63:0] Da, Db, BR_to_shift, ALU_or_DT
+    output logic [63:0] Da, Db, BR_to_shift, ALU_or_DT,
+	 output logic [4:0] Ab
 	);
 
     // RegFile signals
     logic [63:0] Dw;
-    logic [4:0] Ab;
     // Sign-extended addresses
     logic [63:0] COND_BR_addr64, BR_addr64, ALU_imm_extend, DT_addr_extend;
 
@@ -91,7 +91,7 @@ module data_id_testbench();
     logic [18:0] COND_BR_addr;
     logic [25:0] BR_addr;
     logic [2:0] ALUop;
-    logic [4:0] Rn, Rd, Rm, Rt;
+    logic [4:0] Rn, Rd_id, Rd_wb, Rm, Rt, Ab;
     logic [11:0] ALU_imm;
     logic [8:0] DT_addr;
     logic [5:0] shamt;
@@ -106,7 +106,7 @@ module data_id_testbench();
     end
 
     initial begin
-        RegWrite <= 1; Rn <= 5'd8; Rm <= 5'd8; Rd <= 5'd8; BLsignal <= 1'b1; BLT <= 64'd69; Reg2Loc <= 1; repeat(5) @(posedge clk);
+        RegWrite <= 1; Rn <= 5'd8; Rm <= 5'd8; Rd_id <= 5'd8; BLsignal <= 1'b1; BLT <= 64'd69; Reg2Loc <= 1; repeat(5) @(posedge clk);
         $stop;
     end
 endmodule

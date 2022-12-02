@@ -1,8 +1,8 @@
 `timescale 10ps/1ps
 module forwarding_unit(
-		input  logic RegWrite_mem, RegWrite_wb,
-		input  logic [4:0] regA, regB, Rd_mem, Rd_wb,
-		output logic [1:0] forwardA, forwardB	// 00 - no forward, 01 - forward from EX/MEM, 10- forward from MEM/WB, 11 - Dont care
+			input  logic RegWrite_mem, RegWrite_wb,
+			input  logic [4:0] regA, regB, Rd_mem, Rd_wb,
+			output logic [1:0] forwardA, forwardB	// 00 - no forward, 01 - forward from EX/MEM, 10- forward from MEM/WB, 11 - Dont care
 	);
 	
 	always_comb begin

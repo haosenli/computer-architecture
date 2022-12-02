@@ -46,8 +46,8 @@ module data_ex(
 	mux64_2x1 add_2 (.sel(ALUsrc), .A(ALU_or_DT), .B(ReadData2), .out(add2));
 	
 	// muxes for forwarding
-	mux64_4x1 forwardA_mux64 (.sel(forwardA), .A(ReadData1), .B(alu_result_wb), .C(alu_result_mem), .D(ReadData1), .out(Da));
-	mux64_4x1 forwardB_mux64 (.sel(forwardB), .A(add2), .B(alu_result_wb), .C(alu_result_mem), .D(add2), .out(Db));
+	mux64_4x1 forwardA_mux64 (.sel(forwardA), .A(ReadData1), .B(alu_result_mem), .C(alu_result_wb), .D(ReadData1), .out(Da));
+	mux64_4x1 forwardB_mux64 (.sel(forwardB), .A(add2), .B(alu_result_mem), .C(alu_result_wb), .D(add2), .out(Db));
 
 	// ALU to compute value
 	alu compute (.A(Da), .B(Db), .cntrl(ALUop), .result(alu_result), .negative(temp_neg), 
@@ -79,8 +79,9 @@ endmodule
 `timescale 10ps/1ps
 module data_ex_testbench();
 	logic clk, reset;
-	logic [63:0] ReadData1, ReadData2, PC, ALU_or_DT, BR_to_shift;
+	logic [63:0] ReadData1, ReadData2, PC, ALU_or_DT, BR_to_shift, alu_result_mem, alu_result_wb;
 	logic [2:0] ALUop;
+	logic [1:0] forwardB, forwardA;
 	logic ALUsrc, update, cbz_id;
 	logic [63:0] alu_result, ReadData2_out, new_PC2;
 	logic negative, zero, overflow, carry_out;

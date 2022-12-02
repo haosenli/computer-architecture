@@ -35,6 +35,10 @@ module pipelined_cpu(input logic clk, reset);
     // Registers
     logic [4:0] Rn, Rd, Rm;
     */
+	 
+	 logic [63:0] new_pc2, pc;
+	 logic [1:0] forwardA, forwardB;
+	 
     // IF REGISTERS
     logic BRsignal_if, Reg2Loc_if, ALUsrc_if, MemtoReg_if, RegWrite_if;
     logic MemWrite_if, BrTaken_if, BLsignal_if, UnCondBr_if, DTsignal_if;
@@ -75,7 +79,7 @@ module pipelined_cpu(input logic clk, reset);
     logic [18:0] COND_BR_addr_id;
     logic [25:0] BR_addr_id;
     // Registers
-    logic [4:0] Rn_id, Rd_id, Rm_id;
+    logic [4:0] Rn_id, Rd_id, Rm_id, Ab_id;
     
     // EX REGISTERS
     logic BRsignal_ex, Reg2Loc_ex, ALUsrc_ex, MemtoReg_ex, RegWrite_ex;
@@ -96,7 +100,7 @@ module pipelined_cpu(input logic clk, reset);
     logic [18:0] COND_BR_addr_ex;
     logic [25:0] BR_addr_ex;
     // Registers
-    logic [4:0] Rn_ex, Rd_ex, Rm_ex;
+    logic [4:0] Rn_ex, Rd_ex, Rm_ex, Ab_ex;
 
     // MEM REGISTERS
     logic BRsignal_mem, Reg2Loc_mem, ALUsrc_mem, MemtoReg_mem, RegWrite_mem;
@@ -121,7 +125,7 @@ module pipelined_cpu(input logic clk, reset);
 
     // WB REGISTERS
     logic BRsignal_wb, Reg2Loc_wb, ALUsrc_wb, MemtoReg_wb, RegWrite_wb;
-    logic MemWrite_wb, BrTaken_wb, BLsignal_wb, UnCondBr_wb, DTsignal_wb;
+    logic MemWrite_wb, BrTaken, BLsignal_wb, UnCondBr_wb, DTsignal_wb;
     logic [2:0] ALUop_wb;
     logic [3:0] xfer_size_wb;
     // Data signals
@@ -142,14 +146,20 @@ module pipelined_cpu(input logic clk, reset);
     reg_ex_mem reg2(.*);
     reg_mem_wb reg3(.*);
 	 
+	 // Forwarding Unit
+	 forwarding_unit forward(
+			.RegWrite_mem(RegWrite_mem), .RegWrite_wb(RegWrite_wb),
+			.regA(Rn_ex), .regB(Ab_ex), .Rd_mem(Rd_mem), .Rd_wb(Rd_wb),
+			.forwardA(forwardA), .forwardB(forwardB)
+	 );
 
     // Stage: Instruction Fetch
     data_if if_module(
         // inputs
-        .clk(clk), .negative(negative_if), .zero(zero_if), .BrTaken(BrTaken_if), .reset(reset),
-        .Da(Da_ex), .new_pc2(new_pc2_if),
+        .clk(clk), .negative(negative_if), .zero(zero_if), .BrTaken(BrTaken), .reset(reset),
+        .Da(Da_ex), .new_pc2(new_pc2),
         // outputs
-        .BLT(BLT_if), .pc(pc_if),
+        .BLT(BLT_if), .pc(pc),
         .COND_BR_addr(COND_BR_addr_if),
         .BR_addr(BR_addr_if),
         .Reg2Loc(Reg2Loc_if), .ALUsrc(ALUsrc_if), .MemtoReg(MemtoReg_if), .RegWrite(RegWrite_if), .MemWrite(MemWrite_if), .BLsignal(BLsignal_if), 
@@ -166,7 +176,7 @@ module pipelined_cpu(input logic clk, reset);
     data_id id_module(
         // inputs
         .clk(clk), .Reg2Loc(Reg2Loc_id), .ALUsrc(ALUsrc_id), .MemtoReg(MemtoReg_id),
-        .RegWrite(RegWrite_id), .MemWrite(MemWrite_id), .BLsignal(BLsignal_id), .UnCondBr(UnCondBr_id), .DTsignal(DTsignal_id),
+        .RegWrite(RegWrite_wb), .MemWrite(MemWrite_id), .BLsignal(BLsignal_id), .UnCondBr(UnCondBr_id), .DTsignal(DTsignal_id),
         .WBsignal(WBsignal), .BLT(BLT_id),
         .COND_BR_addr(COND_BR_addr_id),
         .BR_addr(BR_addr_id),
@@ -176,16 +186,17 @@ module pipelined_cpu(input logic clk, reset);
         .DT_addr(DT_addr_id),
         .shamt(shamt_id),
         // outputs
-        .Da(Da_id), .Db(Db_id), .BR_to_shift(BR_to_shift_id), .ALU_or_DT(ALU_or_DT_id)
+        .Da(Da_id), .Db(Db_id), .BR_to_shift(BR_to_shift_id), .ALU_or_DT(ALU_or_DT_id), .Ab(Ab_id)
     );
 
     // Stage: Execute
     data_ex ex_module(
        // inputs
        .clk(clk), .reset(reset),
-	    .ReadData1(Da_ex), .ReadData2(Db_ex), .PC(pc_ex), .ALU_or_DT(ALU_or_DT_ex), .BR_to_shift(BR_to_shift_ex),
+	    .ReadData1(Da_ex), .ReadData2(Db_ex), .PC(pc_ex), .ALU_or_DT(ALU_or_DT_ex), .BR_to_shift(BR_to_shift_ex), .alu_result_mem(alu_result_mem), .alu_result_wb(alu_result_wb),
 	    .ALUop(ALUop_ex),
        .ALUsrc(ALUsrc_ex), .update(update_ex), .cbz_id(cbz_ex),
+		 .forwardB(forwardB), .forwardA(forwardA),
        // outputs
        .alu_result(alu_result_ex), .new_PC2(new_pc2_ex),
        .negative(negative_ex), .zero(zero_ex), .overflow(overflow_ex), .carry_out(carry_out_ex)
@@ -198,14 +209,14 @@ module pipelined_cpu(input logic clk, reset);
         .xfer_size(xfer_size_mem),
         .alu_result(alu_result_mem), .write_data(dm_write_data_mem),
         // outputs
-        .BrTaken(BrTaken_mem),
+        .BrTaken(BrTaken),
         .dm_read_data(dm_read_data_mem)
     );
 
     data_wb wb_module(
         // inputs
         .MemtoReg(MemtoReg_wb),
-        .dm_read_data(dm_read_data_wb), .dm_address(dm_address_wb),
+        .dm_read_data(dm_read_data_wb), .dm_address(alu_result_wb),
         // outputs
         .WBsignal(WBsignal)
     );
@@ -232,7 +243,7 @@ module pipelined_cpu_testbench();
 		  reset = 1; #1500;
 		  reset = 0;
 		  // Rest of the tests
-		  #60000;
+		  #30000;
 		  
 		  // Test11
 		  //#1500000;
