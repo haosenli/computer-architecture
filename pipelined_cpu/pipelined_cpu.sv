@@ -176,9 +176,9 @@ module pipelined_cpu(input logic clk, reset);
     // Stage: Instruction Decode
     data_id id_module(
         // inputs
-        .clk(clk), .Reg2Loc(Reg2Loc_id), .ALUsrc(ALUsrc_id), .MemtoReg(MemtoReg_id),
+        .clk(clk), .Reg2Loc(Reg2Loc_id), .ALUsrc(ALUsrc_id), .MemtoReg(MemtoReg_id), .cbz(cbz_id), .branch(branch_id),
         .RegWrite(RegWrite_wb), .MemWrite(MemWrite_id), .BLsignal(BLsignal_id), .UnCondBr(UnCondBr_id), .DTsignal(DTsignal_id),
-        .WBsignal(WBsignal), .BLT(BLT_id),
+        .WBsignal(WBsignal), .BLT(BLT_id), .PC(pc_id),
         .COND_BR_addr(COND_BR_addr_id),
         .BR_addr(BR_addr_id),
         .ALUop(ALUop_id),
@@ -187,19 +187,20 @@ module pipelined_cpu(input logic clk, reset);
         .DT_addr(DT_addr_id),
         .shamt(shamt_id),
         // outputs
-        .Da(Da_id), .Db(Db_id), .BR_to_shift(BR_to_shift_id), .ALU_or_DT(ALU_or_DT_id), .Ab(Ab_id)
+        .Da(Da_id), .Db(Db_id), /*.BR_to_shift(BR_to_shift_id),*/ .ALU_or_DT(ALU_or_DT_id), .Ab(Ab_id), .new_PC2(new_pc2_id),
+		  .BrTaken(BrTaken_id)
     );
 
     // Stage: Execute
     data_ex ex_module(
        // inputs
        .clk(clk), .reset(reset),
-	    .ReadData1(Da_ex), .ReadData2(Db_ex), .PC(pc_ex), .ALU_or_DT(ALU_or_DT_ex), .BR_to_shift(BR_to_shift_ex), .alu_result_mem(alu_result_mem), .alu_result_wb(alu_result_wb1),
+	    .ReadData1(Da_ex), .ReadData2(Db_ex), .PC(pc_ex), .ALU_or_DT(ALU_or_DT_ex), /*.BR_to_shift(BR_to_shift_ex),*/ .alu_result_mem(alu_result_mem), .alu_result_wb(alu_result_wb1),
 	    .ALUop(ALUop_ex),
        .ALUsrc(ALUsrc_ex), .update(update_ex), .cbz_id(cbz_ex),
 		 .forwardB(forwardB), .forwardA(forwardA),
        // outputs
-       .alu_result(alu_result_ex), .new_PC2(new_pc2_ex),
+       .alu_result(alu_result_ex), //.new_PC2(new_pc2_ex),
        .negative(negative_ex), .zero(zero_ex), .overflow(overflow_ex), .carry_out(carry_out_ex)
     );
 
@@ -208,9 +209,9 @@ module pipelined_cpu(input logic clk, reset);
         // inputs
         .zero(zero_mem), .branch(branch_mem), .cbz(cbz_mem), .clk(clk), .MemWrite(MemWrite_mem), .MemtoReg(MemtoReg_mem),
         .xfer_size(xfer_size_mem),
-        .alu_result(alu_result_mem), .write_data(dm_write_data_mem),
+        .alu_result(alu_result_mem), .write_data(Db_mem),
         // outputs
-        .BrTaken(BrTaken),
+        //.BrTaken(BrTaken),
         .dm_read_data(dm_read_data_mem)
     );
 
@@ -234,7 +235,7 @@ module pipelined_cpu_testbench();
     logic clk, reset;
     pipelined_cpu dut (.*);
 
-    parameter ClockDelay = 1500;
+    parameter ClockDelay = 2000;
     initial begin // Set up the clock
         clk <= 0;
         forever #(ClockDelay/2) clk <= ~clk;
@@ -244,7 +245,7 @@ module pipelined_cpu_testbench();
 		  reset = 1; #1500;
 		  reset = 0;
 		  // Rest of the tests
-		  #30000;
+		  #40000;
 		  
 		  // Test11
 		  //#1500000;

@@ -27,12 +27,12 @@
  */
 module data_ex(
 	input  logic clk, reset,
-	input  logic [63:0] ReadData1, ReadData2, PC, ALU_or_DT, BR_to_shift,
+	input  logic [63:0] ReadData1, ReadData2, PC, ALU_or_DT, //BR_to_shift,
 	input  logic [63:0] alu_result_mem, alu_result_wb,
 	input  logic [2:0] ALUop,
 	input  logic [1:0] forwardB, forwardA,
 	input  logic ALUsrc, update, cbz_id,
-	output logic [63:0] alu_result, new_PC2,
+	output logic [63:0] alu_result, //new_PC2,
 	output logic negative, zero, overflow, carry_out
 	);
 	
@@ -54,10 +54,10 @@ module data_ex(
 				.zero(temp_zero), .overflow(temp_overflow), .carry_out(temp_carry_out));
 	
 	// shifts BR_addr by 2
-	shifter shift_2 (.value(BR_to_shift), .direction(1'b0), .distance(6'd2), .result(BR_PC));
+	//shifter shift_2 (.value(BR_to_shift), .direction(1'b0), .distance(6'd2), .result(BR_PC));
 	
 	// adds new BR_addr to PC
-	adder64 addPC (.A(BR_PC), .B(PC), .result(new_PC2));
+	//adder64 addPC (.A(BR_PC), .B(PC), .result(new_PC2));
 	
 	// DFFs to set the flags
 	nn_dff #(1) d_ff_0(.out(zero_q), .in(zero_dff), .*);

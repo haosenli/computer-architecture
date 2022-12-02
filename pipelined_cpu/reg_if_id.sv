@@ -1,7 +1,7 @@
 module reg_if_id(
     input  logic clk, reset,
     // DFF inputs
-    input  logic [63:0] pc_if, BLT_if,
+    input  logic [63:0] pc, BLT_if,
     input  logic [4:0] Rn_if, Rd_if, Rm_if,
     input  logic [2:0] ALUop_if,
     input  logic [3:0] xfer_size_if,
@@ -27,7 +27,7 @@ module reg_if_id(
 );
 
     nn_dff #(64) dff0 (.in(BLT_if), .out(BLT_id), .*);
-    nn_dff #(64) dff1 (.in(pc_if), .out(pc_id), .*);
+    nn_dff #(64) dff1 (.in(pc), .out(pc_id), .*);
     nn_dff #(19) dff2 (.in(COND_BR_addr_if), .out(COND_BR_addr_id), .*);
     nn_dff #(26) dff3 (.in(BR_addr_if), .out(BR_addr_id), .*);
     nn_dff #(1)  dff4 (.in(Reg2Loc_if), .out(Reg2Loc_id), .*);
