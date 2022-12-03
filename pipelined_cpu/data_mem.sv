@@ -30,15 +30,15 @@ module data_mem(
 	input  logic zero, branch, cbz, clk, MemWrite, MemtoReg,
 	input  logic [3:0] xfer_size,
 	input  logic [63:0] alu_result, write_data,
-   // output logic BrTaken,
+    // output logic BrTaken,
 	output logic [63:0] dm_read_data
 	);
 	
-//	logic temp_BrTaken;
-//	 
-//    // BrTaken signal
-//    and #5 a0(temp_BrTaken, zero, cbz);
-//	or #5 or0(BrTaken, temp_BrTaken, branch);
+    //	logic temp_BrTaken;
+    //	 
+    //    // BrTaken signal
+    //    and #5 a0(temp_BrTaken, zero, cbz);
+    //	or #5 or0(BrTaken, temp_BrTaken, branch);
 
     // Data memory module
 	datamem datamem_module(

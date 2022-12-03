@@ -24,7 +24,7 @@ module reg_if_id(
     output  logic [5:0] shamt_id,
     output  logic Reg2Loc_id, ALUsrc_id, MemtoReg_id, RegWrite_id, MemWrite_id,  DTsignal_id, UnCondBr_id,
     output  logic BLsignal_id, update_id, cond_id, cbz_id, branch_id, BRsignal_id
-);
+    );
 
     nn_dff #(64) dff0 (.in(BLT_if), .out(BLT_id), .*);
     nn_dff #(64) dff1 (.in(pc), .out(pc_id), .*);
@@ -50,6 +50,6 @@ module reg_if_id(
     nn_dff #(12) dff21 (.in(ALU_imm_if), .out(ALU_imm_id), .*);
     nn_dff #(9)  dff22 (.in(DT_addr_if), .out(DT_addr_id), .*);
     nn_dff #(6)  dff23 (.in(shamt_if), .out(shamt_id), .*);
-	 nn_dff #(1)  dff24 (.in(BRsignal_if), .out(BRsignal_id), .*);
+    nn_dff #(1)  dff24 (.in(BRsignal_if), .out(BRsignal_id), .*);
 
 endmodule

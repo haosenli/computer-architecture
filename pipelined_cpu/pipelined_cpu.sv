@@ -36,10 +36,10 @@ module pipelined_cpu(input logic clk, reset);
     logic [4:0] Rn, Rd, Rm;
     */
 	 
-	 logic [63:0] new_pc2, pc;
-	 logic [4:0] Rd_for;
-	 logic [1:0] forwardA, forwardB, forward_cbz;
-	 logic BRsignal;
+    logic [63:0] new_pc2, pc;
+    logic [4:0] Rd_for;
+    logic [1:0] forwardA, forwardB, forward_cbz;
+    logic BRsignal;
 	 
     // IF REGISTERS
     logic BRsignal_if, Reg2Loc_if, ALUsrc_if, MemtoReg_if, RegWrite_if;
@@ -134,8 +134,8 @@ module pipelined_cpu(input logic clk, reset);
     logic [5:0] shamt_wb;
     logic [11:0] ALU_imm_wb;
     logic [63:0] Da_wb, Db_wb, BR_to_shift_wb, BLT_wb, WBsignal, ALU_imm_extend_wb, DT_addr_extend_wb, ALU_or_DT_wb;
-		 logic [63:0] alu_result_wb1, alu_result_wb2, dm_address_wb, dm_read_data_wb, dm_write_data_wb;
-	 // Addresses
+    logic [63:0] alu_result_wb1, alu_result_wb2, dm_address_wb, dm_read_data_wb, dm_write_data_wb;
+    // Addresses
     logic [8:0] DT_addr_wb;
     logic [18:0] COND_BR_addr_wb;
     logic [25:0] BR_addr_wb;
@@ -148,17 +148,17 @@ module pipelined_cpu(input logic clk, reset);
     reg_ex_mem reg2(.*);
     reg_mem_wb reg3(.*);
 	 
-	 // Forwarding Unit
-	 forwarding_unit forward(
-			.RegWrite_mem(RegWrite_mem), .RegWrite_wb(RegWrite_wb1),
-			.regA(Rn_ex), .regB(Ab_ex), .Rd_mem(Rd_mem), .Rd_wb(Rd_for),
-			.forwardA(forwardA), .forwardB(forwardB)
-	 );
-	 forward_cbz fowardcbz(
-			.RegWrite_ex(RegWrite_ex), .RegWrite_mem(RegWrite_mem), .RegWrite_wb(RegWrite_wb1),
-			.reg_cbz(Rm_id), .Rd_ex(Rd_ex), .Rd_mem(Rd_mem), .Rd_wb(Rd_wb),
-			.forward_cbz(forward_cbz)
-	 );
+    // Forwarding Unit
+    forwarding_unit forward(
+        .RegWrite_mem(RegWrite_mem), .RegWrite_wb(RegWrite_wb1),
+        .regA(Rn_ex), .regB(Ab_ex), .Rd_mem(Rd_mem), .Rd_wb(Rd_for),
+        .forwardA(forwardA), .forwardB(forwardB)
+    );
+    forward_cbz fowardcbz(
+        .RegWrite_ex(RegWrite_ex), .RegWrite_mem(RegWrite_mem), .RegWrite_wb(RegWrite_wb1),
+        .reg_cbz(Rm_id), .Rd_ex(Rd_ex), .Rd_mem(Rd_mem), .Rd_wb(Rd_wb),
+        .forward_cbz(forward_cbz)
+    );
 
     // Stage: Instruction Fetch
     data_if if_module(
@@ -192,23 +192,23 @@ module pipelined_cpu(input logic clk, reset);
         .ALU_imm(ALU_imm_id),
         .DT_addr(DT_addr_id),
         .shamt(shamt_id),
-		  .forward_cbz(forward_cbz),
+        .forward_cbz(forward_cbz),
         // outputs
         .Da(Da_id), .Db(Db_id), /*.BR_to_shift(BR_to_shift_id),*/ .ALU_or_DT(ALU_or_DT_id), .Ab(Ab_id), .new_PC2(new_pc2_id),
-		  .BrTaken(BrTaken_id)
+        .BrTaken(BrTaken_id)
     );
 
     // Stage: Execute
     data_ex ex_module(
-       // inputs
-       .clk(clk), .reset(reset),
-	    .ReadData1(Da_ex), .ReadData2(Db_ex), .PC(pc_ex), .ALU_or_DT(ALU_or_DT_ex), /*.BR_to_shift(BR_to_shift_ex),*/ .alu_result_mem(alu_result_mem), .alu_result_wb(alu_result_wb1),
-	    .ALUop(ALUop_ex),
-       .ALUsrc(ALUsrc_ex), .update(update_ex), .cbz_id(cbz_ex), .BLsignal(BLsignal_ex),
-		 .forwardB(forwardB), .forwardA(forwardA), .BLT(BLT_ex),
-       // outputs
-       .alu_result(alu_result_ex), //.new_PC2(new_pc2_ex),
-       .negative(negative_ex), .zero(zero_ex), .overflow(overflow_ex), .carry_out(carry_out_ex)
+        // inputs
+        .clk(clk), .reset(reset),
+        .ReadData1(Da_ex), .ReadData2(Db_ex), .PC(pc_ex), .ALU_or_DT(ALU_or_DT_ex), /*.BR_to_shift(BR_to_shift_ex),*/ .alu_result_mem(alu_result_mem), .alu_result_wb(alu_result_wb1),
+        .ALUop(ALUop_ex),
+        .ALUsrc(ALUsrc_ex), .update(update_ex), .cbz_id(cbz_ex), .BLsignal(BLsignal_ex),
+        .forwardB(forwardB), .forwardA(forwardA), .BLT(BLT_ex),
+        // outputs
+        .alu_result(alu_result_ex), //.new_PC2(new_pc2_ex),
+        .negative(negative_ex), .zero(zero_ex), .overflow(overflow_ex), .carry_out(carry_out_ex)
     );
 
     // Stage: Memory

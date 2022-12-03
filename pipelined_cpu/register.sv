@@ -15,9 +15,9 @@
  */
 
 module register (
-        input logic clk, wr_en, 
-        input logic [63:0] wr_data,
-        output logic [63:0] rd_data
+    input logic clk, wr_en, 
+    input logic [63:0] wr_data,
+    output logic [63:0] rd_data
     );
     // create 64 d flip-flips
     genvar i;

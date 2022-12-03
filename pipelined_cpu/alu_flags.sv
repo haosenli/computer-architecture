@@ -30,7 +30,7 @@ module alu_flags(
 	xor #5 flow (overflow, cout_out[63], cout_out[62]);
 
     // Calculate zero signal
-	 or #5 z0(temp_zero0[0], result[0], result[1], result[2], result[3]);
+    or #5 z0(temp_zero0[0], result[0], result[1], result[2], result[3]);
     or #5 z1(temp_zero0[1], result[4], result[5], result[6], result[7]);
     or #5 z2(temp_zero0[2], result[8], result[9], result[10], result[11]);
     or #5 z3(temp_zero0[3], result[12], result[13], result[14], result[15]);

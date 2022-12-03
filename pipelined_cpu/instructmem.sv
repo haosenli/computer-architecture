@@ -19,9 +19,9 @@
 `define INSTRUCT_MEM_SIZE		1024
 	
 module instructmem (
-	input		logic		[63:0]	address,
+	input	logic		[63:0]	address,
 	output	logic		[31:0]	instruction,
-	input		logic					clk	// Memory is combinational, but used for error-checking
+	input	logic				clk	// Memory is combinational, but used for error-checking
 	);
 
 	// Force %t's to print in a nice format.

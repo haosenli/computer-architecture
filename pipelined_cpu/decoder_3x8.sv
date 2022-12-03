@@ -18,7 +18,6 @@ module decoder_3x8 (decode, A, B, C, enable);
 	and #5 three_eight_110 (decode[6], A, B, notC, enable);
 	and #5 three_eight_111 (decode[7], A, B, C, enable);
 	
-	
 endmodule
 
 `timescale 10 ps / 1 ps

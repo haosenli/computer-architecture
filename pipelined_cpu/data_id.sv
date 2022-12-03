@@ -53,38 +53,38 @@ module data_id (
     input  logic [11:0] ALU_imm,
     input  logic [8:0] DT_addr,
     input  logic [5:0] shamt,
-	 input  logic [1:0] forward_cbz,
+    input  logic [1:0] forward_cbz,
     output logic [63:0] Da, Db, /*BR_to_shift,*/ ALU_or_DT, new_PC2,
-	 output logic [4:0] Ab,
-	 output logic BrTaken
-	);
+    output logic [4:0] Ab,
+    output logic BrTaken
+    );
 
     // RegFile signals
     logic [63:0] Dw;
     // Sign-extended addresses
     logic [63:0] COND_BR_addr64, BR_addr64, ALU_imm_extend, DT_addr_extend, BR_to_shift, BR_PC, cbz_check;
-	 logic [4:0] Rd;
+    logic [4:0] Rd;
 	 
-	 logic temp_BrTaken, zero, negative, carry_out, overflow, Bcond_branch;
-	 mux64_4x1 forward_cbz_mux64 (.sel(forward_cbz), .A(Db), .B(alu_result_ex), .C(alu_result_mem), .D(alu_result_wb), .out(cbz_check));
-	 alu_flags flag(.result(cbz_check), .cout_out(64'd0), .zero(zero), .negative(negative), .carry_out(carry_out), .overflow(overflow));
+    logic temp_BrTaken, zero, negative, carry_out, overflow, Bcond_branch;
+    mux64_4x1 forward_cbz_mux64 (.sel(forward_cbz), .A(Db), .B(alu_result_ex), .C(alu_result_mem), .D(alu_result_wb), .out(cbz_check));
+    alu_flags flag(.result(cbz_check), .cout_out(64'd0), .zero(zero), .negative(negative), .carry_out(carry_out), .overflow(overflow));
 	 
     // BrTaken signal
     and #5 a0(temp_BrTaken, zero, cbz);
-	 B_cond_decode Bcond(.negative(negative_ex), .zero(zero_ex), .cond, .Rd(Rd_id), .branch(Bcond_branch));
-	 or #5 or0(BrTaken, temp_BrTaken, branch, Bcond_branch);
+    B_cond_decode Bcond(.negative(negative_ex), .zero(zero_ex), .cond, .Rd(Rd_id), .branch(Bcond_branch));
+    or #5 or0(BrTaken, temp_BrTaken, branch, Bcond_branch);
 
     // Sign Extenders
     sign_extender #(19) se_0(.input_data(COND_BR_addr), .output_data(COND_BR_addr64));
     sign_extender #(26) se_1(.input_data(BR_addr), .output_data(BR_addr64));
-	 sign_extender #(12) se_2(.input_data(ALU_imm), .output_data(ALU_imm_extend));
-	 sign_extender #(9)  se_3(.input_data(DT_addr), .output_data(DT_addr_extend));
+    sign_extender #(12) se_2(.input_data(ALU_imm), .output_data(ALU_imm_extend));
+    sign_extender #(9)  se_3(.input_data(DT_addr), .output_data(DT_addr_extend));
 
     // 2x1 64-bits Mux for CondAddr19 and BrAddr26
     mux64_2x1 mux64_0(.sel(UnCondBr), .A(BR_addr64), .B(COND_BR_addr64), .out(BR_to_shift));
-	 mux64_2x1 mux64_1(.sel(DTsignal), .A(DT_addr_extend), .B(ALU_imm_extend), .out(ALU_or_DT));
+    mux64_2x1 mux64_1(.sel(DTsignal), .A(DT_addr_extend), .B(ALU_imm_extend), .out(ALU_or_DT));
 	 
-	 // shifts BR_addr by 2
+    // shifts BR_addr by 2
 	shifter shift_2 (.value(BR_to_shift), .direction(1'b0), .distance(6'd2), .result(BR_PC));
 	
 	// adds new BR_addr to PC
@@ -93,7 +93,7 @@ module data_id (
     // Muxes for RegFile
     mux5_2x1 mux5_0(.sel(Reg2Loc), .A(Rm), .B(Rd_id), .out(Ab));
     mux64_2x1 mux64_2(.sel(BLsignal), .A(BLT), .B(WBsignal), .out(Dw));
-	 //mux5_2x1 mux5_1(.sel(BLsignal), .A(Rd_id), .B(Rd_wb), .out(Rd));
+    //mux5_2x1 mux5_1(.sel(BLsignal), .A(Rd_id), .B(Rd_wb), .out(Rd));
 
     // RegFile module
     regfile regfile_module(
@@ -114,7 +114,7 @@ module data_id_testbench();
     logic [11:0] ALU_imm;
     logic [8:0] DT_addr;
     logic [5:0] shamt;
-	 logic [1:0] forward_cbz;
+    logic [1:0] forward_cbz;
     logic [63:0] Da, Db, BR_to_shift, pc_id, ALU_imm_extend, DT_addr_extend, ALU_or_DT, new_PC2;
     
     data_id dut (.*);
