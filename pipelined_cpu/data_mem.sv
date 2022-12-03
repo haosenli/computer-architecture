@@ -27,9 +27,9 @@
 
 `timescale 10ps/1ps
 module data_mem(
-	input  logic zero, branch, cbz, clk, MemWrite, MemtoReg,
+	input  logic zero, branch, cbz, clk, MemWrite, MemtoReg, forward_stur,
 	input  logic [3:0] xfer_size,
-	input  logic [63:0] alu_result, write_data,
+	input  logic [63:0] alu_result, Db_mem, alu_result_wb,
     // output logic BrTaken,
 	output logic [63:0] dm_read_data
 	);
@@ -39,7 +39,10 @@ module data_mem(
     //    // BrTaken signal
     //    and #5 a0(temp_BrTaken, zero, cbz);
     //	or #5 or0(BrTaken, temp_BrTaken, branch);
-
+	 logic [63:0] write_data;
+	 
+	 mux64_2x1 forwardSTUR (.sel(forward_stur), .A(alu_result_wb), .B(Db_mem), .out(write_data));
+	 
     // Data memory module
 	datamem datamem_module(
         .address(alu_result), .write_enable(MemWrite), .read_enable(MemtoReg), .clk(clk), 
@@ -47,8 +50,8 @@ module data_mem(
 endmodule
 
 module data_mem_testbench();
-    logic zero, branch, cbz, clk, MemWrite, MemtoReg;
-	logic [63:0] alu_result, write_data, new_pc2_ex;
+    logic zero, branch, cbz, clk, MemWrite, MemtoReg, forward_stur;
+	logic [63:0] alu_result, write_data, new_pc2_ex, Db_mem, alu_result_wb;
 	logic [3:0] xfer_size;
     logic BrTaken;
 	logic [63:0] dm_read_data;

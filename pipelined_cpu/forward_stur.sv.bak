@@ -1,0 +1,5 @@
+module forward_stur(
+	input  logic
+	output logic
+	);
+endmodule

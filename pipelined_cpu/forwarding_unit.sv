@@ -1,6 +1,6 @@
 `timescale 10ps/1ps
 module forwarding_unit(
-			input  logic RegWrite_mem, RegWrite_wb,
+			input  logic RegWrite_mem, RegWrite_wb, MemWrite_ex,
 			input  logic [4:0] regA, regB, Rd_mem, Rd_wb,
 			output logic [1:0] forwardA, forwardB	// 00 - no forward, 01 - forward from EX/MEM, 10- forward from MEM/WB, 11 - Dont care
 	);
@@ -20,7 +20,7 @@ module forwarding_unit(
 		end
 		
 		// check if there is a register that is equal to regB being changed in the EX stage.
-		if (RegWrite_mem && (Rd_mem == regB) && (Rd_mem != 5'd31)) begin
+		if (RegWrite_mem && (Rd_mem == regB) && (Rd_mem != 5'd31) && ~MemWrite_ex) begin
 			forwardB = 2'b01;
 		end
 		// check if there is a register that is equal to regB being changed in the MEM stage.
@@ -37,7 +37,7 @@ module forwarding_unit(
 endmodule
 
 module forwarding_unit_testbench();
-	logic RegWrite_mem, RegWrite_wb;
+	logic RegWrite_mem, RegWrite_wb, MemWrite_ex, MemWrite_wb;
 	logic [4:0] regA, regB, Rd_mem, Rd_wb;
 	logic [1:0] forwardA, forwardB;
 	

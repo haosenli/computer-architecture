@@ -39,7 +39,7 @@ module pipelined_cpu(input logic clk, reset);
     logic [63:0] new_pc2, pc;
     logic [4:0] Rd_for;
     logic [1:0] forwardA, forwardB, forward_cbz;
-    logic BRsignal;
+    logic BRsignal, forward_stur;
 	 
     // IF REGISTERS
     logic BRsignal_if, Reg2Loc_if, ALUsrc_if, MemtoReg_if, RegWrite_if;
@@ -150,7 +150,7 @@ module pipelined_cpu(input logic clk, reset);
 	 
     // Forwarding Unit
     forwarding_unit forward(
-        .RegWrite_mem(RegWrite_mem), .RegWrite_wb(RegWrite_wb1),
+        .RegWrite_mem(RegWrite_mem), .RegWrite_wb(RegWrite_wb1), .MemWrite_ex(MemWrite_ex),
         .regA(Rn_ex), .regB(Ab_ex), .Rd_mem(Rd_mem), .Rd_wb(Rd_for),
         .forwardA(forwardA), .forwardB(forwardB)
     );
@@ -158,6 +158,11 @@ module pipelined_cpu(input logic clk, reset);
         .RegWrite_ex(RegWrite_ex), .RegWrite_mem(RegWrite_mem), .RegWrite_wb(RegWrite_wb1),
         .reg_cbz(Rm_id), .Rd_ex(Rd_ex), .Rd_mem(Rd_mem), .Rd_wb(Rd_wb),
         .forward_cbz(forward_cbz)
+    );
+	 forward_stur fowardstur(
+        .MemWrite_wb(MemWrite_mem),
+        .Rd_mem(Rd_mem), .Rd_wb(Rd_wb),
+        .forward_stur(forward_stur)
     );
 
     // Stage: Instruction Fetch
@@ -202,7 +207,7 @@ module pipelined_cpu(input logic clk, reset);
     data_ex ex_module(
         // inputs
         .clk(clk), .reset(reset),
-        .ReadData1(Da_ex), .ReadData2(Db_ex), .PC(pc_ex), .ALU_or_DT(ALU_or_DT_ex), /*.BR_to_shift(BR_to_shift_ex),*/ .alu_result_mem(alu_result_mem), .alu_result_wb(alu_result_wb1),
+        .ReadData1(Da_ex), .ReadData2(Db_ex), .PC(pc_ex), .ALU_or_DT(ALU_or_DT_ex), /*.BR_to_shift(BR_to_shift_ex),*/ .alu_result_mem(alu_result_mem), .alu_result_wb(WBsignal),
         .ALUop(ALUop_ex),
         .ALUsrc(ALUsrc_ex), .update(update_ex), .cbz_id(cbz_ex), .BLsignal(BLsignal_ex),
         .forwardB(forwardB), .forwardA(forwardA), .BLT(BLT_ex),
@@ -214,9 +219,9 @@ module pipelined_cpu(input logic clk, reset);
     // Stage: Memory
     data_mem mem_module(
         // inputs
-        .zero(zero_mem), .branch(branch_mem), .cbz(cbz_mem), .clk(clk), .MemWrite(MemWrite_mem), .MemtoReg(MemtoReg_mem),
+        .zero(zero_mem), .branch(branch_mem), .cbz(cbz_mem), .clk(clk), .MemWrite(MemWrite_mem), .MemtoReg(MemtoReg_mem), .forward_stur(forward_stur),
         .xfer_size(xfer_size_mem),
-        .alu_result(alu_result_mem), .write_data(Db_mem),
+        .alu_result(alu_result_mem), .Db_mem(Db_mem), .alu_result_wb(alu_result_wb1),
         // outputs
         //.BrTaken(BrTaken),
         .dm_read_data(dm_read_data_mem)

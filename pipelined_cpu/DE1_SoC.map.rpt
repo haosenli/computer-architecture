@@ -1,5 +1,5 @@
 Analysis & Elaboration report for DE1_SoC
-Fri Dec 02 17:46:49 2022
+Fri Dec 02 19:54:04 2022
 Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 
 
@@ -37,7 +37,7 @@ agreement for further details.
 +-----------------------------------------------------------------------------+
 ; Analysis & Elaboration Summary                                              ;
 +-------------------------------+---------------------------------------------+
-; Analysis & Elaboration Status ; Failed - Fri Dec 02 17:46:49 2022           ;
+; Analysis & Elaboration Status ; Failed - Fri Dec 02 19:54:04 2022           ;
 ; Quartus Prime Version         ; 17.0.0 Build 595 04/25/2017 SJ Lite Edition ;
 ; Revision Name                 ; DE1_SoC                                     ;
 ; Top-level Entity Name         ; pipelined_cpu                               ;
@@ -161,7 +161,7 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Elaboration
     Info: Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
-    Info: Processing started: Fri Dec 02 17:46:36 2022
+    Info: Processing started: Fri Dec 02 19:53:51 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE1_SoC -c DE1_SoC --analysis_and_elaboration
 Info (20034): Auto device selection is not supported for Cyclone V device family. The default device, 5CGXFC7C7F23C8, is set.
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
@@ -179,7 +179,7 @@ Info (12021): Found 1 design units, including 1 entities, in source file reg_ex_
     Info (12023): Found entity 1: reg_ex_mem File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/reg_ex_mem.sv Line: 1
 Info (12021): Found 2 design units, including 2 entities, in source file pipelined_cpu.sv
     Info (12023): Found entity 1: pipelined_cpu File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/pipelined_cpu.sv Line: 15
-    Info (12023): Found entity 2: pipelined_cpu_testbench File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/pipelined_cpu.sv Line: 241
+    Info (12023): Found entity 2: pipelined_cpu_testbench File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/pipelined_cpu.sv Line: 246
 Info (12021): Found 1 design units, including 1 entities, in source file nn_dff.sv
     Info (12023): Found entity 1: nn_dff File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/nn_dff.sv Line: 17
 Info (12021): Found 1 design units, including 1 entities, in source file n_dff.sv
@@ -241,7 +241,7 @@ Info (12021): Found 2 design units, including 2 entities, in source file enabled
     Info (12023): Found entity 2: enabled_decoder_5x32_testbench File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/enabled_decoder_5x32.sv Line: 26
 Info (12021): Found 2 design units, including 2 entities, in source file decoder_3x8.sv
     Info (12023): Found entity 1: decoder_3x8 File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/decoder_3x8.sv Line: 2
-    Info (12023): Found entity 2: decoder_3x8_testbench File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/decoder_3x8.sv Line: 25
+    Info (12023): Found entity 2: decoder_3x8_testbench File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/decoder_3x8.sv Line: 24
 Info (12021): Found 2 design units, including 2 entities, in source file datamem.sv
     Info (12023): Found entity 1: datamem File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/datamem.sv Line: 12
     Info (12023): Found entity 2: datamem_testbench File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/datamem.sv Line: 70
@@ -249,7 +249,7 @@ Info (12021): Found 1 design units, including 1 entities, in source file data_wb
     Info (12023): Found entity 1: data_wb File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/data_wb.sv Line: 18
 Info (12021): Found 2 design units, including 2 entities, in source file data_mem.sv
     Info (12023): Found entity 1: data_mem File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/data_mem.sv Line: 29
-    Info (12023): Found entity 2: data_mem_testbench File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/data_mem.sv Line: 49
+    Info (12023): Found entity 2: data_mem_testbench File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/data_mem.sv Line: 52
 Info (12021): Found 2 design units, including 2 entities, in source file data_if.sv
     Info (12023): Found entity 1: data_if File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/data_if.sv Line: 43
     Info (12023): Found entity 2: data_if_testbench File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/data_if.sv Line: 83
@@ -280,6 +280,8 @@ Info (12021): Found 2 design units, including 2 entities, in source file adder.s
     Info (12023): Found entity 2: adder_testbench File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/adder.sv Line: 37
 Info (12021): Found 1 design units, including 1 entities, in source file forward_cbz.sv
     Info (12023): Found entity 1: forward_cbz File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/forward_cbz.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file forward_stur.sv
+    Info (12023): Found entity 1: forward_stur File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/forward_stur.sv Line: 1
 Info (12127): Elaborating entity "pipelined_cpu" for the top level hierarchy
 Warning (10030): Net "BR_to_shift_id" at pipelined_cpu.sv(75) has no driver or initial value, using a default initial value '0' File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/pipelined_cpu.sv Line: 75
 Warning (10030): Net "BRsignal_ex" at pipelined_cpu.sv(87) has no driver or initial value, using a default initial value '0' File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/pipelined_cpu.sv Line: 87
@@ -304,7 +306,8 @@ Info (12128): Elaborating entity "n_dff" for hierarchy "reg_mem_wb:reg3|n_dff:df
 Info (12128): Elaborating entity "n_dff" for hierarchy "reg_mem_wb:reg3|n_dff:dff5" File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/reg_mem_wb.sv Line: 18
 Info (12128): Elaborating entity "forwarding_unit" for hierarchy "forwarding_unit:forward" File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/pipelined_cpu.sv Line: 156
 Info (12128): Elaborating entity "forward_cbz" for hierarchy "forward_cbz:fowardcbz" File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/pipelined_cpu.sv Line: 161
-Info (12128): Elaborating entity "data_if" for hierarchy "data_if:if_module" File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/pipelined_cpu.sv Line: 180
+Info (12128): Elaborating entity "forward_stur" for hierarchy "forward_stur:fowardstur" File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/pipelined_cpu.sv Line: 166
+Info (12128): Elaborating entity "data_if" for hierarchy "data_if:if_module" File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/pipelined_cpu.sv Line: 185
 Info (12128): Elaborating entity "program_counter" for hierarchy "data_if:if_module|program_counter:pc_module" File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/data_if.sv Line: 65
 Info (12128): Elaborating entity "mux64_2x1" for hierarchy "data_if:if_module|mux64_2x1:mux64_1" File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/data_if.sv Line: 68
 Info (12128): Elaborating entity "mux_2x1" for hierarchy "data_if:if_module|mux64_2x1:mux64_1|mux_2x1:mux64[0].mux" File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/mux64_2x1.sv Line: 22
@@ -316,9 +319,9 @@ Error (10170): Verilog HDL syntax error at test10_forwarding.arm(73) near text: 
 Info (10648): Verilog HDL Display System Task info at instructmem.sv(47): Running benchmark:  File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/instructmem.sv Line: 47
 Error (12152): Can't elaborate user hierarchy "data_if:if_module|instructmem:im_module" File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/data_if.sv Line: 75
 Error: Quartus Prime Analysis & Elaboration was unsuccessful. 2 errors, 5 warnings
-    Error: Peak virtual memory: 4779 megabytes
-    Error: Processing ended: Fri Dec 02 17:46:49 2022
+    Error: Peak virtual memory: 4778 megabytes
+    Error: Processing ended: Fri Dec 02 19:54:04 2022
     Error: Elapsed time: 00:00:13
-    Error: Total CPU time (on all processors): 00:00:31
+    Error: Total CPU time (on all processors): 00:00:29
 
 
