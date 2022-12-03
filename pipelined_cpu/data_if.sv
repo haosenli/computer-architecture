@@ -41,13 +41,13 @@
  */
 `timescale 10ps/1ps
 module data_if (
-    input  logic clk, negative, zero, BrTaken, reset,
+    input  logic clk, negative, zero, BrTaken, reset, BRsignal,
     input  logic [63:0] Da, new_pc2,
     output logic [63:0] BLT, pc,
     output logic [18:0] COND_BR_addr,
     output logic [25:0] BR_addr,
     output logic Reg2Loc, ALUsrc, MemtoReg, RegWrite, MemWrite, BLsignal, 
-	output logic cbz, branch, cond, update, UnCondBr, DTsignal,
+	output logic cbz, branch, cond, update, UnCondBr, DTsignal, BRsignal_if,
     output logic [2:0] ALUop,
 	output logic [3:0] xfer_size,
     output logic [4:0] Rn, Rd, Rm,
@@ -58,7 +58,6 @@ module data_if (
     // General signals
     logic [63:0] new_pc, new_pc1, new_pc3;
     logic [31:0] instruction;
-	 logic BRsignal;
     // Internal control signals
     assign BLT = new_pc1;
 
@@ -76,13 +75,13 @@ module data_if (
     instructmem im_module(.address(pc), .instruction(instruction), .clk(clk));
 
     // Instruction Decoder
-    instruction_decoder id_module(.*);
+    instruction_decoder id_module(.BRsignal(BRsignal_if), .*);
 
 endmodule
 
 `timescale 10ps/1ps
 module data_if_testbench();
-    logic clk, negative, zero, BrTaken, reset, BRsignal;
+    logic clk, negative, zero, BrTaken, reset, BRsignal, BRsignal_if;
     logic [63:0] Da, new_pc2;
     logic [63:0] BLT, pc;
     logic [18:0] COND_BR_addr;

@@ -62,8 +62,9 @@ module data_id (
     logic [63:0] Dw;
     // Sign-extended addresses
     logic [63:0] COND_BR_addr64, BR_addr64, ALU_imm_extend, DT_addr_extend, BR_to_shift, BR_PC;
+	 logic [4:0] Rd;
 	 
-	 logic temp_BrTaken, zero, negative, carry_out, overflow;
+	 logic temp_BrTaken, zero, negative, carry_out, overflow, Bcond_branch;
 	 alu_flags flag(.result(Db), .cout_out(64'd0), .zero(zero), .negative(negative), .carry_out(carry_out), .overflow(overflow));
 	 
     // BrTaken signal
@@ -90,17 +91,18 @@ module data_id (
     // Muxes for RegFile
     mux5_2x1 mux5_0(.sel(Reg2Loc), .A(Rm), .B(Rd_id), .out(Ab));
     mux64_2x1 mux64_2(.sel(BLsignal), .A(BLT), .B(WBsignal), .out(Dw));
+	 //mux5_2x1 mux5_1(.sel(BLsignal), .A(Rd_id), .B(Rd_wb), .out(Rd));
 
     // RegFile module
     regfile regfile_module(
         .ReadData1(Da), .ReadData2(Db), .WriteData(Dw),
-        .ReadRegister1(Rn), .ReadRegister2(Ab), .WriteRegister(Rd_wb),
+        .ReadRegister1(Rn), .ReadRegister2(Ab), .WriteRegister(Rd_id),
         .RegWrite(RegWrite), .clk(clk));
 endmodule
 
 `timescale 10ps/1ps
 module data_id_testbench();
-    logic clk, update, Reg2Loc, ALUsrc, MemtoReg, cbz, branch, cond, zero_ex, negative_ex;
+    logic clk, update, Reg2Loc, ALUsrc, MemtoReg, cbz, branch, cond, zero_ex, negative_ex, BRsignal_id;
     logic RegWrite, MemWrite, BrTaken, BLsignal, BRsignal, UnCondBr, DTsignal;
     logic [63:0] WBsignal, BLT, PC;
     logic [18:0] COND_BR_addr;

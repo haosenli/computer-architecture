@@ -39,6 +39,7 @@ module pipelined_cpu(input logic clk, reset);
 	 logic [63:0] new_pc2, pc;
 	 logic [4:0] Rd_for;
 	 logic [1:0] forwardA, forwardB;
+	 logic BRsignal;
 	 
     // IF REGISTERS
     logic BRsignal_if, Reg2Loc_if, ALUsrc_if, MemtoReg_if, RegWrite_if;
@@ -157,14 +158,14 @@ module pipelined_cpu(input logic clk, reset);
     // Stage: Instruction Fetch
     data_if if_module(
         // inputs
-        .clk(clk), .negative(negative_if), .zero(zero_if), .BrTaken(BrTaken), .reset(reset),
-        .Da(Da_ex), .new_pc2(new_pc2),
+        .clk(clk), .negative(negative_if), .zero(zero_if), .BrTaken(BrTaken), .reset(reset), .BRsignal(BRsignal),
+        .Da(Da_id), .new_pc2(new_pc2),
         // outputs
         .BLT(BLT_if), .pc(pc),
         .COND_BR_addr(COND_BR_addr_if),
         .BR_addr(BR_addr_if),
         .Reg2Loc(Reg2Loc_if), .ALUsrc(ALUsrc_if), .MemtoReg(MemtoReg_if), .RegWrite(RegWrite_if), .MemWrite(MemWrite_if), .BLsignal(BLsignal_if), 
-        .cbz(cbz_if), .branch(branch_if), .cond(cond_if), .update(update_if), .UnCondBr(UnCondBr_if), .DTsignal(DTsignal_if),
+        .cbz(cbz_if), .branch(branch_if), .cond(cond_if), .update(update_if), .UnCondBr(UnCondBr_if), .DTsignal(DTsignal_if), .BRsignal_if(BRsignal_if),
         .ALUop(ALUop_if),
         .xfer_size(xfer_size_if),
         .Rn(Rn_if), .Rd(Rd_if), .Rm(Rm_if),
@@ -245,7 +246,7 @@ module pipelined_cpu_testbench();
 		  reset = 1; #1500;
 		  reset = 0;
 		  // Rest of the tests
-		  #40000;
+		  #60000;
 		  
 		  // Test11
 		  //#1500000;
