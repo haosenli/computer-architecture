@@ -16,9 +16,10 @@
 
 `timescale 10ps / 1ps
 module data_wb (
-    input  logic MemtoReg,
-    input  logic [63:0] dm_read_data, dm_address,
-    output logic [63:0] WBsignal
+    input  logic MemtoReg_neg, MemtoReg_pos,
+    input  logic [63:0] dm_read_data_neg, dm_address_neg, dm_read_data_pos, dm_address_pos,
+    output logic [63:0] WBsignal_neg, WBsignal_pos
     );
-    mux64_2x1 mux64_0(.sel(MemtoReg), .A(dm_read_data), .B(dm_address), .out(WBsignal));
+    mux64_2x1 mux64_0(.sel(MemtoReg_neg), .A(dm_read_data_neg), .B(dm_address_neg), .out(WBsignal_neg));
+	 mux64_2x1 mux64_1(.sel(MemtoReg_pos), .A(dm_read_data_pos), .B(dm_address_pos), .out(WBsignal_pos));
 endmodule

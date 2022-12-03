@@ -1,5 +1,5 @@
 Analysis & Elaboration report for DE1_SoC
-Fri Dec 02 19:54:04 2022
+Fri Dec 02 20:24:32 2022
 Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
 
 
@@ -37,7 +37,7 @@ agreement for further details.
 +-----------------------------------------------------------------------------+
 ; Analysis & Elaboration Summary                                              ;
 +-------------------------------+---------------------------------------------+
-; Analysis & Elaboration Status ; Failed - Fri Dec 02 19:54:04 2022           ;
+; Analysis & Elaboration Status ; Failed - Fri Dec 02 20:24:32 2022           ;
 ; Quartus Prime Version         ; 17.0.0 Build 595 04/25/2017 SJ Lite Edition ;
 ; Revision Name                 ; DE1_SoC                                     ;
 ; Top-level Entity Name         ; pipelined_cpu                               ;
@@ -161,7 +161,7 @@ agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Elaboration
     Info: Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
-    Info: Processing started: Fri Dec 02 19:53:51 2022
+    Info: Processing started: Fri Dec 02 20:24:20 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off DE1_SoC -c DE1_SoC --analysis_and_elaboration
 Info (20034): Auto device selection is not supported for Cyclone V device family. The default device, 5CGXFC7C7F23C8, is set.
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
@@ -282,6 +282,8 @@ Info (12021): Found 1 design units, including 1 entities, in source file forward
     Info (12023): Found entity 1: forward_cbz File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/forward_cbz.sv Line: 1
 Info (12021): Found 1 design units, including 1 entities, in source file forward_stur.sv
     Info (12023): Found entity 1: forward_stur File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/forward_stur.sv Line: 1
+Warning (10236): Verilog HDL Implicit Net warning at pipelined_cpu.sv(232): created implicit net for "MemtoReg_wb1" File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/pipelined_cpu.sv Line: 232
+Warning (10236): Verilog HDL Implicit Net warning at pipelined_cpu.sv(232): created implicit net for "MemtoReg_wb2" File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/pipelined_cpu.sv Line: 232
 Info (12127): Elaborating entity "pipelined_cpu" for the top level hierarchy
 Warning (10030): Net "BR_to_shift_id" at pipelined_cpu.sv(75) has no driver or initial value, using a default initial value '0' File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/pipelined_cpu.sv Line: 75
 Warning (10030): Net "BRsignal_ex" at pipelined_cpu.sv(87) has no driver or initial value, using a default initial value '0' File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/pipelined_cpu.sv Line: 87
@@ -315,13 +317,13 @@ Info (12128): Elaborating entity "adder64" for hierarchy "data_if:if_module|adde
 Info (12128): Elaborating entity "adder" for hierarchy "data_if:if_module|adder64:adder64_1|adder:add0" File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/adder64.sv Line: 22
 Info (12128): Elaborating entity "instructmem" for hierarchy "data_if:if_module|instructmem:im_module" File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/data_if.sv Line: 75
 Warning (10175): Verilog HDL warning at instructmem.sv(28): ignoring unsupported system task File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/instructmem.sv Line: 28
-Error (10170): Verilog HDL syntax error at test10_forwarding.arm(73) near text: _. Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: C:/School/EE469/fpga-arm-processor/benchmarks/test10_forwarding.arm Line: 73
+Error (10170): Verilog HDL syntax error at test12_Fibonacci.arm(72) near text: _. Check for and fix any syntax errors that appear immediately before or at the specified keyword. The Intel FPGA Knowledge Database contains many articles with specific details on how to resolve this error. Visit the Knowledge Database at https://www.altera.com/support/support-resources/knowledge-base/search.html and search for this specific error message number. File: C:/School/EE469/fpga-arm-processor/benchmarks/test12_Fibonacci.arm Line: 72
 Info (10648): Verilog HDL Display System Task info at instructmem.sv(47): Running benchmark:  File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/instructmem.sv Line: 47
 Error (12152): Can't elaborate user hierarchy "data_if:if_module|instructmem:im_module" File: C:/School/EE469/fpga-arm-processor/pipelined_cpu/data_if.sv Line: 75
-Error: Quartus Prime Analysis & Elaboration was unsuccessful. 2 errors, 5 warnings
-    Error: Peak virtual memory: 4778 megabytes
-    Error: Processing ended: Fri Dec 02 19:54:04 2022
-    Error: Elapsed time: 00:00:13
-    Error: Total CPU time (on all processors): 00:00:29
+Error: Quartus Prime Analysis & Elaboration was unsuccessful. 2 errors, 7 warnings
+    Error: Peak virtual memory: 4780 megabytes
+    Error: Processing ended: Fri Dec 02 20:24:32 2022
+    Error: Elapsed time: 00:00:12
+    Error: Total CPU time (on all processors): 00:00:28
 
 
