@@ -45,7 +45,7 @@
 module data_id (
     input  logic clk, Reg2Loc, ALUsrc, MemtoReg,
     input  logic RegWrite, MemWrite, BLsignal, UnCondBr, DTsignal, cbz, branch, cond, zero_ex, negative_ex,
-    input  logic [63:0] WBsignal, BLT, PC,
+    input  logic [63:0] WBsignal, BLT, PC, alu_result_ex, alu_result_mem, alu_result_wb,
     input  logic [18:0] COND_BR_addr,
     input  logic [25:0] BR_addr,
     input  logic [2:0] ALUop,
@@ -53,6 +53,7 @@ module data_id (
     input  logic [11:0] ALU_imm,
     input  logic [8:0] DT_addr,
     input  logic [5:0] shamt,
+	 input  logic [1:0] forward_cbz,
     output logic [63:0] Da, Db, /*BR_to_shift,*/ ALU_or_DT, new_PC2,
 	 output logic [4:0] Ab,
 	 output logic BrTaken
@@ -61,11 +62,12 @@ module data_id (
     // RegFile signals
     logic [63:0] Dw;
     // Sign-extended addresses
-    logic [63:0] COND_BR_addr64, BR_addr64, ALU_imm_extend, DT_addr_extend, BR_to_shift, BR_PC;
+    logic [63:0] COND_BR_addr64, BR_addr64, ALU_imm_extend, DT_addr_extend, BR_to_shift, BR_PC, cbz_check;
 	 logic [4:0] Rd;
 	 
 	 logic temp_BrTaken, zero, negative, carry_out, overflow, Bcond_branch;
-	 alu_flags flag(.result(Db), .cout_out(64'd0), .zero(zero), .negative(negative), .carry_out(carry_out), .overflow(overflow));
+	 mux64_4x1 forward_cbz_mux64 (.sel(forward_cbz), .A(Db), .B(alu_result_ex), .C(alu_result_mem), .D(alu_result_wb), .out(cbz_check));
+	 alu_flags flag(.result(cbz_check), .cout_out(64'd0), .zero(zero), .negative(negative), .carry_out(carry_out), .overflow(overflow));
 	 
     // BrTaken signal
     and #5 a0(temp_BrTaken, zero, cbz);
@@ -96,7 +98,7 @@ module data_id (
     // RegFile module
     regfile regfile_module(
         .ReadData1(Da), .ReadData2(Db), .WriteData(Dw),
-        .ReadRegister1(Rn), .ReadRegister2(Ab), .WriteRegister(Rd_id),
+        .ReadRegister1(Rn), .ReadRegister2(Ab), .WriteRegister(Rd_wb),
         .RegWrite(RegWrite), .clk(clk));
 endmodule
 
@@ -104,7 +106,7 @@ endmodule
 module data_id_testbench();
     logic clk, update, Reg2Loc, ALUsrc, MemtoReg, cbz, branch, cond, zero_ex, negative_ex, BRsignal_id;
     logic RegWrite, MemWrite, BrTaken, BLsignal, BRsignal, UnCondBr, DTsignal;
-    logic [63:0] WBsignal, BLT, PC;
+    logic [63:0] WBsignal, BLT, PC, alu_result_ex, alu_result_mem, alu_result_wb;
     logic [18:0] COND_BR_addr;
     logic [25:0] BR_addr;
     logic [2:0] ALUop;
@@ -112,6 +114,7 @@ module data_id_testbench();
     logic [11:0] ALU_imm;
     logic [8:0] DT_addr;
     logic [5:0] shamt;
+	 logic [1:0] forward_cbz;
     logic [63:0] Da, Db, BR_to_shift, pc_id, ALU_imm_extend, DT_addr_extend, ALU_or_DT, new_PC2;
     
     data_id dut (.*);
